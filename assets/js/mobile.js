@@ -18,11 +18,12 @@
     const raw=reduce.matches?0:clamp(-r.top/range);
     const p=smooth(raw);
 
-    // Portrait version of the approved desktop motion: everything stays visually
-    // wider, both grass planes rise, and the foreground moves only moderately more.
-    back.style.transform='translate3d(-50%,-50%,0) scale(1)';
-    middle.style.transform=`translate3d(-50%,calc(-50% + ${2-p*14}px),0) scale(1)`;
-    front.style.transform=`translate3d(-50%,calc(-50% + ${-4-p*32}px),0) scale(1)`;
+    // Portrait framing: rear plates are slightly smaller and both rise gently.
+    // The foreground keeps its supplied framing and begins high enough to retain
+    // the grass at the top edge, then moves farther than the middle like desktop.
+    back.style.transform='translate3d(-50%,-50%,0) scale(.94)';
+    middle.style.transform=`translate3d(-50%,calc(-50% + ${-3-p*12}px),0) scale(.94)`;
+    front.style.transform=`translate3d(-50%,calc(-50% + ${-20-p*30}px),0) scale(1)`;
     middle.style.opacity='1';
   };
   const request=()=>{if(!raf)raf=requestAnimationFrame(render)};

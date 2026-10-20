@@ -1,0 +1,103 @@
+/* Mobile refinement pass — intentionally isolated from the approved desktop composition. */
+@media (max-width: 800px) {
+  html,body{max-width:100%;overflow-x:hidden}
+  .wrap{width:calc(100% - 32px)!important}
+
+  /* Mobile navigation: always visible, compact, horizontally scrollable. */
+  .site-header,.site-header.dark{height:auto;min-height:76px;padding:12px 0;z-index:100}
+  .site-header .navrow{display:grid;grid-template-columns:1fr;gap:10px;align-items:center}
+  .site-header .brand{font-size:.62rem;letter-spacing:.12em;gap:8px;white-space:nowrap}
+  .site-header .mm{width:38px;height:27px;flex-basis:38px}
+  .site-header .mm svg{width:38px;height:27px}
+  .site-header .navlinks{display:flex!important;width:100%;gap:20px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;padding:7px 0 3px;white-space:nowrap;font-size:.64rem;letter-spacing:.10em}
+  .site-header .navlinks::-webkit-scrollbar{display:none}
+  .site-header .navlinks a{flex:0 0 auto;opacity:.9}
+  .nav-basecamp{padding-right:16px!important}
+
+  /* Homepage hero: portrait composition with restrained Firewatch movement. */
+  .home-hero{height:132svh!important;min-height:760px!important}
+  .home-hero__sticky{height:100svh!important;min-height:560px!important}
+  .hero-parallax{overflow:hidden}
+  .hero-parallax__back,.hero-parallax__middle{width:auto!important;height:106%!important;min-width:118%!important;object-fit:cover!important;object-position:center center!important}
+  .hero-parallax__front{width:auto!important;height:108%!important;min-width:118%!important;max-width:none!important;object-fit:cover!important;object-position:center center!important}
+  .hero-copy{left:20px!important;right:20px!important;bottom:13vh!important;max-width:calc(100% - 40px)}
+  .hero-copy .kicker{font-size:.62rem;line-height:1.4;letter-spacing:.15em;margin-bottom:12px}
+  .hero-copy h1{font-size:clamp(3.15rem,15vw,5rem)!important;line-height:.84!important;letter-spacing:-.055em!important}
+  .scrollcue{right:18px!important;bottom:4vh!important;font-size:.58rem;gap:9px}
+  .scrollcue i{height:38px}
+
+  /* Prevent editorial headlines and metadata from colliding on narrow screens. */
+  .display,.page-hero h1,.review-title h1,.article-head h1,.about h1{font-size:clamp(3rem,14vw,5.1rem)!important;line-height:.9!important;overflow-wrap:anywhere}
+  .page-hero{height:72svh;min-height:520px}
+  .page-hero__copy{left:20px;right:20px;bottom:6vh;max-width:none}
+  .page-hero p{font-size:1rem;line-height:1.45}
+  .kicker,.eyebrow{line-height:1.45}
+
+  .portal{height:135vh}
+  .portal__copy{left:20px;right:20px;max-width:none}
+  .portal h2{font-size:clamp(3rem,14vw,4.8rem);line-height:.92}
+  .portal__copy p{max-width:90%;line-height:1.55}
+  .home-split{grid-template-columns:1fr!important;min-height:0}
+  .home-split__copy{padding:80px 20px 65px}
+  .home-split h2{font-size:clamp(3rem,13vw,4.6rem);line-height:.93}
+  .home-split__image{min-height:68svh;border-radius:0!important;outline:0!important}
+  .home-split__image img{height:100%;position:absolute;inset:0}
+
+  .latest-head,.section-head{align-items:flex-start!important;gap:22px;flex-direction:column!important}
+  .latest-grid,.card-grid,.story-grid{grid-template-columns:1fr!important}
+  .latest-card,.latest-card--lead{grid-column:auto!important}
+  .latest-card h3,.story-card h3{font-size:1.65rem;line-height:1.08}
+  .story-meta{display:flex;flex-wrap:wrap;gap:6px 10px;line-height:1.4}
+
+  .intro{padding:72px 0 48px}
+  .intro-grid,.review-title,.feature-story,.about-grid,.gallery-intro .wrap{grid-template-columns:1fr!important;gap:32px!important}
+  .intro h2,.feature-story h2{font-size:clamp(2.8rem,12vw,4.4rem)!important}
+  .cat-grid{display:grid!important;grid-template-columns:1fr!important;gap:22px!important}
+  .cat,.cat:nth-child(n){grid-column:auto!important;min-height:0!important}
+  .gear-category-card,.cat{width:100%}
+  .gear-row{grid-template-columns:76px 1fr!important;gap:14px!important}
+  .gear-row img{width:76px;height:64px}
+  .gear-row>*:nth-child(n+3){grid-column:2}
+
+  .review-top{padding:96px 0 50px}
+  .review-hero-img{height:55svh;margin-top:35px}
+  .article-grid{grid-template-columns:1fr!important;gap:55px!important}
+  .article-copy{font-size:1.08rem;line-height:1.72}
+  .article-copy h2,.story-body h2{font-size:2.35rem!important}
+  .article-photo{margin:38px 0!important}
+  .proscons{grid-template-columns:1fr!important}
+  .sidebar-box{position:static!important}
+
+  .journal-index{padding:72px 0}
+  .journal-tabs{overflow-x:auto;white-space:nowrap;gap:20px;padding-bottom:13px}
+  .feature-story img{height:auto!important;aspect-ratio:4/3;object-fit:cover}
+  .article-head{padding:100px 16px 42px}
+  .article-head p{font-size:1.05rem}
+  .article-hero{height:56svh;min-height:390px}
+  .story-body{margin:58px auto 85px;font-size:1.08rem;line-height:1.72;padding:0 20px}
+  .story-body .wide{width:calc(100vw - 32px)!important;margin:42px 50%!important}
+  .project-box{padding:22px 18px}.project-box ul{columns:1}
+
+  .photo-camera__stage,.camera-stage{overflow:hidden}
+  .photo-grid{padding-inline:16px!important}
+  .photo-grid figure,.photo-grid figure:nth-child(n){width:100%!important;margin-left:0!important}
+
+  .about{padding:100px 0 80px}
+  .about-copy{font-size:1.08rem;line-height:1.65}
+  .footer-grid{align-items:flex-start!important;flex-direction:column!important}
+  .footer-links{display:flex;flex-wrap:wrap;gap:15px 20px;line-height:1.5}
+  .closing{padding:90px 0}
+  .closing h2{font-size:clamp(2.8rem,12vw,4.4rem);line-height:.98}
+
+  /* Decorative vines should never sit on top of readable copy on phones. */
+  .journal-thread{opacity:.38;pointer-events:none}
+  .home-botanical__grid{grid-template-columns:1fr!important}
+  .home-vine-wrap{min-height:240px}
+}
+
+@media (max-width: 430px) {
+  .site-header .brand span:last-child{font-size:.58rem;letter-spacing:.09em}
+  .site-header .navlinks{gap:17px;font-size:.61rem}
+  .hero-copy h1{font-size:clamp(2.95rem,14.5vw,4.1rem)!important}
+  .scrollcue{display:none}
+}

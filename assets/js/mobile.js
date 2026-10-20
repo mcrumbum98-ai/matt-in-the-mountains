@@ -17,12 +17,19 @@
     const range=Math.max(1,hero.offsetHeight-innerHeight);
     const raw=reduce.matches?0:clamp(-r.top/range);
     const p=smooth(raw);
-    // Mobile depth trick: keep the Tetons locked, drift the middle field gently
-    // downward while the close grass rises. Opposing motion increases perceived
-    // depth without requiring enough foreground travel to expose its bottom edge.
+
+    // Restore the foreground high enough that its upper grass is present at the
+    // top of the mobile composition, then let it climb toward the mountain base.
     back.style.transform='translate3d(-50%,-50%,0) scale(1.035)';
-    middle.style.transform=`translate3d(-50%,calc(-50% + ${-12+p*16}px),0) scale(1.035)`;
-    front.style.transform=`translate3d(-50%,calc(-50% + ${58-p*36}px),0) scale(1.035)`;
+    middle.style.transform=`translate3d(-50%,calc(-50% + ${-12+p*20}px),0) scale(1.035)`;
+    front.style.transform=`translate3d(-50%,calc(-50% + ${18-p*76}px),0) scale(1.035)`;
+
+    // The middle field is transitional on mobile: as the close grass rises and
+    // the field drifts down, softly retire the middle layer. The hero's overflow
+    // clipping/dark-green section below hides the layer boundary rather than
+    // requiring the foreground image itself to mask every last pixel.
+    const fade=clamp((p-.48)/.46);
+    middle.style.opacity=String(1-smooth(fade));
   };
   const request=()=>{if(!raf)raf=requestAnimationFrame(render)};
   addEventListener('scroll',request,{passive:true});

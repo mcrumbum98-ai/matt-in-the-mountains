@@ -83,15 +83,12 @@
    stem.style.strokeDashoffset=String(1-p);
    groups.forEach(g=>{
      const at=parseFloat(g.dataset.grow||0), branch=g.querySelector('.vine-branch'), leaf=g.querySelector('.monstera');
-     // Nothing at the node is allowed to begin until the stem tip has actually arrived.
      const branchP=ease(clamp((p-at)/.060));
-     // Let the stem arrive, let the branch finish, then give the leaf a beat before it slowly unfurls.
      const leafP=ease(clamp((p-(at+.082))/.095));
      if(branch) branch.style.strokeDashoffset=String(1-branchP);
      if(leaf){
        leaf.style.opacity=String(leafP);
        const base=leaf.dataset.baseTransform || leaf.getAttribute('transform') || ''; leaf.dataset.baseTransform=base;
-       // SVG transform list keeps the leaf anchored at its node while it unfurls.
        leaf.setAttribute('transform', `${base} scale(${0.06+0.94*leafP}) rotate(${(1-leafP)*-10})`);
      }
    });
@@ -118,19 +115,17 @@
  const clamp=n=>Math.max(0,Math.min(1,n));
  const render=()=>{
    raf=0;
+   // Mobile has its own calibrated controller in mobile.js. Keeping this desktop-only
+   // prevents two scroll handlers from fighting over the same layer transforms.
+   if(innerWidth<=800) return;
    const rect=hero.getBoundingClientRect();
    const scrollRange=Math.max(1,hero.offsetHeight-innerHeight);
    const progress=reduce?0:clamp((-rect.top)/scrollRange);
-   const mobile=innerWidth<=800;
-   const scale=mobile?1.025:1.015;
-   // Register the middle field higher at rest so its grass line merges with the back plate.
-   // Keep its travel restrained: it provides depth without revealing its lower boundary.
-   const middleStart=mobile?-16:-24;
-   const middleTravel=mobile?38:52;
-   // The full-height foreground retains its original bottom pixels as the masking curtain.
-   // It moves substantially faster than the middle plane, but never far enough to run out.
-   const frontStart=mobile?52:70;
-   const frontTravel=mobile?155:210;
+   const scale=1.015;
+   const middleStart=-24;
+   const middleTravel=52;
+   const frontStart=70;
+   const frontTravel=210;
    back.style.transform=`translate3d(-50%,-50%,0) scale(${scale})`;
    middle.style.transform=`translate3d(-50%,calc(-50% + ${middleStart - progress*middleTravel}px),0) scale(${scale})`;
    front.style.transform=`translate3d(-50%,calc(-50% + ${frontStart - progress*frontTravel}px),0) scale(${scale})`;

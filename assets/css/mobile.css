@@ -17,11 +17,11 @@
   /* Homepage hero: portrait composition with restrained Firewatch movement. */
   .home-hero{height:132svh!important;min-height:760px!important}
   .home-hero__sticky{height:100svh!important;min-height:560px!important;overflow:hidden}
+  .home-hero__sticky::after{content:none!important;display:none!important}
   .hero-parallax{overflow:hidden}
-  .hero-parallax__back,.hero-parallax__middle{width:auto!important;height:106%!important;min-width:118%!important;object-fit:cover!important;object-position:center center!important}
-  /* Keep the transparent foreground at its natural aspect ratio. Do not cover-fit
-     it to the portrait viewport; that crops away the side grasses and feels zoomed. */
-  .hero-parallax__front{width:112%!important;height:auto!important;min-width:0!important;max-width:none!important;object-fit:contain!important;object-position:center top!important}
+  .hero-parallax__back,.hero-parallax__middle{width:auto!important;height:102%!important;min-width:0!important;object-fit:cover!important;object-position:center center!important}
+  /* Preserve the complete side-grass framing instead of cover-cropping the foreground. */
+  .hero-parallax__front{width:104%!important;height:auto!important;min-width:0!important;max-width:none!important;object-fit:contain!important;object-position:center top!important}
   .hero-copy{left:20px!important;right:20px!important;bottom:13vh!important;max-width:calc(100% - 40px)}
   .hero-copy .kicker{font-size:.62rem;line-height:1.4;letter-spacing:.15em;margin-bottom:12px}
   .hero-copy h1{font-size:clamp(3.15rem,15vw,5rem)!important;line-height:.84!important;letter-spacing:-.055em!important}

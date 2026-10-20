@@ -18,18 +18,13 @@
     const raw=reduce.matches?0:clamp(-r.top/range);
     const p=smooth(raw);
 
-    // Restore the foreground high enough that its upper grass is present at the
-    // top of the mobile composition, then let it climb toward the mountain base.
+    // Mobile follows the approved desktop motion model: the Tetons stay locked,
+    // both field layers rise, and the close foreground rises substantially more.
+    // No fading and no opposing/downward motion.
     back.style.transform='translate3d(-50%,-50%,0) scale(1.035)';
-    middle.style.transform=`translate3d(-50%,calc(-50% + ${-12+p*20}px),0) scale(1.035)`;
-    front.style.transform=`translate3d(-50%,calc(-50% + ${18-p*76}px),0) scale(1.035)`;
-
-    // The middle field is transitional on mobile: as the close grass rises and
-    // the field drifts down, softly retire the middle layer. The hero's overflow
-    // clipping/dark-green section below hides the layer boundary rather than
-    // requiring the foreground image itself to mask every last pixel.
-    const fade=clamp((p-.48)/.46);
-    middle.style.opacity=String(1-smooth(fade));
+    middle.style.transform=`translate3d(-50%,calc(-50% + ${-4-p*28}px),0) scale(1.035)`;
+    front.style.transform=`translate3d(-50%,calc(-50% + ${-18-p*86}px),0) scale(1.035)`;
+    middle.style.opacity='1';
   };
   const request=()=>{if(!raf)raf=requestAnimationFrame(render)};
   addEventListener('scroll',request,{passive:true});

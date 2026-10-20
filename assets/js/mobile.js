@@ -17,11 +17,11 @@
     const range=Math.max(1,hero.offsetHeight-innerHeight);
     const raw=reduce.matches?0:clamp(-r.top/range);
     const p=smooth(raw);
-    // Final mobile edge-protection pass: keep the foreground curtain lower and
-    // move it only enough to suggest depth. This preserves the original pixels
-    // while preventing the middle layer's bottom edge from peeking underneath.
+    // Mobile depth trick: keep the Tetons locked, drift the middle field gently
+    // downward while the close grass rises. Opposing motion increases perceived
+    // depth without requiring enough foreground travel to expose its bottom edge.
     back.style.transform='translate3d(-50%,-50%,0) scale(1.035)';
-    middle.style.transform=`translate3d(-50%,calc(-50% + ${-12-p*8}px),0) scale(1.035)`;
+    middle.style.transform=`translate3d(-50%,calc(-50% + ${-12+p*16}px),0) scale(1.035)`;
     front.style.transform=`translate3d(-50%,calc(-50% + ${58-p*36}px),0) scale(1.035)`;
   };
   const request=()=>{if(!raf)raf=requestAnimationFrame(render)};

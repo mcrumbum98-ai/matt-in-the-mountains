@@ -8,18 +8,22 @@
   const mq=matchMedia('(max-width: 800px)');
   const reduce=matchMedia('(prefers-reduced-motion: reduce)');
   const clamp=n=>Math.max(0,Math.min(1,n));
+  // Ease the visual travel so the foreground does not race upward at the start.
+  const smooth=t=>t*t*(3-2*t);
   let raf=0;
   const render=()=>{
     raf=0;
     if(!mq.matches)return;
     const r=hero.getBoundingClientRect();
     const range=Math.max(1,hero.offsetHeight-innerHeight);
-    const p=reduce.matches?0:clamp(-r.top/range);
-    // Portrait phones need less travel than desktop. Keep the Tetons anchored,
-    // let the field breathe slightly, and let the close grass do most of the work.
+    const raw=reduce.matches?0:clamp(-r.top/range);
+    const p=smooth(raw);
+    // Mobile calibration: locked Tetons, nearly-stationary middle field,
+    // and deliberately restrained foreground travel so its lower masking edge
+    // stays in front until the sticky hero releases.
     back.style.transform='translate3d(-50%,-50%,0) scale(1.035)';
-    middle.style.transform=`translate3d(-50%,calc(-50% + ${-10-p*24}px),0) scale(1.035)`;
-    front.style.transform=`translate3d(-50%,calc(-50% + ${42-p*92}px),0) scale(1.035)`;
+    middle.style.transform=`translate3d(-50%,calc(-50% + ${-12-p*12}px),0) scale(1.035)`;
+    front.style.transform=`translate3d(-50%,calc(-50% + ${48-p*54}px),0) scale(1.035)`;
   };
   const request=()=>{if(!raf)raf=requestAnimationFrame(render)};
   addEventListener('scroll',request,{passive:true});

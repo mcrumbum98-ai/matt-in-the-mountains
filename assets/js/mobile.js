@@ -18,12 +18,11 @@
     const raw=reduce.matches?0:clamp(-r.top/range);
     const p=smooth(raw);
 
-    // Mobile follows the approved desktop motion model: the Tetons stay locked,
-    // both field layers rise, and the close foreground rises substantially more.
-    // No fading and no opposing/downward motion.
-    back.style.transform='translate3d(-50%,-50%,0) scale(1.035)';
-    middle.style.transform=`translate3d(-50%,calc(-50% + ${-4-p*28}px),0) scale(1.035)`;
-    front.style.transform=`translate3d(-50%,calc(-50% + ${-18-p*86}px),0) scale(1.035)`;
+    // Same direction as desktop, calibrated for the portrait viewport:
+    // both grass layers rise, with restrained extra travel on the foreground.
+    back.style.transform='translate3d(-50%,-50%,0) scale(1.02)';
+    middle.style.transform=`translate3d(-50%,calc(-50% + ${-2-p*18}px),0) scale(1.02)`;
+    front.style.transform=`translate3d(-50%,calc(-50% + ${-10-p*44}px),0) scale(1.02)`;
     middle.style.opacity='1';
   };
   const request=()=>{if(!raf)raf=requestAnimationFrame(render)};

@@ -1,0 +1,458 @@
+:root{--paper:#eee7da;--cream:#f4eee3;--ink:#171814;--forest:#273b21;--forest2:#1c2a18;--walnut:#493323;--brass:#b18b52;--muted:#777468;--line:rgba(23,24,20,.18);--serif:Georgia,'Times New Roman',serif;--sans:Arial,Helvetica,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);overflow-x:hidden}img{display:block;width:100%}a{color:inherit;text-decoration:none}.wrap{width:min(1320px,calc(100% - 48px));margin:auto}.eyebrow,.kicker{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700}.display{font:400 clamp(3.5rem,8vw,8.5rem)/.85 var(--serif);letter-spacing:-.055em}.serif{font-family:var(--serif)}
+/* brand */
+.brand{display:flex;align-items:center;gap:12px;font-size:.7rem;letter-spacing:.16em;font-weight:700}.mm{position:relative;width:43px;height:31px;display:inline-block}.mm b{position:absolute;top:0;font:900 31px/31px Arial,sans-serif;letter-spacing:-8px}.mm b:first-child{left:0;color:var(--forest)}.mm b:last-child{left:14px;color:var(--brass);mix-blend-mode:multiply}.site-header{height:74px;position:absolute;z-index:30;top:0;left:0;right:0;display:flex;align-items:center;color:var(--cream);border-bottom:1px solid rgba(255,255,255,.18)}.site-header.dark{position:relative;color:var(--ink);border-bottom:1px solid var(--line)}.navrow{display:flex;align-items:center;justify-content:space-between}.navlinks{display:flex;gap:32px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}.navlinks a{opacity:.8}.navlinks a:hover,.navlinks a.active{opacity:1}.menu-btn{display:none;background:none;border:0;color:inherit;text-transform:uppercase;letter-spacing:.12em}
+/* homepage */
+.home-hero{height:100svh;min-height:680px;position:relative;overflow:hidden;background:#182016;color:#fff}.home-hero__img{position:absolute;inset:-8%;width:116%;height:116%;object-fit:cover;object-position:center 56%;will-change:transform}.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.02) 35%,rgba(0,0,0,.58))}.hero-copy{position:absolute;left:max(24px,5vw);bottom:10vh;z-index:2}.hero-copy .kicker{margin-bottom:16px}.hero-copy h1{margin:0;font:400 clamp(4.3rem,9.5vw,10rem)/.78 var(--serif);letter-spacing:-.065em}.scrollcue{position:absolute;right:5vw;bottom:6vh;z-index:2;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;display:flex;align-items:center;gap:14px}.scrollcue i{height:54px;width:1px;background:rgba(255,255,255,.35);position:relative;overflow:hidden}.scrollcue i:after{content:"";position:absolute;left:0;width:1px;height:22px;background:#fff;animation:drop 1.8s infinite}@keyframes drop{from{transform:translateY(-24px)}to{transform:translateY(60px)}}
+.portal{height:160vh;position:relative;background:var(--forest2);color:var(--cream)}.portal__sticky{height:100vh;position:sticky;top:0;overflow:hidden}.portal__img{position:absolute;inset:0;height:100%;object-fit:cover;object-position:center 58%;will-change:transform}.portal__veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,17,10,.78),rgba(12,17,10,.08) 65%)}.portal__copy{position:absolute;left:7vw;top:50%;transform:translateY(-50%);max-width:650px}.portal h2{font:400 clamp(4rem,7vw,7.7rem)/.88 var(--serif);letter-spacing:-.055em;margin:14px 0 24px}.arrowlink{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:5px}.home-split{display:grid;grid-template-columns:1fr 1fr;min-height:90vh;background:var(--paper)}.home-split__copy{padding:10vw 8vw;display:flex;flex-direction:column;justify-content:center}.home-split h2{font:400 clamp(3.6rem,6vw,7rem)/.9 var(--serif);letter-spacing:-.05em;margin:15px 0 30px}.home-split__image{overflow:hidden;position:relative}.home-split__image img{height:110%;object-fit:cover;object-position:center center;will-change:transform}.closing{padding:130px 0;background:var(--forest);color:var(--cream);text-align:center}.closing h2{font:400 clamp(3rem,6vw,6.5rem)/.95 var(--serif);margin:25px auto 40px;max-width:1000px;letter-spacing:-.045em}
+/* page hero */
+.page-hero{height:82svh;min-height:620px;position:relative;color:#fff;overflow:hidden;background:var(--forest2)}.page-hero img{position:absolute;inset:-5%;width:110%;height:110%;object-fit:cover;will-change:transform}.page-hero.gear img{object-position:center 52%}.page-hero.journal img{object-position:center 52%}.page-hero.photo img{object-position:center 48%}.page-hero .shade{background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.08) 45%,rgba(0,0,0,.65))}.page-hero__copy{position:absolute;left:5vw;bottom:7vh;z-index:2;max-width:850px}.page-hero h1{margin:8px 0 14px;font:400 clamp(5rem,10vw,10rem)/.82 var(--serif);letter-spacing:-.06em}.page-hero p{max-width:620px;font:400 1.2rem/1.55 var(--serif)}
+/* gear landing */
+.intro{padding:100px 0 65px}.intro-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:10vw;align-items:end}.intro h2{font:400 clamp(3rem,5vw,5.8rem)/.95 var(--serif);letter-spacing:-.04em;margin:0}.intro p{font:400 1.15rem/1.7 var(--serif);margin:0}.categories{padding:20px 0 110px}.section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:28px}.section-head h2{font:400 clamp(2.7rem,4vw,4.7rem)/1 var(--serif);margin:0;letter-spacing:-.035em}.cat-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}.cat{min-height:380px;position:relative;overflow:hidden;color:white;background:#333}.cat:nth-child(1){grid-column:span 7}.cat:nth-child(2){grid-column:span 5}.cat:nth-child(n+3){grid-column:span 4;min-height:300px}.cat img{position:absolute;inset:0;height:100%;object-fit:cover;transition:transform .7s ease}.cat:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(0,0,0,.7))}.cat:hover img{transform:scale(1.035)}.cat div{position:absolute;z-index:2;left:25px;right:25px;bottom:22px}.cat strong{font:400 2.1rem/1 var(--serif)}.cat small{display:block;margin-top:8px;letter-spacing:.13em;text-transform:uppercase}.reviews{background:#ded7ca;padding:100px 0}.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.review-card{background:var(--cream);min-width:0}.review-card__img{aspect-ratio:4/3;overflow:hidden;background:#bbb}.review-card__img img{height:100%;object-fit:cover}.review-card__body{padding:24px}.review-card h3{font:400 1.8rem/1.05 var(--serif);margin:5px 0 18px}.score{display:inline-flex;align-items:baseline;gap:3px;font:700 2.2rem/1 var(--serif);color:var(--forest)}.score small{font:400 .85rem var(--sans);color:var(--muted)}.review-meta{display:flex;justify-content:space-between;align-items:end;gap:12px}.pill{font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--line);padding:7px 9px}.allgear{padding:100px 0}.filterbar{display:flex;gap:10px;flex-wrap:wrap;margin:25px 0 38px}.filterbar button{border:1px solid var(--line);background:transparent;padding:10px 14px;text-transform:uppercase;letter-spacing:.11em;font-size:.67rem}.filterbar button.active{background:var(--forest);color:#fff}.gear-list{border-top:1px solid var(--line)}.gear-row{display:grid;grid-template-columns:100px 1.4fr .7fr .4fr;gap:24px;align-items:center;padding:18px 0;border-bottom:1px solid var(--line)}.gear-row img{width:100px;height:76px;object-fit:cover}.gear-row h3{font:400 1.35rem var(--serif);margin:0}.gear-row span{font-size:.78rem;color:var(--muted)}
+/* review detail */
+.review-top{padding:125px 0 70px}.review-title{display:grid;grid-template-columns:1fr .8fr;gap:7vw;align-items:end}.review-title h1{font:400 clamp(4rem,7vw,7.5rem)/.87 var(--serif);letter-spacing:-.055em;margin:12px 0 25px}.review-hero-img{margin-top:60px;height:min(72vh,800px);overflow:hidden}.review-hero-img img{height:100%;object-fit:cover;object-position:center 52%}.review-scorebox{border-top:1px solid var(--line);padding-top:20px}.review-scorebox .score{font-size:5rem}.buybtn{display:inline-block;background:var(--forest);color:#fff;padding:15px 20px;margin-top:20px;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}.review-body{padding:80px 0 120px}.article-grid{display:grid;grid-template-columns:minmax(0,720px) 280px;gap:9vw;justify-content:center}.article-copy{font:400 1.18rem/1.82 var(--serif)}.article-copy h2{font:400 2.8rem/1.05 var(--serif);letter-spacing:-.035em;margin:65px 0 20px}.article-copy p:first-of-type{font-size:1.4rem}.verdict{padding:35px;border-left:5px solid var(--brass);background:#e3dccf;margin-bottom:45px}.verdict h2{margin:0 0 10px}.proscons{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:35px 0}.proscons div{border-top:2px solid var(--forest);padding-top:12px}.proscons h3{font:700 .72rem var(--sans);letter-spacing:.16em;text-transform:uppercase}.article-photo{margin:45px -8vw}.article-photo img{max-height:700px;object-fit:cover}.sidebar{font-size:.8rem}.sidebar-box{position:sticky;top:30px;border-top:2px solid var(--ink);padding-top:15px}.sidebar dl{margin:0}.sidebar dt{text-transform:uppercase;letter-spacing:.12em;font-size:.65rem;margin-top:18px}.sidebar dd{margin:5px 0 0;font-family:var(--serif);font-size:1rem}.rating-bars{margin-top:35px}.rating-line{margin:15px 0}.rating-line div{display:flex;justify-content:space-between;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em}.bar{height:3px;background:#c7c0b5;margin-top:7px}.bar i{display:block;height:100%;background:var(--forest)}.related{padding:90px 0;background:#ded7ca}
+/* journal */
+.journal-index{padding:100px 0}.journal-tabs{display:flex;gap:25px;margin:25px 0 50px;border-bottom:1px solid var(--line);padding-bottom:15px}.journal-tabs a{font-size:.72rem;letter-spacing:.13em;text-transform:uppercase}.feature-story{display:grid;grid-template-columns:1.25fr .75fr;gap:45px;align-items:center;margin-bottom:80px}.feature-story img{height:600px;object-fit:cover}.feature-story h2{font:400 clamp(3rem,5vw,5.4rem)/.92 var(--serif);letter-spacing:-.045em;margin:15px 0 20px}.story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}.story-card img{aspect-ratio:4/3;object-fit:cover}.story-card h3{font:400 1.8rem/1.05 var(--serif);margin:12px 0 8px}.story-card p{font:400 1rem/1.5 var(--serif);color:#555}.story-card .kicker{margin-top:16px}.article-head{padding:110px 0 55px;text-align:center}.article-head h1{font:400 clamp(4rem,8vw,8rem)/.88 var(--serif);letter-spacing:-.055em;max-width:1100px;margin:20px auto}.article-head p{font:400 1.25rem/1.5 var(--serif);max-width:700px;margin:auto}.article-hero{height:78vh;min-height:550px}.article-hero img{height:100%;object-fit:cover}.story-body{max-width:780px;margin:80px auto 120px;font:400 1.2rem/1.85 var(--serif);padding:0 24px}.story-body h2{font:400 3rem/1 var(--serif);letter-spacing:-.035em;margin:65px 0 20px}.story-body .wide{width:min(1200px,calc(100vw - 48px));margin:55px 50%;transform:translateX(-50%)}.story-body .wide img{max-height:780px;object-fit:cover}.project-box{background:#ded7ca;padding:28px;margin:35px 0;font-family:var(--sans)}.project-box h3{font:400 2rem var(--serif);margin:0 0 18px}.project-box ul{columns:2;padding-left:18px}
+/* photo/about/footer */
+.photo-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px;padding:70px 24px}.photo-grid figure{margin:0;grid-column:span 6;overflow:hidden}.photo-grid figure:nth-child(3n){grid-column:span 12}.photo-grid img{height:65vh;object-fit:cover;transition:transform .8s}.photo-grid figure:hover img{transform:scale(1.02)}.about{padding:130px 0}.about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:8vw}.about h1{font:400 clamp(4rem,8vw,8rem)/.85 var(--serif);letter-spacing:-.055em;margin:0}.about-copy{font:400 1.25rem/1.75 var(--serif)}.site-footer{background:var(--ink);color:var(--cream);padding:70px 0 35px}.footer-grid{display:flex;justify-content:space-between;gap:30px;align-items:end}.footer-links{display:flex;gap:22px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}.site-footer small{opacity:.6}.placeholder-note{background:#fff3cd;color:#574b1c;padding:10px 14px;font-size:.76rem;border:1px solid #e2d49c;margin:18px 0}
+@media(max-width:800px){.wrap{width:min(100% - 30px,1320px)}.navlinks{display:none}.menu-btn{display:block}.home-hero{min-height:600px}.hero-copy h1{font-size:18vw}.scrollcue{right:20px}.home-split,.intro-grid,.review-title,.feature-story,.about-grid{grid-template-columns:1fr}.home-split__image{height:65vh;order:-1}.cat:nth-child(n){grid-column:span 12;min-height:330px}.card-grid,.story-grid{grid-template-columns:1fr}.gear-row{grid-template-columns:80px 1fr auto}.gear-row img{width:80px;height:64px}.gear-row span:nth-of-type(1){display:none}.article-grid{grid-template-columns:1fr}.sidebar{order:-1}.sidebar-box{position:relative}.article-photo{margin:35px 0}.proscons{grid-template-columns:1fr}.feature-story img{height:55vh}.photo-grid figure,.photo-grid figure:nth-child(3n){grid-column:span 12}.photo-grid img{height:55vh}.project-box ul{columns:1}.footer-grid{display:block}.footer-links{margin-top:30px;flex-wrap:wrap}.page-hero h1{font-size:20vw}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+/* CONCEPT 07 — spatial/editorial pass */
+:root{--ease:cubic-bezier(.2,.75,.25,1);--pad:clamp(20px,4vw,64px)}
+.mm{width:52px;height:32px;flex:0 0 auto}.mm svg{width:100%;height:100%;overflow:visible}.mm-back{fill:var(--brass)}.mm-front{fill:var(--forest)}.site-header:not(.dark) .mm-front{fill:#f4eee3}.site-header:not(.dark) .mm-back{fill:#caa96c}.site-footer .mm-front{fill:#f4eee3}.site-footer .mm-back{fill:#b18b52}
+/* lighter, floating chrome */
+.site-header{border-bottom:0;height:86px}.site-header:after{content:"";position:absolute;left:4vw;right:4vw;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.38),transparent)}.site-header.dark:after{background:linear-gradient(90deg,transparent,var(--line),transparent)}
+.navlinks a{position:relative}.navlinks a:after{content:"";position:absolute;left:0;right:100%;bottom:-8px;height:1px;background:currentColor;transition:right .45s var(--ease)}.navlinks a:hover:after,.navlinks a.active:after{right:0}
+/* homepage gains depth without changing content */
+.home-hero:after{content:"";position:absolute;width:38vw;height:38vw;right:-14vw;bottom:-18vw;border:1px solid rgba(255,255,255,.22);border-radius:50%;z-index:1;pointer-events:none}.hero-copy{mix-blend-mode:normal}.portal__copy{z-index:3}.portal:after{content:"JOURNAL";position:absolute;z-index:2;right:-.05em;top:30vh;font:400 clamp(7rem,18vw,20rem)/1 var(--serif);letter-spacing:-.08em;color:rgba(255,255,255,.07);pointer-events:none}.home-split__image{clip-path:inset(5% 5% 5% 0 round 1px)}
+/* Journal — magazine, not cards */
+.journal-page{background:#e9e2d5}.journal-nav{position:relative;color:var(--ink);background:#e9e2d5}.journal-nav:after{background:linear-gradient(90deg,transparent,var(--line),transparent)}.journal-nav .mm-front{fill:var(--forest)!important}.journal-nav .mm-back{fill:var(--brass)!important}
+.journal-mast{position:relative;min-height:76vh;display:flex;align-items:center;overflow:hidden;background:#e9e2d5;padding:80px 0 55px}.journal-mast__inner{position:relative;z-index:2}.journal-mast h1{font:400 clamp(5.2rem,11vw,11.8rem)/.73 var(--serif);letter-spacing:-.075em;margin:20px 0 36px;max-width:1100px}.journal-mast h1 em{font-weight:400;color:var(--forest)}.journal-deck{font:400 clamp(1.1rem,1.7vw,1.45rem)/1.6 var(--serif);max-width:650px;margin:0 0 55px}.journal-filter{display:flex;flex-wrap:wrap;gap:9px;max-width:1050px}.journal-filter a{padding:10px 15px;border-radius:99px;background:rgba(255,255,255,.38);font-size:.67rem;letter-spacing:.11em;text-transform:uppercase;transition:transform .35s var(--ease),background .35s}.journal-filter a:hover{transform:translateY(-3px);background:#fff}.journal-filter a.active{background:var(--forest);color:#fff}.journal-orbit{position:absolute;border:1px solid rgba(39,59,33,.16);border-radius:50%;display:grid;place-items:center;text-transform:uppercase;letter-spacing:.3em;font-size:.58rem;color:rgba(39,59,33,.45);animation:floatOrbit 8s ease-in-out infinite}.orbit-a{width:34vw;height:34vw;right:-8vw;top:-11vw}.orbit-b{width:18vw;height:18vw;right:17vw;bottom:-8vw;animation-delay:-3s}@keyframes floatOrbit{50%{transform:translate3d(0,18px,0) rotate(7deg)}}
+.editorial-feed{padding:clamp(70px,9vw,140px) 0 120px;background:var(--cream)}.editorial-lead{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(300px,.65fr);gap:clamp(30px,6vw,90px);align-items:end;margin-bottom:clamp(100px,14vw,210px)}.editorial-lead__media{height:min(72vh,820px);position:relative;overflow:hidden}.editorial-lead__media img,.editorial-card__media img,.wide-story__media img{height:112%;object-fit:cover;will-change:transform;transition:transform 1s var(--ease)}.magnetic-media:after{content:"";position:absolute;inset:0;border:1px solid rgba(255,255,255,.3);opacity:0;transform:scale(.96);transition:.6s var(--ease)}.magnetic-media:hover:after{opacity:1;transform:scale(.985)}.image-index{position:absolute;right:16px;top:16px;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:rgba(244,238,227,.9);font:700 .65rem var(--sans)}.story-meta{display:flex;gap:14px;align-items:center;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:17px 0 13px}.story-meta span{color:var(--forest);font-weight:700}.story-meta span:after{content:"";display:inline-block;width:28px;height:1px;background:var(--brass);margin-left:14px;vertical-align:middle}.editorial-lead h2{font:400 clamp(3.2rem,5.3vw,6.2rem)/.88 var(--serif);letter-spacing:-.055em;margin:0 0 24px}.editorial-lead p,.editorial-card p,.wide-story p{font:400 1.05rem/1.65 var(--serif);color:#555}.read-mark{display:inline-flex;align-items:center;gap:14px;margin-top:20px;text-transform:uppercase;letter-spacing:.13em;font-size:.67rem}.read-mark i{font-style:normal;font-size:1.2rem;transition:transform .35s}.editorial-lead:hover .read-mark i{transform:translate(5px,-5px)}
+.editorial-pair{display:grid;grid-template-columns:1.08fr .72fr;gap:clamp(45px,10vw,150px);align-items:start}.editorial-card__media{height:clamp(390px,58vw,720px);overflow:hidden}.editorial-card.offset{padding-top:18vw}.editorial-card.offset .editorial-card__media{height:clamp(330px,43vw,570px)}.editorial-card h3,.wide-story h3{font:400 clamp(2.1rem,3.4vw,4.1rem)/.95 var(--serif);letter-spacing:-.04em;margin:0 0 14px}.editorial-card:hover img,.wide-story:hover img{transform:scale(1.025)}
+.interlude{height:48vh;min-height:340px;display:flex;align-items:center;overflow:hidden;background:var(--forest);color:var(--cream);margin:clamp(100px,13vw,190px) 0}.interlude-word{white-space:nowrap;font:400 clamp(5rem,12vw,13rem)/1 var(--serif);letter-spacing:-.065em;will-change:transform;opacity:.92}
+.wide-story{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(30px,7vw,100px);align-items:center;margin-bottom:clamp(100px,12vw,170px)}.wide-story__media{height:min(68vh,720px);overflow:hidden}.editorial-trio{display:grid;grid-template-columns:1.1fr .8fr 1fr;gap:clamp(22px,4vw,60px);align-items:start}.editorial-trio .editorial-card:nth-child(2){padding-top:10vw}.editorial-trio .editorial-card__media{height:clamp(300px,35vw,520px)}.editorial-trio .editorial-card:nth-child(2) .editorial-card__media{height:clamp(260px,29vw,430px)}.editorial-trio h3{font-size:clamp(1.65rem,2.4vw,2.8rem)}
+.reveal{opacity:0;transform:translateY(38px);transition:opacity 1s var(--ease),transform 1s var(--ease)}.reveal.in{opacity:1;transform:none}.cursor-halo{position:fixed;z-index:99;left:0;top:0;width:54px;height:54px;border:1px solid rgba(39,59,33,.35);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);opacity:0;transition:opacity .25s,width .3s,height .3s;mix-blend-mode:multiply}.journal-page:has(a:hover) .cursor-halo{width:72px;height:72px}
+/* soften boxes sitewide */
+.review-card{box-shadow:0 18px 50px rgba(40,35,28,.06);border-radius:2px;overflow:hidden}.filterbar button,.pill{border-radius:99px}.verdict{border-left:0;position:relative;padding:42px 42px 42px 52px}.verdict:before{content:"";position:absolute;left:24px;top:25px;bottom:25px;width:3px;background:var(--brass)}
+@media(max-width:800px){.journal-mast{min-height:auto;padding:70px 0}.journal-mast h1{font-size:19vw}.journal-orbit{display:none}.editorial-lead,.editorial-pair,.wide-story,.editorial-trio{grid-template-columns:1fr}.editorial-lead__media{height:58vh}.editorial-card.offset,.editorial-trio .editorial-card:nth-child(2){padding-top:35px}.editorial-card__media,.editorial-card.offset .editorial-card__media,.editorial-trio .editorial-card__media,.editorial-trio .editorial-card:nth-child(2) .editorial-card__media{height:52vh}.interlude{height:35vh}.cursor-halo{display:none}}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.journal-orbit{animation:none}}
+/* CONCEPT 08 — shared motion, uncropped gallery, editorial home */
+.mm{width:58px;height:34px}.mm-snow{fill:var(--paper);opacity:.9}.site-header:not(.dark) .mm-snow,.site-footer .mm-snow{fill:var(--cream)}
+.portal:after{color:rgba(255,255,255,.14);text-shadow:0 1px 18px rgba(0,0,0,.12)}
+/* carry the journal's spatial language through the site */
+.page-hero__copy,.intro-grid,.categories,.reviews,.allgear,.review-title,.article-head,.about-grid{will-change:transform}.page-hero:after{content:"";position:absolute;right:-10vw;bottom:-18vw;width:38vw;height:38vw;border:1px solid rgba(255,255,255,.22);border-radius:50%;z-index:1;pointer-events:none}.page-hero__copy{z-index:3}.page-hero .kicker{display:inline-flex;align-items:center;gap:14px}.page-hero .kicker:before{content:"";width:38px;height:1px;background:var(--brass)}
+.cat,.review-card,.article-hero,.wide,.home-split__image{isolation:isolate}.cat img,.review-card img{transition:transform 1.1s var(--ease)}.cat:hover img,.review-card:hover img{transform:scale(1.035)}
+.intro,.reviews,.related,.about{position:relative}.intro:before,.about:before{content:"";position:absolute;width:26vw;height:26vw;border:1px solid rgba(39,59,33,.10);border-radius:50%;right:-11vw;top:12%;pointer-events:none}
+/* homepage editorial feed */
+.home-latest{padding:clamp(90px,11vw,170px) 0;background:var(--cream)}.latest-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:55px}.latest-head h2{font:400 clamp(3.2rem,5.5vw,6.2rem)/.9 var(--serif);letter-spacing:-.05em;margin:10px 0 0}.latest-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(38px,6vw,90px) clamp(24px,4vw,58px);align-items:start}.latest-card{display:block}.latest-card:nth-child(3){margin-top:-6vw}.latest-card:nth-child(4){margin-top:5vw}.latest-media{height:clamp(300px,38vw,570px);overflow:hidden;position:relative}.latest-card--lead .latest-media{height:clamp(430px,58vw,760px)}.latest-media img{height:108%;object-fit:cover;transition:transform 1s var(--ease)}.latest-card:hover .latest-media img{transform:scale(1.025)}.latest-card h3{font:400 clamp(2rem,3.2vw,3.8rem)/.96 var(--serif);letter-spacing:-.04em;margin:0;max-width:720px}.latest-card:not(.latest-card--lead) h3{font-size:clamp(1.65rem,2.4vw,2.8rem)}
+/* photography: preserve compositions instead of forcing every image into the same crop */
+.photo-grid{display:block;columns:2;column-gap:clamp(18px,3vw,42px);padding:clamp(70px,8vw,130px) var(--pad);max-width:1500px;margin:auto}.photo-grid figure,.photo-grid figure:nth-child(3n){display:inline-block;width:100%;margin:0 0 clamp(18px,3vw,42px);overflow:visible;break-inside:avoid}.photo-grid img{width:100%;height:auto;object-fit:contain;transition:transform .9s var(--ease),box-shadow .9s var(--ease)}.photo-grid figure:hover img{transform:translateY(-5px);box-shadow:0 24px 70px rgba(30,27,22,.12)}
+/* no permanent mouse halo; interactive targets communicate through motion themselves */
+.cursor-halo{display:none!important}
+@media(max-width:800px){.latest-head{display:block}.latest-head .arrowlink{display:inline-block;margin-top:24px}.latest-grid{grid-template-columns:1fr}.latest-card:nth-child(n){margin-top:0}.latest-media,.latest-card--lead .latest-media{height:auto;aspect-ratio:4/3}.photo-grid{columns:1}.page-hero:after{width:65vw;height:65vw}}
+
+/* CONCEPT 09 — basecamp navigation, pencil-line MM, photographic print wall */
+.mm{width:58px;height:34px}.mm svg{width:100%;height:100%;overflow:visible}.mm-line{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:3.2;vector-effect:non-scaling-stroke}.mm-line-a{stroke:var(--forest)}.mm-line-b{stroke:var(--brass)}
+.site-header:not(.dark) .mm-line-a,.site-footer .mm-line-a{stroke:var(--cream)}.site-header:not(.dark) .mm-line-b,.site-footer .mm-line-b{stroke:#caa96c}.closing .mm-line-a{stroke:var(--forest)}.closing .mm-line-b{stroke:var(--brass)}
+
+/* A small persistent route home that behaves like a trail marker rather than another nav button. */
+.basecamp{position:fixed;z-index:80;left:22px;bottom:22px;display:flex;align-items:center;gap:0;color:var(--ink);background:rgba(244,238,227,.88);border:1px solid rgba(73,51,35,.22);border-radius:999px;box-shadow:0 10px 34px rgba(23,24,20,.12);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);overflow:hidden;transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .35s var(--ease)}
+.basecamp:hover{transform:translateY(-4px);box-shadow:0 18px 45px rgba(23,24,20,.18);background:rgba(244,238,227,.98)}
+.basecamp-icon{width:52px;height:52px;display:grid;place-items:center;flex:0 0 52px}.basecamp-icon svg{width:28px;height:22px;fill:none;stroke:var(--forest);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.basecamp-label{width:0;opacity:0;white-space:nowrap;transition:width .35s var(--ease),opacity .25s var(--ease),padding .35s var(--ease);display:flex;flex-direction:column;line-height:1.05}.basecamp:hover .basecamp-label,.basecamp:focus-visible .basecamp-label{width:92px;opacity:1;padding-right:17px}.basecamp-label b{font-size:.61rem;letter-spacing:.16em}.basecamp-label small{font:italic .72rem/1.2 var(--serif);opacity:.65;margin-top:3px}
+
+/* Photography: a loose wall of physical-looking prints, not a crop grid. Every image keeps its native aspect ratio. */
+.photo-grid{columns:initial;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(38px,7vw,110px) clamp(24px,5vw,78px);padding:clamp(90px,10vw,165px) max(var(--pad),5vw);max-width:1600px;margin:auto;align-items:start;overflow:hidden}
+.photo-grid figure,.photo-grid figure:nth-child(3n){position:relative;display:block;width:auto;margin:0;overflow:visible;break-inside:auto;background:#f7f1e7;padding:clamp(8px,1vw,14px) clamp(8px,1vw,14px) clamp(24px,2.4vw,38px);border:1px solid rgba(73,51,35,.22);box-shadow:0 22px 60px rgba(30,27,22,.11);transition:transform .65s var(--ease),box-shadow .65s var(--ease);grid-column:span 6;border-radius:3px 18px 5px 13px}
+.photo-grid figure:nth-child(1){grid-column:1/span 7;transform:rotate(-1.1deg)}
+.photo-grid figure:nth-child(2){grid-column:9/span 4;margin-top:12vw;transform:rotate(1.5deg);border-radius:22px 4px 18px 5px}
+.photo-grid figure:nth-child(3){grid-column:2/span 4;transform:rotate(.8deg);border-radius:4px 26px 5px 18px}
+.photo-grid figure:nth-child(4){grid-column:7/span 6;margin-top:5vw;transform:rotate(-1.4deg);border-radius:24px 5px 8px 4px}
+.photo-grid figure:nth-child(5){grid-column:1/span 5;margin-top:3vw;transform:rotate(1.2deg);border-radius:5px 8px 28px 5px}
+.photo-grid figure:nth-child(6){grid-column:7/span 6;transform:rotate(-.6deg);border-radius:6px 25px 7px 17px}
+.photo-grid figure:before{content:"";position:absolute;inset:-9px 9px 9px -9px;border:1px solid rgba(177,139,82,.38);border-radius:inherit;z-index:-1;transition:transform .65s var(--ease)}
+.photo-grid figure:after{position:absolute;right:15px;bottom:9px;font:600 .56rem/1 Arial,sans-serif;letter-spacing:.16em;color:rgba(73,51,35,.5)}
+.photo-grid figure:nth-child(1):after{content:"01 / TETONS"}.photo-grid figure:nth-child(2):after{content:"02 / NIGHT"}.photo-grid figure:nth-child(3):after{content:"03 / WATER"}.photo-grid figure:nth-child(4):after{content:"04 / TRAIL"}.photo-grid figure:nth-child(5):after{content:"05 / COMPANION"}.photo-grid figure:nth-child(6):after{content:"06 / WINTER"}
+.photo-grid img{display:block;width:100%;height:auto;object-fit:contain;border-radius:2px 10px 2px 8px;transition:transform .75s var(--ease);box-shadow:none}
+.photo-grid figure:hover{transform:rotate(0deg) translateY(-9px);box-shadow:0 32px 85px rgba(30,27,22,.18)}.photo-grid figure:hover:before{transform:translate(-4px,4px)}.photo-grid figure:hover img{transform:scale(1.008);box-shadow:none}
+@media(max-width:800px){.basecamp{left:14px;bottom:14px}.basecamp-label{display:none}.photo-grid{grid-template-columns:1fr;gap:54px;padding:75px 22px 110px}.photo-grid figure,.photo-grid figure:nth-child(n){grid-column:1!important;margin:0!important;transform:rotate(0deg);padding:9px 9px 29px}.photo-grid figure:nth-child(even){margin-left:7vw!important}.photo-grid figure:nth-child(odd){margin-right:7vw!important}}
+
+/* --- Concept 10: depth, materiality, and a little trail-side mischief --- */
+.layered-hero{position:relative;overflow:hidden;isolation:isolate;background:#b8c7d5}
+.hero-plane{position:absolute;inset:-4%;background-position:center center;background-size:cover;will-change:transform;pointer-events:none}
+.hero-plane--base{z-index:-5;inset:0}
+.hero-plane--sky{z-index:-4}
+.hero-plane--mountains{z-index:-3}
+.hero-plane--foreground{z-index:-1;inset:-7% -4% -10%}
+.layered-hero .shade{z-index:0}.layered-hero .site-header,.layered-hero .hero-copy,.layered-hero .scrollcue{z-index:2}
+
+/* photographic material language */
+.home-split__image,.latest-media,.journal-card__media,.article-hero,.review-hero,.page-photo,.photo-stage figure{border-radius:18px;overflow:hidden;box-shadow:0 24px 60px rgba(23,24,20,.18),0 3px 10px rgba(23,24,20,.12);outline:1px solid rgba(177,139,82,.30);outline-offset:5px}
+.latest-media,.journal-card__media{border-radius:14px;outline-offset:3px}
+
+/* Photography as an exhibition rather than a grid */
+.photo-grid{display:block!important;max-width:1500px;margin:0 auto;padding:14vh clamp(24px,6vw,110px) 20vh;position:relative}
+.photo-grid figure{position:relative;margin:0 0 18vh;background:#f4eee3;padding:clamp(7px,1vw,13px);border:1px solid rgba(73,51,35,.18);border-radius:22px;box-shadow:0 30px 80px rgba(23,24,20,.18);transition:transform .7s cubic-bezier(.2,.8,.2,1),box-shadow .7s ease;overflow:visible!important}
+.photo-grid figure:nth-child(odd){width:min(78%,1050px);margin-left:0}.photo-grid figure:nth-child(even){width:min(63%,850px);margin-left:auto}
+.photo-grid figure:nth-child(3n){width:min(52%,720px);margin-left:12%}
+.photo-grid figure img{display:block;width:100%;height:auto!important;object-fit:contain!important;border-radius:13px;transform:none!important}
+.photo-grid figure:after{content:"";position:absolute;inset:14px -14px -14px 14px;border:1px solid rgba(177,139,82,.45);border-radius:20px;z-index:-1;transition:transform .7s ease}
+.photo-grid figure:hover{transform:translateY(-8px) rotate(.15deg);box-shadow:0 42px 100px rgba(23,24,20,.22)}
+.photo-grid figure:hover:after{transform:translate(5px,5px)}
+
+/* Basecamp hiker */
+.basecamp-hiker{width:auto!important;min-width:68px;height:64px;padding:0 15px 0 8px;gap:8px;overflow:visible!important}
+.hiker-stage{position:relative;width:48px;height:48px;display:block;flex:0 0 48px}.hiker{position:absolute;width:48px;height:44px;left:0;bottom:6px;fill:none;stroke:currentColor;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}.hiker circle,.hiker .pack{fill:currentColor;stroke:none}.trail-line{position:absolute;height:2px;width:0;background:currentColor;left:4px;bottom:3px;opacity:.45;transition:width .45s ease}.basecamp-hiker:hover .trail-line{width:43px}
+.basecamp-hiker:hover .leg-a,.basecamp-hiker.is-walking .leg-a{animation:hikeLegA .42s ease-in-out infinite alternate;transform-origin:27px 34px}.basecamp-hiker:hover .leg-b,.basecamp-hiker.is-walking .leg-b{animation:hikeLegB .42s ease-in-out infinite alternate;transform-origin:28px 34px}.basecamp-hiker:hover .arm-a,.basecamp-hiker.is-walking .arm-a{animation:hikeLegB .42s ease-in-out infinite alternate;transform-origin:29px 21px}.basecamp-hiker:hover .stick,.basecamp-hiker.is-walking .stick{animation:plantStick .42s ease-in-out infinite alternate;transform-origin:43px 27px}.basecamp-hiker.is-walking{animation:walkHome .95s cubic-bezier(.3,.7,.2,1) forwards}.basecamp-hiker.is-walking .basecamp-label{opacity:0;transform:translateX(-10px)}
+@keyframes hikeLegA{to{transform:rotate(19deg)}}@keyframes hikeLegB{to{transform:rotate(-19deg)}}@keyframes plantStick{to{transform:rotate(8deg)}}@keyframes walkHome{0%{transform:translateX(0)}70%{transform:translateX(calc(100vw - 120px))}100%{transform:translateX(calc(100vw - 95px)) scale(.78);opacity:0}}
+
+/* stronger depth on interior heroes */
+.page-hero{overflow:hidden}.page-hero>img{scale:1.08}
+@media(max-width:760px){.photo-grid figure,.photo-grid figure:nth-child(odd),.photo-grid figure:nth-child(even),.photo-grid figure:nth-child(3n){width:100%;margin-left:0;margin-bottom:10vh}.photo-grid{padding-inline:22px}.basecamp-label{display:none!important}.basecamp-hiker{min-width:58px;padding-right:4px}}
+@media(prefers-reduced-motion:reduce){.basecamp-hiker:hover .leg-a,.basecamp-hiker:hover .leg-b,.basecamp-hiker:hover .arm-a,.basecamp-hiker:hover .stick{animation:none}.basecamp-hiker.is-walking{animation:none}.hero-plane{transform:none!important}}
+body:after{content:"";position:fixed;inset:0;background:#273b21;z-index:9990;pointer-events:none;opacity:0;transition:opacity .7s ease}.going-home:after{opacity:.18}
+
+/* CONCEPT 11 — corrected layered hero + intertwined mountain/MM mark */
+.mm{width:56px;height:35px}
+.mm svg{width:100%;height:100%;overflow:visible}
+.mm-ridge{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.mm-ridge-a{stroke:var(--forest);stroke-width:5.2}
+.mm-ridge-b{stroke:var(--brass);stroke-width:4.2}
+.mm-cut{fill:none;stroke:var(--paper);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;opacity:.96}
+.site-header:not(.dark) .mm-ridge-a,.site-footer .mm-ridge-a{stroke:var(--cream)}
+.site-header:not(.dark) .mm-ridge-b,.site-footer .mm-ridge-b{stroke:#caa96c}
+.site-header:not(.dark) .mm-cut,.site-footer .mm-cut{stroke:rgba(28,42,24,.8)}
+.closing .mm-ridge-a{stroke:var(--forest)}.closing .mm-ridge-b{stroke:var(--brass)}.closing .mm-cut{stroke:var(--paper)}
+
+/* True layer stack: there is no intact duplicate photograph beneath the moving foreground. */
+.cinematic-hero .hero-plane{background-size:cover;background-position:center center;will-change:transform}
+.hero-plane--sky{z-index:0}.hero-plane--mountains{z-index:1}.hero-plane--foreground{z-index:2}
+.cinematic-hero .shade{z-index:3}.cinematic-hero .site-header,.cinematic-hero .hero-copy,.cinematic-hero .scrollcue{z-index:4}
+
+/* Hiker exits toward Basecamp: slow leftward walk, with a continuous gait. */
+.basecamp-hiker.is-walking{animation:walkOffLeft 1.65s linear forwards!important;pointer-events:none}
+.basecamp-hiker.is-walking .leg-a{animation:hikeLegA .30s ease-in-out infinite alternate!important}
+.basecamp-hiker.is-walking .leg-b{animation:hikeLegB .30s ease-in-out infinite alternate!important}
+.basecamp-hiker.is-walking .arm-a{animation:hikeLegB .30s ease-in-out infinite alternate!important}
+.basecamp-hiker.is-walking .stick{animation:plantStick .30s ease-in-out infinite alternate!important}
+.basecamp-hiker.is-walking .trail-line{width:54px}
+@keyframes walkOffLeft{0%{transform:translateX(0);opacity:1}85%{opacity:1}100%{transform:translateX(-150px);opacity:0}}
+
+/* CONCEPT 12 — single-photo hero, reference-led mountain M, articulated left-facing hiker */
+.mm{width:48px;height:32px;display:inline-grid;place-items:center;flex:0 0 48px}
+.mm svg{width:48px;height:32px;overflow:visible}
+.mm-main,.mm-inner{fill:none;stroke:currentColor;stroke-linecap:square;stroke-linejoin:miter}
+.mm-main{stroke-width:6.2}
+.mm-inner{stroke-width:4.4;opacity:.96}
+.brand .mm-main{stroke:currentColor}.brand .mm-inner{stroke:var(--brass)}
+.closing .mm{width:72px;height:46px}.closing .mm svg{width:72px;height:46px}
+
+/* Keep the Tetons as the untouched photograph. Depth now comes only from a stronger, honest parallax. */
+.home-hero__img{inset:-14%;width:128%;height:128%;object-position:center 56%;transform:translate3d(0,0,0) scale(1.02)}
+
+/* Trail-sign hiker: left-facing and articulated. */
+.basecamp-hiker{left:22px;will-change:transform}
+.hiker-stage{width:52px;height:50px;flex-basis:52px}
+.hiker{width:52px;height:47px;left:0;bottom:4px;overflow:visible}
+.hiker-bob{transform-origin:32px 28px}
+.basecamp-hiker:hover .hiker-bob{animation:hikerBob .58s ease-in-out infinite alternate}
+.basecamp-hiker:hover .leg-front,.basecamp-hiker.is-walking .leg-front{animation:legFront .58s ease-in-out infinite alternate;transform-origin:35px 34px}
+.basecamp-hiker:hover .leg-rear,.basecamp-hiker.is-walking .leg-rear{animation:legRear .58s ease-in-out infinite alternate;transform-origin:35px 34px}
+.basecamp-hiker:hover .arm-front,.basecamp-hiker.is-walking .arm-front{animation:armFront .58s ease-in-out infinite alternate;transform-origin:33px 21px}
+.basecamp-hiker:hover .arm-rear,.basecamp-hiker.is-walking .arm-rear{animation:armRear .58s ease-in-out infinite alternate;transform-origin:34px 22px}
+.basecamp-hiker:hover .stick,.basecamp-hiker.is-walking .stick{animation:stickPlant .58s ease-in-out infinite alternate;transform-origin:19px 27px}
+.basecamp-hiker.is-walking .hiker-bob{animation:hikerBob .29s ease-in-out infinite alternate}
+.basecamp-hiker.is-walking .leg-front{animation:legFront .58s ease-in-out infinite alternate!important}
+.basecamp-hiker.is-walking .leg-rear{animation:legRear .58s ease-in-out infinite alternate!important}
+.basecamp-hiker.is-walking .arm-front{animation:armFront .58s ease-in-out infinite alternate!important}
+.basecamp-hiker.is-walking .arm-rear{animation:armRear .58s ease-in-out infinite alternate!important}
+.basecamp-hiker.is-walking .stick{animation:stickPlant .58s ease-in-out infinite alternate!important}
+.basecamp-hiker.is-walking{animation:walkOffLeftReal 2.8s linear forwards!important;pointer-events:none}
+.basecamp-hiker.is-walking .basecamp-label{opacity:0!important;width:0!important;padding:0!important}
+@keyframes hikerBob{from{transform:translateY(0) rotate(-1deg)}to{transform:translateY(-2.5px) rotate(1deg)}}
+@keyframes legFront{from{transform:rotate(19deg)}to{transform:rotate(-23deg)}}
+@keyframes legRear{from{transform:rotate(-20deg)}to{transform:rotate(22deg)}}
+@keyframes armFront{from{transform:rotate(-13deg)}to{transform:rotate(18deg)}}
+@keyframes armRear{from{transform:rotate(15deg)}to{transform:rotate(-17deg)}}
+@keyframes stickPlant{from{transform:rotate(-7deg) translateX(0)}to{transform:rotate(10deg) translateX(2px)}}
+@keyframes walkOffLeftReal{0%{transform:translate3d(0,0,0)}12%{transform:translate3d(-9vw,0,0)}25%{transform:translate3d(-19vw,-1px,0)}38%{transform:translate3d(-29vw,0,0)}50%{transform:translate3d(-40vw,-1px,0)}63%{transform:translate3d(-52vw,0,0)}76%{transform:translate3d(-65vw,-1px,0)}88%{transform:translate3d(-79vw,0,0)}100%{transform:translate3d(calc(-100vw - 120px),0,0)}}
+@media(prefers-reduced-motion:reduce){.basecamp-hiker.is-walking,.basecamp-hiker.is-walking *{animation:none!important}}
+
+
+/* CONCEPT 13 — calmer navigation, reference-led mountain M, polished photographic system */
+/* Logo: a compact mountain silhouette whose internal rhythm reads as an M. */
+.mm{width:48px;height:34px;display:inline-grid;place-items:center;flex:0 0 48px}
+.mm svg{width:48px;height:34px;overflow:visible}
+.mm-outer{fill:currentColor}
+.mm-core{fill:var(--brass)}
+.site-header:not(.dark) .mm-core,.site-footer .mm-core{fill:#caa96c}
+.closing .mm-core{fill:var(--brass)}
+
+/* Home is now a simple, discoverable part of interior navigation. */
+.nav-basecamp{font-weight:700;opacity:1!important;padding-right:22px;margin-right:2px;border-right:1px solid currentColor}
+.site-header:not(.dark) .nav-basecamp{border-right-color:rgba(255,255,255,.34)}
+.site-header.dark .nav-basecamp{border-right-color:rgba(23,24,20,.25)}
+
+/* Photo material language: consistent radius, keyline and real depth instead of raw rectangles. */
+.cat,.review-card,.latest-media,.journal-card__media,.article-hero,.review-hero,.article-photo,.page-photo,.home-split__image{
+  border-radius:18px;box-shadow:0 22px 55px rgba(23,24,20,.14),0 4px 12px rgba(23,24,20,.08);
+}
+.cat,.review-card{overflow:hidden;border:1px solid rgba(73,51,35,.14)}
+.article-photo,.page-photo{overflow:hidden;border:1px solid rgba(177,139,82,.25)}
+.latest-media,.journal-card__media{border:1px solid rgba(73,51,35,.12);outline:none}
+.review-card{transition:transform .55s cubic-bezier(.2,.8,.2,1),box-shadow .55s ease}
+.review-card:hover{transform:translateY(-6px);box-shadow:0 30px 70px rgba(23,24,20,.18)}
+
+/* Photography: a tight editorial wall, not scattered scrapbook prints. */
+.gallery-intro{padding:clamp(80px,9vw,135px) 0 20px;background:var(--paper)}
+.gallery-intro .wrap{display:grid;grid-template-columns:1fr 1fr;gap:8vw;align-items:end}
+.gallery-intro h2{font:400 clamp(3rem,5.2vw,6rem)/.92 var(--serif);letter-spacing:-.045em;margin:10px 0 0}
+.gallery-intro p{font:400 1.12rem/1.65 var(--serif);max-width:520px;margin:0 0 8px}
+.photo-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:clamp(38px,5vw,74px) clamp(24px,3.5vw,52px)!important;max-width:1380px!important;margin:0 auto!important;padding:clamp(65px,8vw,115px) clamp(24px,5vw,72px) clamp(110px,12vw,180px)!important;align-items:start}
+.photo-grid figure,.photo-grid figure:nth-child(n){width:auto!important;margin:0!important;transform:none!important;background:transparent!important;padding:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;display:block!important;position:relative!important;overflow:visible!important}
+.photo-grid figure.photo-wide{grid-column:1/-1;width:88%!important;justify-self:center}
+.photo-grid figure:before,.photo-grid figure:after{display:none!important}
+.photo-mat{background:var(--cream);padding:10px;border:1px solid rgba(73,51,35,.18);border-radius:20px;box-shadow:0 24px 65px rgba(23,24,20,.16),0 5px 14px rgba(23,24,20,.08);transition:transform .65s cubic-bezier(.2,.8,.2,1),box-shadow .65s ease;overflow:hidden}
+.photo-mat img,.photo-grid figure img{width:100%!important;height:auto!important;object-fit:contain!important;border-radius:12px!important;transform:none!important;box-shadow:none!important;display:block}
+.photo-grid figure:hover .photo-mat{transform:translateY(-7px);box-shadow:0 34px 82px rgba(23,24,20,.20),0 7px 18px rgba(23,24,20,.09)}
+.photo-grid figcaption{display:grid;grid-template-columns:42px 1fr auto;gap:14px;align-items:baseline;padding:16px 8px 0;color:var(--walnut)}
+.photo-grid figcaption span{font-size:.64rem;letter-spacing:.16em;opacity:.5}.photo-grid figcaption b{font:400 1.08rem/1.2 var(--serif)}.photo-grid figcaption em{font-style:normal;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;opacity:.6}
+@media(max-width:800px){.nav-basecamp{padding-right:0;margin-right:0;border:0}.gallery-intro .wrap{grid-template-columns:1fr;gap:24px}.photo-grid{grid-template-columns:1fr!important;gap:58px!important}.photo-grid figure.photo-wide{grid-column:1!important;width:100%!important}.photo-grid figcaption{grid-template-columns:34px 1fr}.photo-grid figcaption em{grid-column:2}.photo-mat{padding:7px;border-radius:16px}.photo-mat img{border-radius:10px!important}}
+
+/* CONCEPT 14 — original MM ridge mark, scroll-camera Journal, botanical thread */
+.mm{width:50px;height:38px;display:inline-grid;place-items:center;flex:0 0 50px}.mm svg{width:50px;height:38px;overflow:visible}
+.mm-ring,.mm-ridge-a,.mm-ridge-b{fill:none;stroke:currentColor;stroke-linecap:square;stroke-linejoin:miter}.mm-ring{stroke-width:5.5}.mm-ridge-a{stroke-width:6}.mm-ridge-b{stroke-width:4.4;stroke:var(--brass)}
+.site-header:not(.dark) .mm-ridge-b{stroke:#d0ad6d}.closing .mm-ridge-b{stroke:var(--brass)}
+.camera-story{height:310vh;background:#151914;position:relative}.camera-pin{height:100vh;position:sticky;top:0;overflow:hidden}.camera-stage{height:100%;position:relative;perspective:1200px;isolation:isolate;background:radial-gradient(circle at 50% 48%,#34422d 0,#1d261c 44%,#111510 100%)}
+.camera-frame{position:absolute;margin:0;overflow:hidden;border-radius:22px;border:1px solid rgba(244,238,227,.25);box-shadow:0 35px 100px rgba(0,0,0,.42);will-change:transform,opacity;transform-style:preserve-3d}.camera-frame img{width:100%;height:100%;object-fit:cover;display:block}.camera-frame--one{width:min(64vw,940px);aspect-ratio:16/10;left:8vw;top:13vh;z-index:1}.camera-frame--two{width:min(38vw,560px);aspect-ratio:4/5;right:8vw;top:20vh;z-index:2;opacity:0}.camera-frame--three{width:min(46vw,680px);aspect-ratio:3/2;left:27vw;top:22vh;z-index:3;opacity:0}.camera-copy{position:absolute;left:7vw;bottom:8vh;z-index:6;color:var(--cream);font:400 clamp(2.5rem,6.2vw,7rem)/.88 var(--serif);letter-spacing:-.05em;pointer-events:none}.camera-copy span{display:block;opacity:0;transform:translateY(30px);will-change:transform,opacity}.camera-counter{position:absolute;right:4vw;bottom:4vh;color:rgba(244,238,227,.6);font:600 .62rem/1 Arial,sans-serif;letter-spacing:.18em}
+.journal-thread{position:relative;background:var(--paper);overflow:hidden;padding:clamp(100px,12vw,180px) 0 160px}.journal-stories{position:relative;z-index:2}.thread-heading{margin:0 0 10vw 10vw}.thread-heading h2{font:400 clamp(3.4rem,7vw,8rem)/.88 var(--serif);letter-spacing:-.055em;margin:.15em 0}.vine{position:absolute;left:50%;top:0;width:min(15vw,180px);height:100%;transform:translateX(-50%);overflow:visible;z-index:1;pointer-events:none}.vine path{fill:none;stroke:#536348;stroke-width:2.2;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1}.vine-leaf{fill:rgba(83,99,72,.06)!important;stroke-width:1.6!important}.journal-thread .editorial-lead,.journal-thread .editorial-pair,.journal-thread .wide-story{position:relative;z-index:3;background:var(--paper)}
+.photo-retired{min-height:75vh;padding:180px var(--pad) 120px;background:var(--paper)}.photo-retired .wrap{max-width:900px}.photo-retired h1{font:400 clamp(3.4rem,7vw,7rem)/.92 var(--serif);letter-spacing:-.055em;margin:.2em 0}.photo-retired p{font:400 1.2rem/1.7 var(--serif);max-width:650px}.text-link{display:inline-block;margin-top:24px;font-weight:700;border-bottom:1px solid currentColor;padding-bottom:4px}
+@media(max-width:800px){.camera-story{height:240vh}.camera-frame--one{width:82vw;left:9vw;top:17vh}.camera-frame--two{width:58vw;right:5vw;top:22vh}.camera-frame--three{width:72vw;left:14vw;top:28vh}.camera-copy{left:7vw;bottom:10vh}.vine{left:22px;width:90px;opacity:.7}.thread-heading{margin-left:12vw}.journal-thread .editorial-lead,.journal-thread .editorial-pair,.journal-thread .wide-story{margin-left:32px}}
+
+/* CONCEPT 15 — immersive photography exhibition + mapped botanical growth */
+.photo-page{background:#111510}.photo-nav{position:fixed;top:0;left:0;right:0;z-index:50;color:var(--cream);background:linear-gradient(180deg,rgba(17,21,16,.72),transparent);backdrop-filter:none}.exhibit-intro{min-height:100svh;background:#111510;color:var(--cream);display:flex;align-items:flex-end;padding:150px 0 9vh}.exhibit-intro h1{font:400 clamp(4.7rem,10vw,11rem)/.82 var(--serif);letter-spacing:-.065em;margin:.1em 0 .2em}.exhibit-intro h1 em{font-weight:400}.exhibit-intro p{max-width:560px;font:400 1.15rem/1.6 var(--serif);opacity:.78}.exhibit-cue{display:block;margin-top:7vh;font:.62rem/1 var(--sans);letter-spacing:.2em;opacity:.6}.photo-camera{height:600vh;position:relative;background:#111510}.photo-camera__pin{position:sticky;top:0;height:100svh;overflow:hidden}.photo-camera__stage{position:relative;height:100%;perspective:1400px;isolation:isolate;background:radial-gradient(circle at 50% 48%,#273424 0,#151b14 47%,#0c0f0b 100%)}.exhibit-frame{position:absolute;margin:0;overflow:visible;will-change:transform,opacity;transform-style:preserve-3d}.exhibit-frame img{display:block;width:100%;height:auto;max-height:78vh;object-fit:contain;border-radius:18px;border:1px solid rgba(244,238,227,.22);box-shadow:0 42px 120px rgba(0,0,0,.48),0 8px 24px rgba(0,0,0,.25);background:#161a15}.exhibit-frame figcaption{color:rgba(244,238,227,.6);font:.58rem/1 var(--sans);letter-spacing:.18em;margin-top:12px}.ex-a{width:min(67vw,980px);left:8vw;top:12vh}.ex-b{width:min(38vw,540px);right:7vw;top:15vh;opacity:0}.ex-c{width:min(45vw,650px);left:12vw;top:19vh;opacity:0}.ex-d{width:min(56vw,820px);right:8vw;top:12vh;opacity:0}.ex-e{width:min(70vw,1040px);left:15vw;top:11vh;opacity:0}.exhibit-words{position:absolute;left:6vw;bottom:7vh;color:var(--cream);z-index:20;font:400 clamp(2.2rem,5vw,6rem)/.9 var(--serif);letter-spacing:-.05em;pointer-events:none}.exhibit-words span{display:block;opacity:0;transform:translateY(28px)}.exhibit-progress{position:absolute;right:4vw;bottom:4vh;width:140px;height:1px;background:rgba(244,238,227,.18)}.exhibit-progress i{display:block;width:0;height:100%;background:var(--brass)}.photo-outro{background:var(--paper);padding:clamp(120px,14vw,220px) 0}.photo-outro .wrap{max-width:900px}.photo-outro h2{font:400 clamp(3.5rem,7vw,7.5rem)/.9 var(--serif);letter-spacing:-.055em;margin:.15em 0}.photo-outro p{font:400 1.2rem/1.7 var(--serif);max-width:620px}
+/* Reserve a true botanical corridor: content never crosses the vine. */
+.journal-thread--mapped{padding-left:clamp(145px,18vw,290px)}.vine-corridor{position:absolute;left:0;top:0;width:clamp(130px,17vw,270px);height:100%;z-index:4;pointer-events:none;background:linear-gradient(90deg,rgba(238,231,218,.98) 0%,rgba(238,231,218,.96) 72%,rgba(238,231,218,0) 100%)}.journal-thread--mapped .vine{left:50%;top:0;transform:translateX(-50%);width:82%;height:100%;z-index:5;opacity:.95}.journal-thread--mapped .vine path{stroke:#4c6144;stroke-width:2.35}.journal-thread--mapped .vine-growth .vine-leaf{transform-box:fill-box;transform-origin:center;transform:scale(.05);opacity:0;fill:rgba(76,97,68,.10)!important;transition:none}.journal-stories--mapped{width:min(calc(100% - 60px),1180px);margin-left:auto;margin-right:auto}.journal-stories--mapped .thread-heading{margin-left:0}.journal-thread--mapped .editorial-lead,.journal-thread--mapped .editorial-pair,.journal-thread--mapped .wide-story{background:transparent}
+@media(max-width:800px){.photo-camera{height:470vh}.ex-a{width:84vw;left:8vw}.ex-b{width:65vw;right:5vw}.ex-c{width:72vw;left:7vw}.ex-d{width:78vw;right:5vw}.ex-e{width:88vw;left:6vw}.exhibit-words{left:6vw;bottom:10vh}.journal-thread--mapped{padding-left:78px}.vine-corridor{width:82px}.journal-stories--mapped{width:calc(100% - 26px)}.journal-thread .editorial-lead,.journal-thread .editorial-pair,.journal-thread .wide-story{margin-left:0}}
+
+/* CONCEPT 16 — Photography owns camera choreography; Journal owns living botany. */
+/* Let every exhibition image define its own visible frame so small source images never sit inside gray letterboxes. */
+.exhibit-frame{width:auto!important;max-width:none!important}
+.exhibit-frame img{width:auto!important;height:auto!important;object-fit:initial!important;background:transparent!important;max-height:76vh;max-width:72vw}
+.exhibit-frame figcaption{width:100%}
+.ex-a img{max-width:min(72vw,980px)}.ex-b img{max-width:min(48vw,620px)}.ex-c img{max-width:min(52vw,700px)}.ex-d img{max-width:min(64vw,860px)}.ex-e img{max-width:min(74vw,1040px)}
+/* Journal botanical corridor now runs for the full editorial feed. */
+.journal-thread--mapped{min-height:3200px}
+.journal-thread--mapped .vine{height:100%;width:88%}
+.vine--monstera .vine-growth{transform-box:fill-box}
+.vine--monstera .monstera{opacity:0;transform-box:fill-box;transform-origin:center;will-change:transform,opacity}
+.vine--monstera .monstera-body{fill:rgba(76,97,68,.13);stroke:#4c6144;stroke-width:2;vector-effect:non-scaling-stroke;stroke-linejoin:round}
+.vine--monstera .monstera-vein,.vine--monstera .monstera-cut{fill:none;stroke:#4c6144;stroke-width:1.25;vector-effect:non-scaling-stroke;stroke-linecap:round}
+.vine--monstera .monstera-cut{stroke:var(--paper);stroke-width:5}
+@media(max-width:800px){.exhibit-frame img{max-width:88vw;max-height:72vh}.journal-thread--mapped{min-height:2700px}.vine--monstera .monstera{transform-origin:center}}
+
+/* CONCEPT 17 — contained Journal stories + downward botanical growth */
+.journal-stories--mapped{display:flex;flex-direction:column;gap:clamp(54px,8vw,110px)}
+.journal-stories--mapped .thread-heading{margin-bottom:clamp(18px,2vw,30px)}
+.journal-stories--mapped .editorial-pair{gap:clamp(28px,5vw,70px);align-items:flex-start}
+.story-panel{position:relative;border-radius:clamp(18px,2vw,28px);overflow:hidden;border:1px solid rgba(73,51,35,.13);box-shadow:0 28px 70px rgba(23,24,20,.12),0 4px 14px rgba(23,24,20,.07);transition:transform .55s var(--ease),box-shadow .55s var(--ease);isolation:isolate}
+.story-panel:hover{transform:translateY(-6px);box-shadow:0 38px 86px rgba(23,24,20,.16),0 6px 18px rgba(23,24,20,.09)}
+.story-panel--forest{background:#2d4029;color:var(--cream)}
+.story-panel--sand{background:#d9c9ad;color:var(--ink)}
+.story-panel--walnut{background:#563c2c;color:#f4eee3}
+.story-panel--sage{background:#9aa38b;color:#171814}
+.story-panel .story-meta{color:inherit;opacity:.72}.story-panel .story-meta span{color:inherit}.story-panel .story-meta span:after{background:currentColor;opacity:.45}
+.story-panel p{color:inherit!important;opacity:.78}
+.story-panel .read-mark{color:inherit}
+.journal-thread--mapped .editorial-lead{grid-template-columns:minmax(0,1.45fr) minmax(290px,.65fr);gap:0;margin:0}
+.journal-thread--mapped .editorial-lead__media{height:min(70vh,760px);border-radius:0;box-shadow:none;outline:0}
+.journal-thread--mapped .editorial-lead__copy{padding:clamp(32px,4vw,62px)}
+.journal-thread--mapped .editorial-lead h2{font-size:clamp(2.8rem,4.5vw,5.2rem)}
+.journal-thread--mapped .editorial-card{padding:0!important}
+.journal-thread--mapped .editorial-card__media{height:clamp(330px,42vw,590px);border-radius:0;box-shadow:none;outline:0}
+.journal-thread--mapped .editorial-card .story-meta,.journal-thread--mapped .editorial-card h3,.journal-thread--mapped .editorial-card p{margin-left:clamp(24px,3vw,42px);margin-right:clamp(24px,3vw,42px)}
+.journal-thread--mapped .editorial-card .story-meta{margin-top:28px}.journal-thread--mapped .editorial-card p{margin-bottom:34px}
+.journal-thread--mapped .editorial-card.offset{margin-top:clamp(70px,9vw,130px)}
+.journal-thread--mapped .wide-story{grid-template-columns:1.08fr .92fr;gap:0;margin:0}
+.journal-thread--mapped .wide-story__media{height:min(62vh,660px);border-radius:0;box-shadow:none;outline:0}
+.journal-thread--mapped .wide-story__copy{padding:clamp(32px,5vw,70px)}
+.journal-thread--mapped .story-panel img{transition:transform 1s var(--ease),filter .6s var(--ease)}
+.journal-thread--mapped .story-panel:hover img{transform:scale(1.018)}
+/* vine branches now sweep with the downward direction of travel */
+.vine--monstera .vine-branch{stroke-width:2.05!important}
+.vine--monstera .monstera-body{fill:rgba(76,97,68,.15)}
+@media(max-width:800px){.journal-stories--mapped{gap:38px}.journal-thread--mapped .editorial-lead,.journal-thread--mapped .wide-story{grid-template-columns:1fr}.journal-thread--mapped .editorial-lead__media,.journal-thread--mapped .wide-story__media{height:48vh}.journal-thread--mapped .editorial-card.offset{margin-top:0}.journal-thread--mapped .editorial-pair{gap:38px}.story-panel{border-radius:18px}}
+
+/* Concept 18 — gear activity labels become attached translucent caption trays. */
+.categories .cat:after{background:linear-gradient(180deg,transparent 0%,transparent 72%,rgba(23,24,20,.08) 100%)}
+.categories .cat>div{
+  left:14px;right:14px;bottom:14px;
+  padding:17px 18px 15px;
+  color:var(--ink);
+  background:rgba(244,238,227,.90);
+  border:1px solid rgba(255,255,255,.52);
+  border-radius:10px;
+  box-shadow:0 10px 30px rgba(23,24,20,.16);
+  backdrop-filter:blur(9px) saturate(.9);
+  -webkit-backdrop-filter:blur(9px) saturate(.9);
+}
+.categories .cat strong{display:block;color:var(--ink)}
+.categories .cat small{color:rgba(23,24,20,.68)}
+.categories .cat:nth-child(2n)>div{background:rgba(238,231,218,.92)}
+.categories .cat:nth-child(3n)>div{background:rgba(229,229,214,.91)}
+@media(max-width:800px){.categories .cat>div{left:10px;right:10px;bottom:10px;padding:15px 16px 14px}}
+
+
+/* CONCEPT 19 — Journal polish: clean lead card + botanical timing/alignment */
+/* Restore each panel's intended material color against older mapped-feed rules. */
+.journal-thread--mapped .story-panel--forest{background:#2d4029;color:var(--cream)}
+.journal-thread--mapped .story-panel--sand{background:#d9c9ad;color:var(--ink)}
+.journal-thread--mapped .story-panel--walnut{background:#563c2c;color:#f4eee3}
+.journal-thread--mapped .story-panel--sage{background:#9aa38b;color:#171814}
+/* The first story should be clean: no legacy hover keyline or numbered bubble. */
+.journal-thread--mapped .magnetic-media:after{display:none!important}
+.journal-thread--mapped .image-index{display:none!important}
+.journal-thread--mapped .editorial-lead__copy{background:transparent}
+/* Tiny botanical petiole visually closes the final pixel between branch and leaf. */
+.vine--monstera .monstera:before{content:""}
+
+/* CONCEPT 20 — shared-system refinement */
+:root{--panel-radius:18px;--panel-shadow:0 24px 64px rgba(23,24,20,.12),0 4px 14px rgba(23,24,20,.06)}
+.site-header .navlinks,.footer-links{gap:clamp(14px,2vw,28px)}
+.button-link{display:inline-flex;margin-top:20px;padding:13px 18px;border:1px solid currentColor;border-radius:999px;font:700 .67rem/1 var(--sans);letter-spacing:.13em;text-transform:uppercase;transition:.3s ease}.button-link:hover{transform:translateY(-2px)}
+/* A tighter Journal rhythm: still editorial, but more than one story can live in the viewport. */
+.journal-stories--mapped{width:min(calc(100% - 72px),1040px);gap:clamp(38px,5vw,72px)}
+.story-panel{border-radius:16px;box-shadow:0 20px 52px rgba(23,24,20,.11),0 3px 12px rgba(23,24,20,.06)}
+.journal-thread--mapped .editorial-lead{grid-template-columns:minmax(0,1.28fr) minmax(260px,.72fr)}
+.journal-thread--mapped .editorial-lead__media{height:min(54vh,560px)}
+.journal-thread--mapped .editorial-lead__copy{padding:clamp(26px,3vw,44px)}
+.journal-thread--mapped .editorial-lead h2{font-size:clamp(2.35rem,3.6vw,4rem)}
+.journal-thread--mapped .editorial-card__media{height:clamp(250px,31vw,400px)}
+.journal-thread--mapped .editorial-card .story-meta{margin-top:20px}
+.journal-thread--mapped .editorial-card .story-meta,.journal-thread--mapped .editorial-card h3,.journal-thread--mapped .editorial-card p{margin-left:26px;margin-right:26px}
+.journal-thread--mapped .editorial-card p{margin-bottom:26px}
+.journal-thread--mapped .editorial-card.offset{margin-top:clamp(34px,4vw,58px)}
+.journal-thread--mapped .wide-story__media{height:min(48vh,470px)}
+.journal-thread--mapped .wide-story__copy{padding:clamp(26px,4vw,48px)}
+/* About now has a human anchor while retaining the editorial split. */
+.about-grid--portrait{align-items:start;gap:clamp(50px,8vw,120px)}
+.about-portrait{margin:44px 0 0;width:min(100%,440px)}.about-portrait img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 38%;border-radius:18px;border:1px solid rgba(73,51,35,.14);box-shadow:var(--panel-shadow)}.about-portrait figcaption{margin-top:11px;font:.62rem/1.4 var(--sans);letter-spacing:.08em;color:rgba(23,24,20,.55)}.about-lede{font-size:1.22em!important}
+/* Home botanical signature: a quieter echo of Journal, placed near the end of Basecamp. */
+.home-botanical{background:var(--paper);padding:clamp(100px,12vw,180px) 0 70px;overflow:hidden}.home-botanical__grid{display:grid;grid-template-columns:.72fr 1.28fr;align-items:end;gap:6vw}.home-botanical h2{font:400 clamp(3rem,6vw,6.5rem)/.9 var(--serif);letter-spacing:-.055em;margin:.12em 0}.home-botanical p{font:400 1.05rem/1.6 var(--serif);opacity:.65}.home-vine-wrap{min-height:360px;display:flex;align-items:end}.home-vine{width:100%;height:auto;overflow:visible}.home-vine-stem{fill:none;stroke:#4c6144;stroke-width:3;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1}.home-leaf{opacity:0;transform-box:fill-box;transform-origin:center}.home-leaf path:first-child{fill:rgba(76,97,68,.13);stroke:#4c6144;stroke-width:2}.home-leaf path:last-child{fill:none;stroke:#4c6144;stroke-width:1.3;stroke-linecap:round}
+/* Contact uses the same paper, typography, radius, border and material depth as the rest of the publication. */
+.contact-main{background:var(--paper);min-height:calc(100vh - 90px);padding:clamp(110px,14vw,180px) 0}.contact-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(50px,9vw,140px);align-items:start}.contact-copy h1{font:400 clamp(3.5rem,6.5vw,7rem)/.88 var(--serif);letter-spacing:-.06em;margin:.14em 0 .28em}.contact-copy>p{max-width:520px;font:400 1.12rem/1.65 var(--serif)}.contact-small{opacity:.58;font-size:.92rem!important}.contact-form{background:var(--cream);border:1px solid rgba(73,51,35,.13);border-radius:18px;padding:clamp(28px,4vw,52px);box-shadow:var(--panel-shadow)}.contact-form label{display:block;margin-bottom:22px}.contact-form label span{display:block;margin-bottom:8px;font:700 .62rem/1 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:rgba(23,24,20,.68)}.contact-form input,.contact-form textarea{width:100%;box-sizing:border-box;border:0;border-bottom:1px solid rgba(23,24,20,.28);background:transparent;padding:10px 2px 12px;color:var(--ink);font:400 1.05rem/1.45 var(--serif);outline:none}.contact-form textarea{border:1px solid rgba(23,24,20,.2);border-radius:10px;padding:14px;resize:vertical}.contact-form input:focus{border-color:var(--forest)}.contact-form textarea:focus{border-color:var(--forest)}.contact-form button{border:0;border-radius:999px;background:var(--forest);color:var(--cream);padding:15px 20px;font:700 .67rem/1 var(--sans);letter-spacing:.13em;text-transform:uppercase;cursor:pointer}.contact-form button b{margin-left:12px}.form-status{font:.7rem/1.4 var(--sans);opacity:.65;margin:14px 0 0}
+@media(max-width:800px){.journal-stories--mapped{width:calc(100% - 22px)}.journal-thread--mapped .editorial-lead__media,.journal-thread--mapped .wide-story__media{height:42vh}.journal-thread--mapped .editorial-card__media{height:42vh}.about-grid--portrait,.contact-grid,.home-botanical__grid{grid-template-columns:1fr}.about-portrait{width:min(86vw,420px)}.home-vine-wrap{min-height:260px}.contact-main{padding-top:90px}.site-header .navlinks{gap:12px}}
+
+/* CONCEPT 21 — disciplined spacing system + integrated Gear captions */
+:root{
+  --space-1:8px;--space-2:12px;--space-3:18px;--space-4:24px;
+  --space-5:32px;--space-6:40px;--space-7:56px;--space-8:80px;
+  --grid-gap:32px;--section-space:clamp(84px,9vw,128px);
+}
+/* Shared rhythm: varied components, consistent relationships. */
+.intro,.reviews,.allgear,.about,.related{padding-top:var(--section-space);padding-bottom:var(--section-space)}
+.section-head{margin-bottom:var(--space-5)}
+.intro-grid,.about-grid,.about-grid--portrait,.contact-grid{column-gap:clamp(48px,7vw,96px)}
+.card-grid,.story-grid{gap:var(--grid-gap)}
+.footer-grid{gap:var(--grid-gap)}
+.review-card,.contact-form,.project-box{border-radius:var(--panel-radius)}
+.review-card{overflow:hidden;box-shadow:0 14px 38px rgba(23,24,20,.08)}
+
+/* Journal mast: give the two-line title enough air to read as two deliberate lines. */
+.journal-mast h1{line-height:.84}
+.journal-mast h1 em{display:inline-block;margin-top:.12em}
+.journal-deck{margin-bottom:var(--space-7)}
+
+/* Journal feed sits on one invisible grid. Size/color may vary; gutters do not. */
+.journal-stories--mapped{gap:var(--grid-gap)}
+.journal-stories--mapped .thread-heading{margin-bottom:var(--space-4)}
+.journal-stories--mapped .editorial-pair{gap:var(--grid-gap);align-items:start}
+.journal-thread--mapped .editorial-card.offset{margin-top:0}
+.journal-thread--mapped .editorial-lead,.journal-thread--mapped .wide-story{margin:0}
+.journal-thread--mapped .editorial-card .story-meta{margin-top:var(--space-4)}
+.journal-thread--mapped .editorial-card p{margin-bottom:var(--space-4)}
+
+/* Gear activity cards: the caption is now a true part of the card, never an overlay on the subject. */
+.cat-grid{gap:var(--grid-gap)}
+.categories .cat{
+  display:grid;grid-template-rows:minmax(0,1fr) auto;
+  border-radius:var(--panel-radius);overflow:hidden;background:var(--cream);
+  box-shadow:0 18px 46px rgba(23,24,20,.10);border:1px solid rgba(73,51,35,.12);
+}
+.categories .cat:after{display:none}
+.categories .cat img{
+  position:relative;inset:auto;width:100%;height:100%;min-height:0;object-fit:cover;
+}
+.categories .cat>div{
+  position:relative;left:auto;right:auto;bottom:auto;
+  padding:20px 22px 18px;border:0;border-top:1px solid rgba(73,51,35,.11);
+  border-radius:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;
+  background:#f4eee3;
+}
+.categories .cat:nth-child(2n)>div{background:#eee7da}
+.categories .cat:nth-child(3n)>div{background:#e4e3d3}
+.categories .cat strong{font-size:clamp(1.65rem,2.2vw,2.1rem)}
+.categories .cat small{margin-top:var(--space-1)}
+
+/* Keep repeated detail-page structures on the same spacing scale. */
+.review-title,.article-grid{gap:clamp(40px,6vw,80px)}
+.proscons{gap:var(--space-4)}
+.story-body{margin-top:var(--space-8)}
+.project-box{padding:var(--space-5);margin:var(--space-5) 0}
+.contact-form label{margin-bottom:var(--space-4)}
+.filterbar{gap:var(--space-2);margin:var(--space-4) 0 var(--space-6)}
+.gear-row{gap:var(--space-4)}
+
+@media(max-width:800px){
+  :root{--grid-gap:22px;--section-space:72px}
+  .journal-stories--mapped,.journal-stories--mapped .editorial-pair{gap:var(--grid-gap)}
+  .categories .cat>div{padding:17px 18px 16px}
+  .cat-grid,.card-grid,.story-grid{gap:var(--grid-gap)}
+}
+
+/* Concept 22 — three supplied photographic layers. Assets are not edited; only clipped and transformed. */
+.hero-parallax{position:absolute;inset:0;overflow:hidden;background:#182016;z-index:0}
+.hero-parallax__layer{position:absolute;left:50%;top:50%;width:100%;height:100%;object-fit:cover;object-position:center center;will-change:transform;pointer-events:none;user-select:none}
+.hero-parallax__back{z-index:1;transform:translate3d(-50%,-50%,0) scale(1.065)}
+.hero-parallax__middle{z-index:2;transform:translate3d(-50%,calc(-50% + 10px),0) scale(1.065)}
+.hero-parallax__front{z-index:3;transform:translate3d(-50%,calc(-50% + 16px),0) scale(1.065)}
+.home-hero .shade{z-index:4}.home-hero .site-header,.home-hero .hero-copy,.home-hero .scrollcue{z-index:5}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:800px){.hero-parallax__layer{width:118%;height:100%;object-fit:cover}.hero-parallax__back{transform:translate3d(-50%,-50%,0) scale(1.08)}.hero-parallax__middle{transform:translate3d(-50%,calc(-50% + 6px),0) scale(1.08)}.hero-parallax__front{transform:translate3d(-50%,calc(-50% + 10px),0) scale(1.08)}}
+
+
+/* Concept 23 — stronger Firewatch-style entrance. Supplied PNG pixels remain untouched. */
+.home-hero{height:160svh;min-height:1080px;overflow:visible;position:relative;background:#182016}
+.home-hero__sticky{position:sticky;top:0;height:100svh;min-height:680px;overflow:hidden;color:#fff}
+.home-hero__sticky:after{content:"";position:absolute;width:38vw;height:38vw;right:-14vw;bottom:-18vw;border:1px solid rgba(255,255,255,.22);border-radius:50%;z-index:1;pointer-events:none}
+.home-hero:after{display:none}
+.hero-parallax__layer{width:106%;height:106%;object-fit:cover;object-position:center center}
+.hero-parallax__back{transform:translate3d(-50%,-50%,0) scale(1.015)}
+.hero-parallax__middle{transform:translate3d(-50%,calc(-50% + 24px),0) scale(1.015)}
+.hero-parallax__front{transform:translate3d(-50%,calc(-50% + 38px),0) scale(1.015)}
+@media(max-width:800px){
+ .home-hero{height:150svh;min-height:900px}
+ .home-hero__sticky{min-height:600px}
+ .hero-parallax__layer{width:112%;height:106%;object-fit:cover}
+ .hero-parallax__back{transform:translate3d(-50%,-50%,0) scale(1.025)}
+ .hero-parallax__middle{transform:translate3d(-50%,calc(-50% + 18px),0) scale(1.025)}
+ .hero-parallax__front{transform:translate3d(-50%,calc(-50% + 30px),0) scale(1.025)}
+}
+
+/* Concept 25 — calibrated runway: strong foreground depth without exposing layer edges. */
+.home-hero{height:160svh;min-height:1080px}
+@media(max-width:800px){.home-hero{height:150svh;min-height:900px}}
+
+/* Foreground layer revision — keep the full isolated grass extending below the viewport. */
+.hero-parallax__front{
+  width:106%;
+  height:auto;
+  max-width:none;
+  object-fit:contain;
+  object-position:center top;
+}
+@media(max-width:800px){
+  .hero-parallax__front{width:112%;height:auto;object-fit:contain;object-position:center top}
+}

@@ -14,12 +14,26 @@
   .site-header .navlinks a{flex:0 0 auto;opacity:.9}
   .nav-basecamp{padding-right:16px!important}
 
-  /* Homepage hero: portrait composition with restrained Firewatch movement. */
-  .home-hero{height:132svh!important;min-height:760px!important}
-  .home-hero__sticky{height:100svh!important;min-height:560px!important}
-  .hero-parallax{overflow:hidden}
-  .hero-parallax__back,.hero-parallax__middle{width:auto!important;height:106%!important;min-width:118%!important;object-fit:cover!important;object-position:center center!important}
-  .hero-parallax__front{width:auto!important;height:108%!important;min-width:118%!important;max-width:none!important;object-fit:cover!important;object-position:center center!important}
+  /* Homepage hero: preserve the current framing; do not force it to fill the phone. */
+  .home-hero{height:132svh!important;min-height:760px!important;background:transparent!important}
+  .home-hero__sticky{height:100svh!important;min-height:560px!important;overflow:hidden;background:transparent!important}
+  .home-hero__sticky::after,.home-hero::after{content:none!important;display:none!important}
+  .hero-parallax{overflow:hidden;background:transparent!important}
+
+  /* All three supplied layers share the same top registration. Their natural
+     landscape framing is allowed to end where it ends instead of being stretched
+     vertically to fill the phone viewport. */
+  .hero-parallax__back,.hero-parallax__middle,.hero-parallax__front{
+    top:0!important;
+    bottom:auto!important;
+    width:auto!important;
+    height:108%!important;
+    min-width:118%!important;
+    max-width:none!important;
+    object-fit:cover!important;
+    object-position:center top!important;
+  }
+
   .hero-copy{left:20px!important;right:20px!important;bottom:13vh!important;max-width:calc(100% - 40px)}
   .hero-copy .kicker{font-size:.62rem;line-height:1.4;letter-spacing:.15em;margin-bottom:12px}
   .hero-copy h1{font-size:clamp(3.15rem,15vw,5rem)!important;line-height:.84!important;letter-spacing:-.055em!important}

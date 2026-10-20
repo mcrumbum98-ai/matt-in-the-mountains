@@ -16,7 +16,7 @@
 
   /* Homepage hero: preserve the accepted framing and remove every artificial
      green seam around it. The parallax and the Go Far image meet directly. */
-  .home-hero{height:132svh!important;min-height:760px!important;background:transparent!important;margin:0!important;padding:0!important}
+  .home-hero{height:116svh!important;min-height:760px!important;background:transparent!important;margin:0!important;padding:0!important}
   .home-hero__sticky{height:100svh!important;min-height:560px!important;overflow:hidden;background:transparent!important;top:0!important}
   .home-hero__sticky::before,.home-hero__sticky::after,.home-hero::before,.home-hero::after{content:none!important;display:none!important;background:none!important}
   .hero-parallax{overflow:hidden;background:transparent!important;top:0!important;bottom:0!important}
@@ -53,7 +53,7 @@
   .page-hero p{font-size:1rem;line-height:1.45}
   .kicker,.eyebrow{line-height:1.45}
 
-  .portal{height:135vh}
+  .portal{height:117.5vh}
   .portal__copy{left:20px;right:20px;max-width:none}
   .portal h2{font-size:clamp(3rem,14vw,4.8rem);line-height:.92}
   .portal__copy p{max-width:90%;line-height:1.55}

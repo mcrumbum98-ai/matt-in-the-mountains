@@ -18,12 +18,12 @@
     const raw=reduce.matches?0:clamp(-r.top/range);
     const p=smooth(raw);
 
-    // Portrait framing: rear plates are slightly smaller and both rise gently.
-    // The foreground keeps its supplied framing and begins high enough to retain
-    // the grass at the top edge, then moves farther than the middle like desktop.
-    back.style.transform='translate3d(-50%,-50%,0) scale(.94)';
-    middle.style.transform=`translate3d(-50%,calc(-50% + ${-3-p*12}px),0) scale(.94)`;
-    front.style.transform=`translate3d(-50%,calc(-50% + ${-20-p*30}px),0) scale(1)`;
+    // Keep all three supplied landscape layers registered together. The back stays
+    // locked; middle and foreground both rise, with foreground moving farther.
+    // CSS owns the mobile zoom/framing, so JS does not add any extra scale.
+    back.style.transform='translate3d(-50%,calc(-50% - 22px),0)';
+    middle.style.transform=`translate3d(-50%,calc(-50% + ${-22-p*10}px),0)`;
+    front.style.transform=`translate3d(-50%,calc(-50% + ${-22-p*26}px),0)`;
     middle.style.opacity='1';
   };
   const request=()=>{if(!raf)raf=requestAnimationFrame(render)};

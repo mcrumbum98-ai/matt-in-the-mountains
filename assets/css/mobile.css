@@ -58,14 +58,14 @@
   .portal h2{font-size:clamp(3rem,14vw,4.8rem);line-height:.92}
   .portal__copy p{max-width:90%;line-height:1.55}
 
-  /* On phones the gear cabinet is a full-bleed chapter image immediately
-     followed by its Gear copy. Remove the inherited desktop card treatment so
-     it matches the full-width photographic rhythm above. */
-  .home-split{grid-template-columns:1fr!important;min-height:0;width:100%!important;margin:0!important;display:flex!important;flex-direction:column-reverse!important}
-  .home-split__image{width:100vw!important;max-width:none!important;min-height:68svh;margin:0!important;border:0!important;border-radius:0!important;outline:0!important;box-shadow:none!important;position:relative!important;left:0!important;right:0!important}
-  .home-split__image img{width:100%!important;height:100%!important;position:absolute;inset:0;object-fit:cover!important;display:block}
-  .home-split__copy{width:100%!important;margin:0!important;padding:64px 20px 68px}
-  .home-split h2{font-size:clamp(3rem,13vw,4.6rem);line-height:.93}
+  /* Mobile Gear chapter: image and copy are one continuous unit. The viewport-
+     anchored bleed prevents any inherited container width from leaving a side gap. */
+  .home-split{min-height:0!important;width:100%!important;margin:0!important;padding:0!important;display:flex!important;flex-direction:column-reverse!important;background:var(--paper)!important;overflow:hidden!important}
+  .home-split__image{width:100vw!important;max-width:none!important;height:56svh!important;min-height:420px!important;margin:0 0 0 50%!important;transform:translateX(-50%)!important;border:0!important;border-radius:0!important;outline:0!important;box-shadow:none!important;position:relative!important;flex:none!important}
+  .home-split__image img{width:100%!important;height:100%!important;position:absolute!important;inset:0!important;object-fit:cover!important;object-position:center center!important;display:block!important}
+  .home-split__copy{width:100%!important;margin:0!important;padding:38px 20px 64px!important;background:var(--paper)!important}
+  .home-split__copy .kicker{margin-top:0!important}
+  .home-split h2{font-size:clamp(3rem,13vw,4.6rem);line-height:.93;margin-top:12px!important}
 
   .latest-head,.section-head{align-items:flex-start!important;gap:22px;flex-direction:column!important}
   .latest-grid,.card-grid,.story-grid{grid-template-columns:1fr!important}

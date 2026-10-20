@@ -8,6 +8,7 @@
   const mq=matchMedia('(max-width: 800px)');
   const reduce=matchMedia('(prefers-reduced-motion: reduce)');
   const clamp=n=>Math.max(0,Math.min(1,n));
+  // Ease the visual travel so the foreground does not race upward at the start.
   const smooth=t=>t*t*(3-2*t);
   let raf=0;
   const render=()=>{
@@ -17,14 +18,12 @@
     const range=Math.max(1,hero.offsetHeight-innerHeight);
     const raw=reduce.matches?0:clamp(-r.top/range);
     const p=smooth(raw);
-
-    // Keep all three supplied landscape layers registered together. The back stays
-    // locked; middle and foreground both rise, with foreground moving farther.
-    // CSS owns the mobile zoom/framing, so JS does not add any extra scale.
-    back.style.transform='translate3d(-50%,calc(-50% - 22px),0)';
-    middle.style.transform=`translate3d(-50%,calc(-50% + ${-22-p*10}px),0)`;
-    front.style.transform=`translate3d(-50%,calc(-50% + ${-22-p*26}px),0)`;
-    middle.style.opacity='1';
+    // Mobile calibration: locked Tetons, nearly-stationary middle field,
+    // and deliberately restrained foreground travel so its lower masking edge
+    // stays in front until the sticky hero releases.
+    back.style.transform='translate3d(-50%,-50%,0) scale(1.035)';
+    middle.style.transform=`translate3d(-50%,calc(-50% + ${-12-p*12}px),0) scale(1.035)`;
+    front.style.transform=`translate3d(-50%,calc(-50% + ${48-p*54}px),0) scale(1.035)`;
   };
   const request=()=>{if(!raf)raf=requestAnimationFrame(render)};
   addEventListener('scroll',request,{passive:true});

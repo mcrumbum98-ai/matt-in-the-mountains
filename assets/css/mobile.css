@@ -14,34 +14,33 @@
   .site-header .navlinks a{flex:0 0 auto;opacity:.9}
   .nav-basecamp{padding-right:16px!important}
 
-  /* Homepage hero: portrait composition using the supplied layers only. */
+  /* Homepage hero: portrait window onto the original landscape composition. */
   .home-hero{height:132svh!important;min-height:760px!important}
   .home-hero__sticky{height:100svh!important;min-height:560px!important;overflow:hidden;background:#273b21}
   .home-hero__sticky::after{content:none!important;display:none!important}
   .hero-parallax{overflow:hidden;background:#273b21}
 
-  /* Rear plates are deliberately zoomed OUT on phones. Their lower portions are
-     clipped at the foreground floor instead of being allowed to hang below it. */
+  /* Keep the rear layers landscape-shaped and centered rather than stretching
+     them to the tall phone viewport. This preserves the smaller mountain scale
+     and broad sky/field proportions of the original photograph. */
   .hero-parallax__back,.hero-parallax__middle{
-    width:100%!important;height:100%!important;min-width:0!important;
-    object-fit:contain!important;object-position:center top!important;
-    clip-path:inset(0 0 20% 0);
+    width:104vw!important;height:auto!important;min-width:0!important;max-width:none!important;
+    object-fit:contain!important;object-position:center center!important;
+    clip-path:none!important;
   }
 
-  /* Preserve the framing from the screenshot, but register the foreground at the
-     top of the stage so the upper grass is never clipped away. */
+  /* Same landscape registration for the transparent close-grass frame. */
   .hero-parallax__front{
-    width:104%!important;height:auto!important;min-width:0!important;max-width:none!important;
-    object-fit:contain!important;object-position:center top!important;
+    width:104vw!important;height:auto!important;min-width:0!important;max-width:none!important;
+    object-fit:contain!important;object-position:center center!important;z-index:3!important;
   }
 
-  /* This is the existing forest section acting as a clean floor behind the close
-     grass. Anything cropped from the rear plates disappears into it. */
+  /* The dark-green area is only a floor beneath the landscape stack. It does not
+     cover the foreground; it simply hides any rear-layer pixels below the frame. */
   .hero-parallax::after{
-    content:"";position:absolute;left:0;right:0;bottom:0;height:22%;
+    content:"";position:absolute;left:0;right:0;bottom:0;height:18%;
     background:#273b21;z-index:2;pointer-events:none;
   }
-  .hero-parallax__front{z-index:3!important}
   .hero-copy,.scrollcue{z-index:5}
 
   .hero-copy{left:20px!important;right:20px!important;bottom:13vh!important;max-width:calc(100% - 40px)}

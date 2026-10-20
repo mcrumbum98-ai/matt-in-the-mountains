@@ -14,35 +14,12 @@
   .site-header .navlinks a{flex:0 0 auto;opacity:.9}
   .nav-basecamp{padding-right:16px!important}
 
-  /* Homepage hero: portrait window onto the original landscape composition. */
+  /* Homepage hero: portrait composition with restrained Firewatch movement. */
   .home-hero{height:132svh!important;min-height:760px!important}
-  .home-hero__sticky{height:100svh!important;min-height:560px!important;overflow:hidden;background:#273b21}
-  .home-hero__sticky::after{content:none!important;display:none!important}
-  .hero-parallax{overflow:hidden;background:#273b21}
-
-  /* Keep the rear layers landscape-shaped and centered rather than stretching
-     them to the tall phone viewport. This preserves the smaller mountain scale
-     and broad sky/field proportions of the original photograph. */
-  .hero-parallax__back,.hero-parallax__middle{
-    width:104vw!important;height:auto!important;min-width:0!important;max-width:none!important;
-    object-fit:contain!important;object-position:center center!important;
-    clip-path:none!important;
-  }
-
-  /* Same landscape registration for the transparent close-grass frame. */
-  .hero-parallax__front{
-    width:104vw!important;height:auto!important;min-width:0!important;max-width:none!important;
-    object-fit:contain!important;object-position:center center!important;z-index:3!important;
-  }
-
-  /* The dark-green area is only a floor beneath the landscape stack. It does not
-     cover the foreground; it simply hides any rear-layer pixels below the frame. */
-  .hero-parallax::after{
-    content:"";position:absolute;left:0;right:0;bottom:0;height:18%;
-    background:#273b21;z-index:2;pointer-events:none;
-  }
-  .hero-copy,.scrollcue{z-index:5}
-
+  .home-hero__sticky{height:100svh!important;min-height:560px!important}
+  .hero-parallax{overflow:hidden}
+  .hero-parallax__back,.hero-parallax__middle{width:auto!important;height:106%!important;min-width:118%!important;object-fit:cover!important;object-position:center center!important}
+  .hero-parallax__front{width:auto!important;height:108%!important;min-width:118%!important;max-width:none!important;object-fit:cover!important;object-position:center center!important}
   .hero-copy{left:20px!important;right:20px!important;bottom:13vh!important;max-width:calc(100% - 40px)}
   .hero-copy .kicker{font-size:.62rem;line-height:1.4;letter-spacing:.15em;margin-bottom:12px}
   .hero-copy h1{font-size:clamp(3.15rem,15vw,5rem)!important;line-height:.84!important;letter-spacing:-.055em!important}

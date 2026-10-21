@@ -58,10 +58,11 @@
   .portal h2{font-size:clamp(3rem,14vw,4.8rem);line-height:.92}
   .portal__copy p{max-width:90%;line-height:1.55}
 
-  /* Mobile Gear chapter: cabinet photo first, then its Gear copy. */
-  .home-split{min-height:0!important;width:100%!important;margin:0!important;padding:0!important;display:flex!important;flex-direction:column!important;background:var(--paper)!important;overflow:hidden!important}
-  .home-split__image{order:1!important;width:100vw!important;max-width:none!important;height:56svh!important;min-height:420px!important;margin:0!important;transform:none!important;border:0!important;border-radius:0!important;outline:0!important;box-shadow:none!important;position:relative!important;left:0!important;right:0!important;flex:none!important;align-self:stretch!important}
-  .home-split__image img{width:100vw!important;max-width:none!important;height:100%!important;position:absolute!important;inset:0!important;object-fit:cover!important;object-position:center center!important;display:block!important;margin:0!important}
+  /* Mobile Gear chapter: cabinet photo first, then its Gear copy. The image
+     breaks out of any inherited horizontal offset and is pinned to the viewport. */
+  .home-split{min-height:0!important;width:100%!important;margin:0!important;padding:0!important;display:flex!important;flex-direction:column!important;background:var(--paper)!important;overflow:visible!important}
+  .home-split__image{order:1!important;width:100vw!important;max-width:none!important;height:56svh!important;min-height:420px!important;margin:0!important;margin-left:calc(50% - 50vw)!important;transform:none!important;border:0!important;border-radius:0!important;outline:0!important;box-shadow:none!important;position:relative!important;left:auto!important;right:auto!important;flex:none!important;align-self:auto!important;overflow:hidden!important}
+  .home-split__image img{width:100%!important;max-width:none!important;height:100%!important;position:absolute!important;inset:0!important;object-fit:cover!important;object-position:center center!important;display:block!important;margin:0!important;border-radius:0!important}
   .home-split__copy{order:2!important;width:100%!important;margin:0!important;padding:38px 20px 64px!important;background:var(--paper)!important}
   .home-split__copy .kicker{margin-top:0!important}
   .home-split h2{font-size:clamp(3rem,13vw,4.6rem);line-height:.93;margin-top:12px!important}

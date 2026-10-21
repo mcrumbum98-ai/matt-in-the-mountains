@@ -58,14 +58,17 @@
   .portal h2{font-size:clamp(3rem,14vw,4.8rem);line-height:.92}
   .portal__copy p{max-width:90%;line-height:1.55}
 
-  /* Mobile Gear chapter: cabinet photo first, then its Gear copy. The image
-     breaks out of any inherited horizontal offset and is pinned to the viewport. */
-  .home-split{min-height:0!important;width:100%!important;margin:0!important;padding:0!important;display:flex!important;flex-direction:column!important;background:var(--paper)!important;overflow:visible!important}
-  .home-split__image{order:1!important;width:100vw!important;max-width:none!important;height:56svh!important;min-height:420px!important;margin:0!important;margin-left:calc(50% - 50vw)!important;transform:none!important;border:0!important;border-radius:0!important;outline:0!important;box-shadow:none!important;position:relative!important;left:auto!important;right:auto!important;flex:none!important;align-self:auto!important;overflow:hidden!important}
-  .home-split__image img{width:100%!important;max-width:none!important;height:100%!important;position:absolute!important;inset:0!important;object-fit:cover!important;object-position:center center!important;display:block!important;margin:0!important;border-radius:0!important}
-  .home-split__copy{order:2!important;width:100%!important;margin:0!important;padding:38px 20px 64px!important;background:var(--paper)!important}
-  .home-split__copy .kicker{margin-top:0!important}
-  .home-split h2{font-size:clamp(3rem,13vw,4.6rem);line-height:.93;margin-top:12px!important}
+  /* Mobile Gear chapter: translate the desktop two-column composition into one
+     deliberate editorial block — copy introduces the image instead of the image
+     reading as a stray section between Journal and Gear. */
+  .home-split{min-height:0!important;width:100%!important;margin:0!important;padding:0 0 70px!important;display:flex!important;flex-direction:column!important;background:var(--paper)!important;overflow:hidden!important}
+  .home-split__copy{order:1!important;width:100%!important;margin:0!important;padding:68px 20px 34px!important;background:var(--paper)!important}
+  .home-split__copy .kicker{margin:0 0 12px!important}
+  .home-split h2{font-size:clamp(3rem,13vw,4.6rem);line-height:.93;margin:0 0 26px!important}
+  .home-split__copy p{max-width:36rem;margin:0 0 24px!important;line-height:1.6}
+  .home-split__copy p:last-child{margin-bottom:0!important}
+  .home-split__image{order:2!important;width:calc(100% - 40px)!important;max-width:none!important;height:auto!important;min-height:0!important;aspect-ratio:4/5!important;margin:8px 20px 0!important;transform:none!important;border:0!important;border-radius:14px!important;outline:0!important;box-shadow:0 18px 42px rgba(23,24,20,.13)!important;position:relative!important;left:auto!important;right:auto!important;flex:none!important;align-self:auto!important;overflow:hidden!important}
+  .home-split__image img{width:100%!important;max-width:none!important;height:100%!important;position:absolute!important;inset:0!important;object-fit:cover!important;object-position:center center!important;display:block!important;margin:0!important;border-radius:inherit!important}
 
   .latest-head,.section-head{align-items:flex-start!important;gap:22px;flex-direction:column!important}
   .latest-grid,.card-grid,.story-grid{grid-template-columns:1fr!important}

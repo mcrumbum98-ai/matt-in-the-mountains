@@ -458,6 +458,6 @@ body:after{content:"";position:fixed;inset:0;background:#273b21;z-index:9990;poi
 }
 /* Tolkien quote */
 .home-botanical h2 {
-  font-size: 2.5rem;
+  font-size: 0.5rem;
   line-height: 1.2;
 }

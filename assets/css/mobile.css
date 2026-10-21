@@ -14,15 +14,15 @@
   .site-header .navlinks a{flex:0 0 auto;opacity:.9}
   .nav-basecamp{padding-right:16px!important}
 
-  /* Approved mobile Tetons composition. Keep its internal motion untouched; overlap the Journal enough to fully cover the hero runway on Safari. */
+  /* Approved mobile Tetons composition. Its internal parallax motion remains untouched. */
   .home-hero{height:116svh!important;min-height:760px!important;background:var(--forest2)!important;margin:0!important;padding:0!important}
   .home-hero__sticky{height:100svh!important;min-height:560px!important;overflow:hidden;background:transparent!important;top:0!important}
   .home-hero__sticky::before,.home-hero__sticky::after,.home-hero::before,.home-hero::after{content:none!important;display:none!important;background:none!important}
   .hero-parallax{overflow:hidden;background:transparent!important;top:0!important;bottom:0!important}
   .hero-parallax::before,.hero-parallax::after{content:none!important;display:none!important;background:none!important}
   .hero-parallax__back,.hero-parallax__middle,.hero-parallax__front{top:0!important;bottom:auto!important;width:auto!important;height:108%!important;min-width:118%!important;max-width:none!important;object-fit:cover!important;object-position:center top!important}
-  main{margin:0!important;padding:0!important}
-  .home-hero + main{margin-top:-26svh!important;position:relative;z-index:2}
+  main{margin:0!important;padding:0!important;position:relative;z-index:2}
+  .home-hero + main{margin-top:0!important}
   .hero-copy{left:20px!important;right:20px!important;bottom:13vh!important;max-width:calc(100% - 40px)}
   .hero-copy .kicker{font-size:.62rem;line-height:1.4;letter-spacing:.15em;margin-bottom:12px}
   .hero-copy h1{font-size:clamp(3.15rem,15vw,5rem)!important;line-height:.84!important;letter-spacing:-.055em!important}
@@ -108,7 +108,7 @@
 
 @media (max-width: 430px) {
   .site-header .brand span:last-child{font-size:.58rem;letter-spacing:.09em}
-  .site-header .navlinks{gap:17px;font-size:.61rem}
+  .site-header .navlinks{gap:17px;font-size:.61em}
   .hero-copy h1{font-size:clamp(2.95rem,14.5vw,4.1rem)!important}
   .scrollcue{display:none}
 }

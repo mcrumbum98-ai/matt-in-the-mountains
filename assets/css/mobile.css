@@ -15,7 +15,7 @@
   .nav-basecamp{padding-right:16px!important}
 
   /* Approved mobile Tetons composition. Its internal parallax motion remains untouched. */
-  .home-hero{height:116svh!important;min-height:760px!important;background:var(--forest2)!important;margin:0!important;padding:0!important}
+  .home-hero{height:116svh!important;min-height:760px!important;background:var(--forest2) url('../images/tetons-parallax-back.png') center bottom/cover no-repeat!important;margin:0!important;padding:0!important}
   .home-hero__sticky{height:100svh!important;min-height:560px!important;overflow:hidden;background:transparent!important;top:0!important}
   .home-hero__sticky::before,.home-hero__sticky::after,.home-hero::before,.home-hero::after{content:none!important;display:none!important;background:none!important}
   .hero-parallax{overflow:hidden;background:transparent!important;top:0!important;bottom:0!important}

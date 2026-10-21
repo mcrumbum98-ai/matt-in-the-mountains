@@ -14,8 +14,7 @@
   .site-header .navlinks a{flex:0 0 auto;opacity:.9}
   .nav-basecamp{padding-right:16px!important}
 
-  /* Approved mobile Tetons composition. Keep its internal motion untouched;
-     overlap the Journal enough to fully cover the hero runway on Safari. */
+  /* Approved mobile Tetons composition. Keep its internal motion untouched; overlap the Journal enough to fully cover the hero runway on Safari. */
   .home-hero{height:116svh!important;min-height:760px!important;background:var(--forest2)!important;margin:0!important;padding:0!important}
   .home-hero__sticky{height:100svh!important;min-height:560px!important;overflow:hidden;background:transparent!important;top:0!important}
   .home-hero__sticky::before,.home-hero__sticky::after,.home-hero::before,.home-hero::after{content:none!important;display:none!important;background:none!important}
@@ -112,4 +111,16 @@
   .site-header .navlinks{gap:17px;font-size:.61rem}
   .hero-copy h1{font-size:clamp(2.95rem,14.5vw,4.1rem)!important}
   .scrollcue{display:none}
+}
+
+/* Desktop homepage Gear chapter: restores the original two-column relationship after the mobile-specific markup rebuild. */
+@media (min-width: 801px) {
+  .gear-chapter{display:grid;grid-template-columns:1fr 1fr;min-height:90vh;background:var(--paper);color:var(--ink);margin:0;padding:0;overflow:hidden}
+  .gear-chapter__copy{padding:10vw 8vw;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1}
+  .gear-chapter__copy .kicker{color:inherit}
+  .gear-chapter h2{font:400 clamp(3.6rem,6vw,7rem)/.9 var(--serif);letter-spacing:-.05em;margin:15px 0 30px;max-width:none}
+  .gear-chapter__copy p{max-width:620px;line-height:1.6;color:inherit;text-shadow:none}
+  .gear-chapter__media{overflow:hidden;position:relative;min-height:90vh}
+  .gear-chapter__media img{width:100%;height:110%;object-fit:cover;object-position:center center;display:block}
+  .gear-chapter .arrowlink{color:inherit}
 }

@@ -1,0 +1,6 @@
+{
+  "name":"matt-in-the-mountains",
+  "private":true,
+  "scripts":{"basecamp":"sanity dev","basecamp:build":"sanity build"},
+  "dependencies":{"@sanity/vision":"latest","sanity":"latest"}
+}

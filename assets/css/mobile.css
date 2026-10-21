@@ -58,14 +58,14 @@
   .portal h2{font-size:clamp(3rem,14vw,4.8rem);line-height:.92}
   .portal__copy p{max-width:90%;line-height:1.55}
 
-  /* Mobile Gear becomes the third visual chapter: a full-bleed photograph with
-     its copy anchored over the image, echoing the cinematic rhythm above rather
-     than blending into the article feed below. */
-  .home-split{min-height:92svh!important;width:100%!important;margin:0!important;padding:0!important;display:grid!important;grid-template-columns:1fr!important;grid-template-rows:1fr!important;position:relative!important;background:var(--forest2)!important;overflow:hidden!important;color:var(--cream)!important}
-  .home-split__image{grid-area:1/1!important;width:100%!important;max-width:none!important;height:92svh!important;min-height:650px!important;margin:0!important;transform:none!important;border:0!important;border-radius:0!important;outline:0!important;box-shadow:none!important;position:relative!important;left:auto!important;right:auto!important;overflow:hidden!important;z-index:0!important}
+  /* Mobile Gear becomes the third visual chapter. The artwork is absolutely
+     pinned to all four section edges so the desktop grid can no longer leave a
+     phantom second-column strip on the right. */
+  .home-split{min-height:92svh!important;width:100vw!important;max-width:none!important;margin:0!important;padding:0!important;display:block!important;position:relative!important;background:var(--forest2)!important;overflow:hidden!important;color:var(--cream)!important}
+  .home-split__image{position:absolute!important;inset:0!important;width:auto!important;max-width:none!important;height:auto!important;min-height:0!important;margin:0!important;transform:none!important;border:0!important;border-radius:0!important;outline:0!important;box-shadow:none!important;overflow:hidden!important;z-index:0!important}
   .home-split__image::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(12,17,10,.12) 8%,rgba(12,17,10,.24) 42%,rgba(12,17,10,.84) 100%);pointer-events:none}
   .home-split__image img{width:100%!important;max-width:none!important;height:100%!important;position:absolute!important;inset:0!important;object-fit:cover!important;object-position:center center!important;display:block!important;margin:0!important;border-radius:0!important;transform:none!important}
-  .home-split__copy{grid-area:1/1!important;align-self:end!important;z-index:2!important;width:100%!important;margin:0!important;padding:0 22px 54px!important;background:transparent!important;color:var(--cream)!important;text-shadow:0 2px 18px rgba(0,0,0,.18)}
+  .home-split__copy{position:absolute!important;left:0!important;right:0!important;bottom:0!important;z-index:2!important;width:auto!important;margin:0!important;padding:0 22px 54px!important;background:transparent!important;color:var(--cream)!important;text-shadow:0 2px 18px rgba(0,0,0,.18)}
   .home-split__copy .kicker{margin:0 0 13px!important;color:var(--cream)!important}
   .home-split h2{font-size:clamp(3.25rem,13.5vw,4.75rem)!important;line-height:.89!important;margin:0 0 22px!important;max-width:9ch!important}
   .home-split__copy p{max-width:34rem;margin:0 0 21px!important;line-height:1.55;color:var(--cream)!important;text-shadow:0 1px 12px rgba(0,0,0,.28)}

@@ -14,9 +14,8 @@
   .site-header .navlinks a{flex:0 0 auto;opacity:.9}
   .nav-basecamp{padding-right:16px!important}
 
-  /* Approved mobile Tetons composition. Keep the 16svh scroll runway that the
-     parallax controller needs, but let the next chapter overlap that runway so
-     the visitor never sees it as a blank pause. */
+  /* Approved mobile Tetons composition. Keep the scroll runway for the
+     parallax, while the next chapter overlaps it completely. */
   .home-hero{height:116svh!important;min-height:760px!important;background:var(--forest2)!important;margin:0!important;padding:0!important}
   .home-hero__sticky{height:100svh!important;min-height:560px!important;overflow:hidden;background:transparent!important;top:0!important}
   .home-hero__sticky::before,.home-hero__sticky::after,.home-hero::before,.home-hero::after{content:none!important;display:none!important;background:none!important}
@@ -24,7 +23,7 @@
   .hero-parallax::before,.hero-parallax::after{content:none!important;display:none!important;background:none!important}
   .hero-parallax__back,.hero-parallax__middle,.hero-parallax__front{top:0!important;bottom:auto!important;width:auto!important;height:108%!important;min-width:118%!important;max-width:none!important;object-fit:cover!important;object-position:center top!important}
   main{margin:0!important;padding:0!important}
-  .home-hero + main{margin-top:-16svh!important;position:relative;z-index:2}
+  .home-hero + main{margin-top:-16.75svh!important;position:relative;z-index:2}
   .hero-copy{left:20px!important;right:20px!important;bottom:13vh!important;max-width:calc(100% - 40px)}
   .hero-copy .kicker{font-size:.62rem;line-height:1.4;letter-spacing:.15em;margin-bottom:12px}
   .hero-copy h1{font-size:clamp(3.15rem,15vw,5rem)!important;line-height:.84!important;letter-spacing:-.055em!important}
@@ -37,16 +36,11 @@
   .page-hero p{font-size:1rem;line-height:1.45}
   .kicker,.eyebrow{line-height:1.45}
 
-  /* Journal also needs extra document height for its sticky photo motion. Gear
-     overlaps exactly that extra 17.5vh, turning the handoff into photo-to-photo
-     rather than photo-pause-photo. */
   .portal{height:117.5vh;margin:0!important;border:0!important;background:var(--forest2)!important;position:relative}
   .portal__copy{left:20px!important;right:20px!important;max-width:none}
   .portal h2{font-size:clamp(3rem,14vw,4.8rem);line-height:.92}
   .portal__copy p{max-width:90%;line-height:1.55}
 
-  /* Gear chapter — rebuilt from scratch and pulled over Journal's invisible
-     sticky runway so the two photographic chapters touch. */
   .gear-chapter{position:relative;z-index:3;display:block;width:100%;height:92svh;min-height:650px;margin:-17.5vh 0 0;padding:0;overflow:hidden;background:#1c2a18;color:#f4eee3}
   .gear-chapter__media{position:absolute;inset:0;margin:0;padding:0;overflow:hidden}
   .gear-chapter__media img{position:absolute;inset:0;width:100%;height:100%;max-width:none;margin:0;padding:0;display:block;object-fit:cover;object-position:center center}
@@ -58,8 +52,6 @@
   .gear-chapter__copy p:last-child{margin-bottom:0}
   .gear-chapter .arrowlink{color:#f4eee3}
 
-  /* A compact editorial threshold is useful here because the visual language
-     genuinely changes from full-screen chapters to article cards. */
   .home-latest{position:relative;background:#ded7ca!important;padding:62px 0 84px!important;border-top:0!important}
   .home-latest::before{content:"";position:absolute;top:24px;left:50%;width:54px;height:1px;background:var(--brass);transform:translateX(-50%)}
   .home-latest .latest-head{margin-bottom:34px!important}

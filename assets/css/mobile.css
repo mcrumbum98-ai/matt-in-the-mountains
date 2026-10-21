@@ -3,7 +3,7 @@
   html,body{max-width:100%;overflow-x:hidden}
   .wrap{width:calc(100% - 32px)!important}
 
-  /* Mobile navigation: always visible, compact, horizontally scrollable. */
+  /* Mobile navigation */
   .site-header,.site-header.dark{height:auto;min-height:76px;padding:12px 0;z-index:100}
   .site-header .navrow{display:grid;grid-template-columns:1fr;gap:10px;align-items:center}
   .site-header .brand{font-size:.62rem;letter-spacing:.12em;gap:8px;white-space:nowrap}
@@ -14,66 +14,87 @@
   .site-header .navlinks a{flex:0 0 auto;opacity:.9}
   .nav-basecamp{padding-right:16px!important}
 
-  /* Homepage hero: preserve the accepted framing and remove every artificial
-     green seam around it. The parallax and the Go Far image meet directly. */
+  /* Approved mobile Tetons composition */
   .home-hero{height:116svh!important;min-height:760px!important;background:transparent!important;margin:0!important;padding:0!important}
   .home-hero__sticky{height:100svh!important;min-height:560px!important;overflow:hidden;background:transparent!important;top:0!important}
   .home-hero__sticky::before,.home-hero__sticky::after,.home-hero::before,.home-hero::after{content:none!important;display:none!important;background:none!important}
   .hero-parallax{overflow:hidden;background:transparent!important;top:0!important;bottom:0!important}
   .hero-parallax::before,.hero-parallax::after{content:none!important;display:none!important;background:none!important}
-
-  /* All three supplied layers share the same top registration. */
-  .hero-parallax__back,.hero-parallax__middle,.hero-parallax__front{
-    top:0!important;
-    bottom:auto!important;
-    width:auto!important;
-    height:108%!important;
-    min-width:118%!important;
-    max-width:none!important;
-    object-fit:cover!important;
-    object-position:center top!important;
-  }
-
-  /* Kill the inherited dark-green runway between the sticky parallax and the
-     following portal. The Go Far section begins exactly where the hero ends. */
+  .hero-parallax__back,.hero-parallax__middle,.hero-parallax__front{top:0!important;bottom:auto!important;width:auto!important;height:108%!important;min-width:118%!important;max-width:none!important;object-fit:cover!important;object-position:center top!important}
   main{margin:0!important;padding:0!important}
   .home-hero + main{margin-top:0!important}
   .portal{margin-top:0!important;border-top:0!important}
-
   .hero-copy{left:20px!important;right:20px!important;bottom:13vh!important;max-width:calc(100% - 40px)}
   .hero-copy .kicker{font-size:.62rem;line-height:1.4;letter-spacing:.15em;margin-bottom:12px}
   .hero-copy h1{font-size:clamp(3.15rem,15vw,5rem)!important;line-height:.84!important;letter-spacing:-.055em!important}
   .scrollcue{right:18px!important;bottom:4vh!important;font-size:.58rem;gap:9px}
   .scrollcue i{height:38px}
 
-  /* Prevent editorial headlines and metadata from colliding on narrow screens. */
   .display,.page-hero h1,.review-title h1,.article-head h1,.about h1{font-size:clamp(3rem,14vw,5.1rem)!important;line-height:.9!important;overflow-wrap:anywhere}
   .page-hero{height:72svh;min-height:520px}
   .page-hero__copy{left:20px;right:20px;bottom:6vh;max-width:none}
   .page-hero p{font-size:1rem;line-height:1.45}
   .kicker,.eyebrow{line-height:1.45}
-
   .portal{height:117.5vh}
   .portal__copy{left:20px;right:20px;max-width:none}
   .portal h2{font-size:clamp(3rem,14vw,4.8rem);line-height:.92}
   .portal__copy p{max-width:90%;line-height:1.55}
 
-  /* Mobile Gear becomes the third visual chapter. The artwork is absolutely
-     pinned to all four section edges so the desktop grid can no longer leave a
-     phantom second-column strip on the right. */
-  .home-split{min-height:92svh!important;width:100vw!important;max-width:none!important;margin:0!important;padding:0!important;display:block!important;position:relative!important;background:var(--forest2)!important;overflow:hidden!important;color:var(--cream)!important}
-  .home-split__image{position:absolute!important;inset:0!important;width:auto!important;max-width:none!important;height:auto!important;min-height:0!important;margin:0!important;transform:none!important;border:0!important;border-radius:0!important;outline:0!important;box-shadow:none!important;overflow:hidden!important;z-index:0!important}
-  .home-split__image::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(12,17,10,.12) 8%,rgba(12,17,10,.24) 42%,rgba(12,17,10,.84) 100%);pointer-events:none}
-  .home-split__image img{width:100%!important;max-width:none!important;height:100%!important;position:absolute!important;inset:0!important;object-fit:cover!important;object-position:center center!important;display:block!important;margin:0!important;border-radius:0!important;transform:none!important}
-  .home-split__copy{position:absolute!important;left:0!important;right:0!important;bottom:0!important;z-index:2!important;width:auto!important;margin:0!important;padding:0 22px 54px!important;background:transparent!important;color:var(--cream)!important;text-shadow:0 2px 18px rgba(0,0,0,.18)}
-  .home-split__copy .kicker{margin:0 0 13px!important;color:var(--cream)!important}
-  .home-split h2{font-size:clamp(3.25rem,13.5vw,4.75rem)!important;line-height:.89!important;margin:0 0 22px!important;max-width:9ch!important}
-  .home-split__copy p{max-width:34rem;margin:0 0 21px!important;line-height:1.55;color:var(--cream)!important;text-shadow:0 1px 12px rgba(0,0,0,.28)}
-  .home-split__copy p:last-child{margin-bottom:0!important}
-  .home-split .arrowlink{color:var(--cream)!important}
+  /* Gear chapter — rebuilt from scratch. No home-split/grid inheritance. */
+  .gear-chapter{
+    position:relative;
+    display:block;
+    width:100%;
+    height:92svh;
+    min-height:650px;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    background:#1c2a18;
+    color:#f4eee3;
+  }
+  .gear-chapter__media{
+    position:absolute;
+    inset:0;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+  }
+  .gear-chapter__media img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    max-width:none;
+    margin:0;
+    padding:0;
+    display:block;
+    object-fit:cover;
+    object-position:center center;
+  }
+  .gear-chapter__media::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,rgba(12,17,10,.08) 5%,rgba(12,17,10,.18) 38%,rgba(12,17,10,.88) 100%);
+    pointer-events:none;
+  }
+  .gear-chapter__copy{
+    position:absolute;
+    z-index:2;
+    left:0;
+    right:0;
+    bottom:0;
+    margin:0;
+    padding:0 22px 52px;
+  }
+  .gear-chapter__copy .kicker{margin:0 0 13px;color:#f4eee3}
+  .gear-chapter h2{font:400 clamp(3.25rem,13.5vw,4.75rem)/.89 var(--serif);letter-spacing:-.05em;margin:0 0 22px;max-width:9ch}
+  .gear-chapter__copy p{max-width:34rem;margin:0 0 21px;line-height:1.55;color:#f4eee3;text-shadow:0 1px 12px rgba(0,0,0,.3)}
+  .gear-chapter__copy p:last-child{margin-bottom:0}
+  .gear-chapter .arrowlink{color:#f4eee3}
 
-  /* The article feed is now an unmistakable new chapter instead of another
-     cream block visually merging with Gear. */
+  /* Clearly separate the structured article feed from the cinematic chapters. */
   .home-latest{background:#ded7ca!important;padding:76px 0 84px!important;border-top:0!important}
   .home-latest .latest-head{margin-bottom:34px!important}
   .home-latest .latest-head h2{margin-top:10px!important}
@@ -123,8 +144,6 @@
   .footer-links{display:flex;flex-wrap:wrap;gap:15px 20px;line-height:1.5}
   .closing{padding:90px 0}
   .closing h2{font-size:clamp(2.8rem,12vw,4.4rem);line-height:.98}
-
-  /* Decorative vines should never sit on top of readable copy on phones. */
   .journal-thread{opacity:.38;pointer-events:none}
   .home-botanical__grid{grid-template-columns:1fr!important}
   .home-vine-wrap{min-height:240px}

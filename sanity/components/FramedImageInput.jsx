@@ -46,6 +46,25 @@ export function FramedImageInput(props) {
     setFocus((event.clientX - rect.left) / rect.width, (event.clientY - rect.top) / rect.height)
   }
 
+  const focusMarkerStyle = {
+    position: 'absolute',
+    left: `calc(${x * 100}% - 9px)`,
+    top: `calc(${y * 100}% - 9px)`,
+    width: 18,
+    height: 18,
+    border: '2px solid white',
+    borderRadius: '50%',
+    boxShadow: '0 0 0 1px rgba(0,0,0,.55)',
+    pointerEvents: 'none',
+  }
+
+  const frameBorderStyle = {
+    position: 'absolute',
+    inset: 0,
+    boxShadow: 'inset 0 0 0 2px rgba(177,139,82,.8)',
+    pointerEvents: 'none',
+  }
+
   return (
     <Stack space={4}>
       {renderDefault(props)}
@@ -74,7 +93,7 @@ export function FramedImageInput(props) {
               <img
                 src={url}
                 alt=""
-                draggable="false"
+                draggable={false}
                 style={{
                   display: 'block',
                   width: '100%',
@@ -85,8 +104,8 @@ export function FramedImageInput(props) {
                   pointerEvents: 'none',
                 }}
               />
-              <div style={{position:'absolute',left:`calc(${x * 100}% - 9px)`,top:`calc(${y * 100}% - 9px)`,width:18,height:18,border:'2px solid white',borderRadius:'50%',boxShadow:'0 0 0 1px rgba(0,0,0,.55),pointerEvents:'none'}} />
-              <div style={{position:'absolute',inset:0,boxShadow:'inset 0 0 0 2px rgba(177,139,82,.8)',pointerEvents:'none'}} />
+              <div style={focusMarkerStyle} />
+              <div style={frameBorderStyle} />
             </div>
             <Text size={1} muted>Saved focal point: {Math.round(x * 100)}% horizontal · {Math.round(y * 100)}% vertical</Text>
           </Stack>

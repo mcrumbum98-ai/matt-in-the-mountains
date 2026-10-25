@@ -1,4 +1,5 @@
 import {defineField, defineType} from 'sanity'
+import {FramedImageInput} from '../components/FramedImageInput.jsx'
 
 const categories = ['Adventures','Projects & DIY','Tips & Skills']
 const activities = ['Hiking','Camping','Trail Running','Climbing','Skiing / Touring','Paddling','Road Trip / Travel','Workshop / DIY','General Outdoors']
@@ -15,7 +16,7 @@ export const journalPost = defineType({
     defineField({name:'title',title:'Title',type:'string',group:'basics',validation:r=>r.required()}),
     defineField({name:'subtitle',title:'Subtitle / Deck',type:'text',rows:2,group:'basics'}),
     defineField({name:'slug',title:'Page URL',type:'slug',group:'basics',options:{source:'title',maxLength:90},validation:r=>r.required()}),
-    defineField({name:'heroImage',title:'Hero Photo',type:'image',group:'basics',options:{hotspot:true},fields:[{name:'alt',title:'Alt Text',type:'string'},{name:'caption',title:'Caption',type:'string'}],validation:r=>r.required()}),
+    defineField({name:'heroImage',title:'Hero Photo',type:'image',group:'basics',description:'Upload the original photo, then use the Basecamp frame below it to choose exactly how the subject sits inside the Journal hero. The original photo is never modified.',options:{hotspot:true,basecampFrame:{ratio:'16 / 9',label:'Journal Hero · 16:9'}},components:{input:FramedImageInput},fields:[{name:'alt',title:'Alt Text',type:'string'},{name:'caption',title:'Caption',type:'string'}],validation:r=>r.required()}),
     defineField({name:'body',title:'Story',type:'contentBlock',group:'story',validation:r=>r.required()}),
     defineField({name:'category',title:'Kind of Story',type:'string',group:'details',options:{layout:'radio',list:categories},validation:r=>r.required()}),
     defineField({name:'activity',title:'Activity',type:'string',group:'details',options:{list:activities},validation:r=>r.required()}),

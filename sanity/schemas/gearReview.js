@@ -1,4 +1,5 @@
 import {defineField, defineType} from 'sanity'
+import {FramedImageInput} from '../components/FramedImageInput.jsx'
 
 const activities = ['Hike & Camp','Trail Running','Climbing','Ski & Tour','Paddling','Everyday / Travel','Dog Adventures']
 const gearTypes = ['Footwear','Apparel','Pack / Carry','Shelter / Sleep','Cook / Camp','Climbing Equipment','Ski Equipment','Paddle / Boat','Safety','Electronics / Gadgets','Tools & Essentials','Dog Gear','Other']
@@ -18,7 +19,7 @@ export const gearReview = defineType({
     defineField({name:'title', title:'Review Headline', type:'string', group:'basics', description:'The editorial headline visitors will see.', validation:r=>r.required()}),
     defineField({name:'subtitle', title:'Short Deck', type:'text', rows:2, group:'basics'}),
     defineField({name:'slug', title:'Page URL', type:'slug', group:'basics', options:{source:'productName', maxLength:80}, validation:r=>r.required()}),
-    defineField({name:'heroImage', title:'Featured / Hero Photo', type:'image', group:'basics', description:'Upload the original photo, then use Edit / hotspot controls to mark the important part of the image. The source photo remains untouched; the website uses this focal point when fitting the photo into different frames.', options:{hotspot:true}, fields:[{name:'alt',title:'Alt Text',type:'string'}], validation:r=>r.required()}),
+    defineField({name:'heroImage', title:'Featured / Hero Photo', type:'image', group:'basics', description:'Upload the original photo, then use the Basecamp frame below it to choose exactly how the subject sits inside the website hero. The original photo is never modified.', options:{hotspot:true,basecampFrame:{ratio:'16 / 9',label:'Gear Review Hero · 16:9'}}, components:{input:FramedImageInput}, fields:[{name:'alt',title:'Alt Text',type:'string'}], validation:r=>r.required()}),
     defineField({name:'productGallery', title:'Product Gallery', type:'array', group:'basics', description:'Optional additional product/detail/action photos. These appear as a browsable gallery on the review page and are separate from storytelling photos inside the Full Review.', of:[{type:'image', options:{hotspot:true}, fields:[{name:'alt',title:'Alt Text',type:'string'}]}]}),
     defineField({name:'overallRating', title:'Overall Rating', description:'0–10. One decimal is allowed.', type:'number', group:'basics', validation:r=>r.required().min(0).max(10).precision(1)}),
     defineField({name:'verdict', title:'Verdict / TL;DR', type:'text', rows:4, group:'review', validation:r=>r.required()}),

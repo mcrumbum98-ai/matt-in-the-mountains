@@ -27,7 +27,7 @@ export const contentBlock = defineType({
       title: 'Photo',
       options: {hotspot: true},
       fields: [...imageFields, {name: 'layout', title: 'Photo Size', type: 'string', initialValue: 'reading', options: {layout: 'radio', list: [
-        {title: 'Normal', value: 'reading'}, {title: 'Wide', value: 'wide'}, {title: 'Full Width', value: 'full'},
+        {title: 'Normal', value: 'reading'}, {title: 'Full Width', value: 'full'},
       ]}}],
     }),
     defineArrayMember({

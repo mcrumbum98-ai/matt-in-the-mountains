@@ -151,6 +151,20 @@
     request();
   };
 
+  const filters = [...document.querySelectorAll('.journal-filter a')];
+
+  const matchesFilter = (post, label) => {
+    if (label === 'All') return true;
+    if (label === 'Skiing') return post.activity === 'Skiing / Touring';
+    if (label === 'Hiking') return post.activity === 'Hiking';
+    if (label === 'Climbing') return post.activity === 'Climbing';
+    if (label === 'Camping') return post.activity === 'Camping';
+    if (label === 'Paddling') return post.activity === 'Paddling';
+    if (label === 'Projects + DIY') return post.category === 'Projects & DIY';
+    if (label === 'Tips') return post.category === 'Tips & Skills';
+    return true;
+  };
+
   fetch(endpoint)
     .then(response => {
       if (!response.ok) throw new Error(`Sanity returned ${response.status}`);
@@ -158,7 +172,28 @@
     })
     .then(({result = []}) => {
       if (!result.length) throw new Error('No published Journal posts found in Sanity.');
+
       render(result);
+
+      filters.forEach(filter => {
+        filter.addEventListener('click', event => {
+          event.preventDefault();
+
+          filters.forEach(item => item.classList.remove('active'));
+          filter.classList.add('active');
+
+          const label = filter.textContent.trim();
+          const filtered = result.filter(post => matchesFilter(post, label));
+
+          if (filtered.length) {
+            render(filtered);
+          } else {
+            feed.innerHTML = `<div class="journal-empty"><p>No ${esc(label)} stories yet.</p></div>`;
+          }
+
+          document.querySelector('#stories')?.scrollIntoView({behavior:'smooth', block:'start'});
+        });
+      });
     })
     .catch(error => {
       console.error('Journal index staging connection failed:', error);

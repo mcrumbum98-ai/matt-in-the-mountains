@@ -51,7 +51,6 @@ export const gearReview = defineType({
     defineField({name:'relatedGear', title:'Related Gear — Manual Picks', description:'Optional. If left empty, the site can fall back to matching subtype/type/activities/tags.', type:'array', group:'organize', validation:r=>r.max(4), of:[{type:'reference',to:[{type:'gearReview'}]}]}),
     defineField({name:'relatedJournal', title:'Related Journal Stories', type:'array', group:'organize', of:[{type:'reference',to:[{type:'journalPost'}]}]}),
     defineField({name:'featured', title:'Eligible for Featured Areas', description:'Allows this review to appear in curated/featured slots. It does not change the number of cards on a page.', type:'boolean', group:'organize', initialValue:false}),
-    defineField({name:'featuredPriority', title:'Featured Priority', description:'Optional. Higher numbers win when multiple items are featured.', type:'number', group:'organize', hidden:({document})=>!document?.featured}),
     defineField({name:'publishedAt', title:'Original Publish Date', type:'datetime', group:'organize'}),
     defineField({name:'updatedAt', title:'Last Meaningful Update', type:'datetime', group:'organize'}),
   ],

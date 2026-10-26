@@ -62,7 +62,6 @@ export const journalPost = defineType({
     }),
     defineField({name:'relatedJournal',title:'Related Stories — Manual Picks',description:'Optional. Leave empty to let the site match by activity/category/tags.',type:'array',group:'organize',validation:r=>r.max(4),of:[{type:'reference',to:[{type:'journalPost'}]}]}),
     defineField({name:'featured',title:'Eligible for Featured Areas',description:'Allows this story to appear in featured slots without changing the page layout.',type:'boolean',group:'organize',initialValue:false}),
-    defineField({name:'featuredPriority',title:'Featured Priority',type:'number',group:'organize',hidden:({document})=>!document?.featured}),
     defineField({name:'publishedAt',title:'Original Publish Date',type:'datetime',group:'organize'}),
     defineField({name:'updatedAt',title:'Last Meaningful Update',type:'datetime',group:'organize'}),
   ],

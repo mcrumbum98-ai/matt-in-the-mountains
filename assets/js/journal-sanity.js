@@ -46,32 +46,37 @@
   const image = (post, drift) =>
     `<img data-drift="${drift}" src="${esc(imageFor(post))}" alt="${esc(post.heroImage?.alt || post.title || '')}" style="object-position:${esc(focal(post.heroImage))}">`;
 
-  const meta = post =>
-    `<div class="story-meta"><span>${esc(labelFor(post))}</span>${dateFor(post) ? `<time>${esc(dateFor(post))}</time>` : ''}</div>`;
+  const meta = (post, featured = false) =>
+    `<div class="story-meta">${featured ? '<span class="featured-label">FEATURED STORY</span>' : ''}<span>${esc(labelFor(post))}</span>${dateFor(post) ? `<time>${esc(dateFor(post))}</time>` : ''}</div>`;
 
   const leadCard = post =>
     `<a class="editorial-lead story-panel story-panel--forest reveal" href="${esc(href(post))}" data-journal-category="${esc(post.category || '')}" data-journal-activity="${esc(post.activity || '')}">
       <div class="editorial-lead__media magnetic-media">${image(post,'.045')}</div>
       <div class="editorial-lead__copy">
-        ${meta(post)}
+        ${meta(post, true)}
         <h2>${esc(post.title || 'Untitled Story')}</h2>
         ${deckFor(post) ? `<p>${esc(deckFor(post))}</p>` : ''}
         <span class="read-mark">Read story <i>↗</i></span>
       </div>
     </a>`;
 
-  const smallCard = (post, index) => {
-    const walnut = index % 2 === 1;
-    return `<a class="editorial-card story-panel ${walnut ? 'story-panel--walnut offset' : 'story-panel--sand tall'} reveal" href="${esc(href(post))}" data-journal-category="${esc(post.category || '')}" data-journal-activity="${esc(post.activity || '')}">
-      <div class="editorial-card__media magnetic-media">${image(post, walnut ? '.055' : '.035')}</div>
-      ${meta(post)}
-      <h3>${esc(post.title || 'Untitled Story')}</h3>
-      ${deckFor(post) ? `<p>${esc(deckFor(post))}</p>` : ''}
-    </a>`;
+  const secondaryTone = index => {
+    const tones = ['story-panel--sand', 'story-panel--walnut', 'story-panel--sage'];
+    return tones[index % tones.length];
   };
 
-  const wideCard = post =>
-    `<a class="wide-story story-panel story-panel--sage reveal" href="${esc(href(post))}" data-journal-category="${esc(post.category || '')}" data-journal-activity="${esc(post.activity || '')}">
+  const smallCard = (post, index) =>
+    `<a class="editorial-card story-panel ${secondaryTone(index)} reveal" href="${esc(href(post))}" data-journal-category="${esc(post.category || '')}" data-journal-activity="${esc(post.activity || '')}">
+      <div class="editorial-card__media magnetic-media">${image(post,'.04')}</div>
+      <div class="editorial-card__copy">
+        ${meta(post)}
+        <h3>${esc(post.title || 'Untitled Story')}</h3>
+        ${deckFor(post) ? `<p>${esc(deckFor(post))}</p>` : ''}
+      </div>
+    </a>`;
+
+  const wideCard = (post, index) =>
+    `<a class="wide-story story-panel ${secondaryTone(index)} reveal" href="${esc(href(post))}" data-journal-category="${esc(post.category || '')}" data-journal-activity="${esc(post.activity || '')}">
       <div class="wide-story__media">${image(post,'.04')}</div>
       <div class="wide-story__copy">
         ${meta(post)}
@@ -87,16 +92,23 @@
 
     let html = leadCard(lead);
 
-    for (let i = 0; i < remaining.length; i += 3) {
-      const group = remaining.slice(i, i + 3);
+    for (let i = 0; i < remaining.length; i += 4) {
+      const group = remaining.slice(i, i + 4);
 
-      if (group.length >= 1) {
-        if (group.length === 1) {
-          html += wideCard(group[0]);
+      if (group[0]) {
+        if (group[1]) {
+          html += `<div class="editorial-pair">${smallCard(group[0],i)}${smallCard(group[1],i + 1)}</div>`;
         } else {
-          html += `<div class="editorial-pair">${smallCard(group[0],0)}${smallCard(group[1],1)}</div>`;
-          if (group[2]) html += wideCard(group[2]);
+          html += smallCard(group[0],i);
         }
+      }
+
+      if (group[2]) {
+        html += `<div class="journal-horizontal journal-horizontal--image-left">${wideCard(group[2],i + 2)}</div>`;
+      }
+
+      if (group[3]) {
+        html += `<div class="journal-horizontal journal-horizontal--image-right">${wideCard(group[3],i + 3)}</div>`;
       }
     }
 

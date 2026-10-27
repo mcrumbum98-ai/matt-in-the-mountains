@@ -669,3 +669,129 @@ body:after{content:"";position:fixed;inset:0;background:#273b21;z-index:9990;poi
     padding:22px;
   }
 }
+
+/* Featured Deck: stable hero surface */
+.featured-deck .editorial-lead,
+.featured-deck .editorial-lead:hover,
+.featured-deck .editorial-lead:focus {
+  transform: none;
+}
+
+.featured-deck .magnetic-media,
+.featured-deck .magnetic-media:hover {
+  transform: none;
+}
+
+.featured-deck .editorial-lead__media img {
+  transition: none;
+}
+
+/* Featured Deck: horizontal sliding carousel */
+.featured-deck {
+  width: 100%;
+  min-width: 0;
+}
+
+.featured-deck__viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+.featured-deck__track {
+  display: flex;
+  width: 100%;
+  transition: transform 950ms cubic-bezier(.22,.61,.36,1);
+  will-change: transform;
+}
+
+.featured-deck__slide {
+  flex: 0 0 100%;
+  width: 100%;
+  min-width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .featured-deck__track {
+    transition: none;
+  }
+}
+
+/* Featured Deck: editorial navigation */
+.featured-deck__controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  padding: 13px 4px 0;
+  color: var(--brass);
+}
+
+.featured-deck__button {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 20px;
+  line-height: 1;
+  padding: 4px 3px;
+  cursor: pointer;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.featured-deck__button:hover {
+  transform: translateX(0);
+  opacity: .62;
+}
+
+.featured-deck__button:first-child:hover {
+  transform: translateX(-3px);
+}
+
+.featured-deck__button:last-child:hover {
+  transform: translateX(3px);
+}
+
+.featured-deck__count {
+  min-width: 58px;
+  text-align: center;
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: .13em;
+  color: var(--ink);
+  opacity: .68;
+}
+
+.featured-deck__count b {
+  color: var(--brass);
+  font-weight: 700;
+}
+
+@media (max-width:800px) {
+  .featured-deck__controls {
+    padding-top: 11px;
+    gap: 11px;
+  }
+
+  .featured-deck__button {
+    font-size: 19px;
+  }
+}
+
+/* Featured Deck: centered navigation + stronger label */
+.featured-deck__controls {
+  justify-content: center;
+}
+
+.featured-deck .featured-label {
+  color: var(--brass);
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+/* Featured Story label override */
+.featured-deck .editorial-lead .story-meta .featured-label {
+  color: var(--brass) !important;
+  font-weight: 800 !important;
+  opacity: 1;
+}

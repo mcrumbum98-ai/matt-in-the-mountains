@@ -49,9 +49,9 @@
   const meta = (post, featured = false) =>
     `<div class="story-meta">${featured ? '<span class="featured-label">FEATURED STORY</span>' : ''}<span>${esc(labelFor(post))}</span>${dateFor(post) ? `<time>${esc(dateFor(post))}</time>` : ''}</div>`;
 
-  const leadCard = post =>
-    `<a class="editorial-lead story-panel story-panel--forest reveal" href="${esc(href(post))}" data-journal-category="${esc(post.category || '')}" data-journal-activity="${esc(post.activity || '')}">
-      <div class="editorial-lead__media magnetic-media">${image(post,'.045')}</div>
+  const featuredSlide = (post, index) =>
+    `<a class="editorial-lead story-panel story-panel--forest featured-deck__slide" href="${esc(href(post))}" data-featured-slide="${index}" data-journal-category="${esc(post.category || '')}" data-journal-activity="${esc(post.activity || '')}">
+      <div class="editorial-lead__media">${image(post,'.045')}</div>
       <div class="editorial-lead__copy">
         ${meta(post, true)}
         <h2>${esc(post.title || 'Untitled Story')}</h2>
@@ -59,6 +59,20 @@
         <span class="read-mark">Read story <i>↗</i></span>
       </div>
     </a>`;
+
+  const leadCard = (posts, index = 0) =>
+    `<div class="featured-deck reveal" data-featured-deck>
+      <div class="featured-deck__viewport">
+        <div class="featured-deck__track" style="transform:translate3d(-${index * 100}%,0,0)">
+          ${posts.map((post, slideIndex) => featuredSlide(post, slideIndex)).join('')}
+        </div>
+      </div>
+      ${posts.length > 1 ? `<div class="featured-deck__controls">
+        <button type="button" class="featured-deck__button" data-featured-prev aria-label="Previous featured story">←</button>
+        <span class="featured-deck__count"><b data-featured-current>${String(index + 1).padStart(2,'0')}</b> / ${String(posts.length).padStart(2,'0')}</span>
+        <button type="button" class="featured-deck__button" data-featured-next aria-label="Next featured story">→</button>
+      </div>` : ''}
+    </div>`;
 
   const secondaryTone = index => {
     const tones = ['story-panel--sand', 'story-panel--walnut', 'story-panel--sage'];
@@ -85,15 +99,23 @@
       </div>
     </a>`;
 
-  const render = posts => {
-    const featured = posts.filter(post => post.featured);
-    const lead = featured[0] || posts[0];
-    const remaining = posts.filter(post => post._id !== lead._id);
+  let featuredDeck = [];
+  let featuredIndex = 0;
+  let featuredTimer = null;
+  let currentPosts = [];
 
-    let html = leadCard(lead);
+  const stopFeaturedTimer = () => {
+    if (featuredTimer) {
+      clearInterval(featuredTimer);
+      featuredTimer = null;
+    }
+  };
 
-    for (let i = 0; i < remaining.length; i += 4) {
-      const group = remaining.slice(i, i + 4);
+  const renderFeedCards = posts => {
+    let html = '';
+
+    for (let i = 0; i < posts.length; i += 4) {
+      const group = posts.slice(i, i + 4);
 
       if (group[0]) {
         if (group[1]) {
@@ -112,8 +134,90 @@
       }
     }
 
-    feed.innerHTML = html;
+    return html;
+  };
+
+  const paintFeaturedDeck = () => {
+    const deck = feed.querySelector('[data-featured-deck]');
+    if (!deck) return;
+
+    const track = deck.querySelector('.featured-deck__track');
+    const current = deck.querySelector('[data-featured-current]');
+
+    if (track) {
+      track.style.transform = `translate3d(-${featuredIndex * 100}%,0,0)`;
+    }
+
+    if (current) {
+      current.textContent = String(featuredIndex + 1).padStart(2,'0');
+    }
+  };
+
+  const advanceFeatured = direction => {
+    if (featuredDeck.length < 2) return;
+
+    featuredIndex =
+      (featuredIndex + direction + featuredDeck.length) % featuredDeck.length;
+
+    paintFeaturedDeck();
+    startFeaturedTimer();
+  };
+
+  const startFeaturedTimer = () => {
+    stopFeaturedTimer();
+
+    if (
+      featuredDeck.length < 2 ||
+      matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) return;
+
+    featuredTimer = setInterval(() => {
+      featuredIndex = (featuredIndex + 1) % featuredDeck.length;
+      paintFeaturedDeck();
+    }, 9000);
+  };
+
+  const bindFeaturedDeck = () => {
+    const deck = feed.querySelector('[data-featured-deck]');
+    if (!deck) return;
+
+    deck.querySelector('[data-featured-prev]')?.addEventListener('click', event => {
+      event.preventDefault();
+      event.stopPropagation();
+      advanceFeatured(-1);
+    });
+
+    deck.querySelector('[data-featured-next]')?.addEventListener('click', event => {
+      event.preventDefault();
+      event.stopPropagation();
+      advanceFeatured(1);
+    });
+
+    deck.addEventListener('mouseenter', stopFeaturedTimer);
+    deck.addEventListener('mouseleave', startFeaturedTimer);
+    deck.addEventListener('focusin', stopFeaturedTimer);
+    deck.addEventListener('focusout', startFeaturedTimer);
+  };
+
+  const render = posts => {
+    stopFeaturedTimer();
+    currentPosts = posts;
+
+    featuredDeck = posts.filter(post => post.featured).slice(0,4);
+
+    if (!featuredDeck.length && posts[0]) {
+      featuredDeck = [posts[0]];
+    }
+
+    if (featuredIndex >= featuredDeck.length) featuredIndex = 0;
+
+    feed.innerHTML =
+      leadCard(featuredDeck, featuredIndex) +
+      renderFeedCards(posts);
+
     initDynamicMotion();
+    bindFeaturedDeck();
+    startFeaturedTimer();
   };
 
   let driftCleanup = null;

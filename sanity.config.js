@@ -2,6 +2,7 @@ import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {gearReview} from './sanity/schemas/gearReview.js'
+import {gearLanding} from './sanity/schemas/gearLanding.js'
 import {journalPost} from './sanity/schemas/journalPost.js'
 import {contentBlock} from './sanity/schemas/contentBlock.js'
 import {brand} from './sanity/schemas/brand.js'
@@ -12,6 +13,15 @@ const structure = (S) => S.list()
   .title('Basecamp')
   .items([
     S.listItem().title('Gear Reviews').schemaType('gearReview').child(S.documentTypeList('gearReview').title('Gear Reviews')),
+    S.listItem()
+      .title('Gear Landing')
+      .schemaType('gearLanding')
+      .child(
+        S.document()
+          .schemaType('gearLanding')
+          .documentId('gearLanding')
+          .title('Gear Landing')
+      ),
     S.listItem().title('Journal Posts').schemaType('journalPost').child(S.documentTypeList('journalPost').title('Journal Posts')),
     S.listItem()
       .title('Journal Landing')
@@ -34,5 +44,5 @@ export default defineConfig({
   dataset:'production',
   basePath:'/admin',
   plugins:[structureTool({structure}), visionTool()],
-  schema:{types:[gearReview,journalPost,journalLanding,brand,tag,contentBlock]},
+  schema:{types:[gearReview,gearLanding,journalPost,journalLanding,brand,tag,contentBlock]},
 })

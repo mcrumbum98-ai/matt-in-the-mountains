@@ -37,8 +37,43 @@
     }));
   };
 
+  const getLanding = async () => {
+    const raw = await sanity.query(`
+      *[_id == "gearLanding"][0]{
+        heroKicker,
+        heroTitle,
+        heroIntro,
+        introTitle,
+        introCopy,
+        categoriesKicker,
+        categoriesTitle,
+        reviewsKicker,
+        reviewsTitle,
+        libraryKicker,
+        libraryTitle
+      }
+    `);
+
+    if (!raw) return null;
+
+    return {
+      heroKicker: raw.heroKicker || '',
+      heroTitle: raw.heroTitle || '',
+      heroIntro: raw.heroIntro || '',
+      introTitle: raw.introTitle || '',
+      introCopy: raw.introCopy || '',
+      categoriesKicker: raw.categoriesKicker || '',
+      categoriesTitle: raw.categoriesTitle || '',
+      reviewsKicker: raw.reviewsKicker || '',
+      reviewsTitle: raw.reviewsTitle || '',
+      libraryKicker: raw.libraryKicker || '',
+      libraryTitle: raw.libraryTitle || ''
+    };
+  };
+
   window.MITMContent = window.MITMContent || {};
   window.MITMContent.gear = {
+    getLanding,
     getReviews
   };
 })();

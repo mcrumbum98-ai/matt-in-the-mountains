@@ -104,7 +104,13 @@
     initDynamicMotion();
   };
 
+  let driftCleanup = null;
+
   const initDynamicMotion = () => {
+    if (driftCleanup) {
+      driftCleanup();
+      driftCleanup = null;
+    }
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const reveals = feed.querySelectorAll('.reveal');
 
@@ -148,6 +154,10 @@
 
     addEventListener('scroll', request, {passive:true});
     addEventListener('resize', request);
+    driftCleanup = () => {
+      removeEventListener('scroll', request);
+      removeEventListener('resize', request);
+    };
     request();
   };
 

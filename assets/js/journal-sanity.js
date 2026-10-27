@@ -1,15 +1,6 @@
 (() => {
-  const projectId = 'azxzfjey';
-  const dataset = 'production';
-  const apiVersion = '2024-01-01';
+  const journalContent = window.MITMContent?.journal;
 
-  const query = `*[_type == "journalPost" && !(_id in path("drafts.**"))] | order(coalesce(publishedAt,_createdAt) desc){
-    _id,title,subtitle,category,activity,location,featured,publishedAt,_createdAt,
-    "slug":slug.current,
-    heroImage{alt,hotspot,crop,"url":asset->url}
-  }`;
-
-  const endpoint = `https://${projectId}.api.sanity.io/v${apiVersion}/data/query/${dataset}?query=${encodeURIComponent(query)}`;
   const feed = document.querySelector('#journal-feed');
   if (!feed) return;
 
@@ -17,8 +8,8 @@
     '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
   }[c]));
 
-  const focal = image => image?.hotspot
-    ? `${Math.round(image.hotspot.x * 100)}% ${Math.round(image.hotspot.y * 100)}%`
+  const focal = image => image
+    ? `${Math.round((image.focalX ?? .5) * 100)}% ${Math.round((image.focalY ?? .5) * 100)}%`
     : '50% 50%';
 
   const href = post => post.slug
@@ -26,7 +17,7 @@
     : 'journal.html';
 
   const dateFor = post => {
-    const raw = post.publishedAt || post._createdAt;
+    const raw = post.publishedAt;
     if (!raw) return '';
     const d = new Date(raw);
     return Number.isNaN(d.getTime()) ? '' : d.toLocaleDateString('en-US', {
@@ -291,12 +282,13 @@
     return true;
   };
 
-  fetch(endpoint)
-    .then(response => {
-      if (!response.ok) throw new Error(`Sanity returned ${response.status}`);
-      return response.json();
-    })
-    .then(({result = []}) => {
+  if (!journalContent) {
+    feed.innerHTML = `<div class="journal-empty"><p>Journal stories are temporarily unavailable.</p></div>`;
+    return;
+  }
+
+  journalContent.getPosts()
+    .then(result => {
       if (!result.length) throw new Error('No published Journal posts found in Sanity.');
 
       render(result);

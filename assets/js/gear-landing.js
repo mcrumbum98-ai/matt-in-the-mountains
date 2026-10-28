@@ -43,5 +43,8 @@
     .then(render)
     .catch(error => {
       console.error('Gear landing content unavailable:', error);
+    })
+    .finally(() => {
+      window.MITMCmsPage?.ready();
     });
 })();

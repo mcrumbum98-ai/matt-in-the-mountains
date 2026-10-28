@@ -20,5 +20,8 @@
     const gearList=document.querySelector('.gear-list');
     if(gearList)gearList.innerHTML=result.map(review=>{const a=activitiesFor(review),meta=[...a.slice(0,2),review.gearType,review.subtype].filter(Boolean).slice(0,3).join(' / ');return `<a class="gear-row" href="${reviewHref(review)}" data-activities="${escapeHtml(a.join('|').toLowerCase())}" data-type="${escapeHtml(String(review.gearType||'').toLowerCase())}"><img src="${escapeHtml(reviewImage(review))}" alt="" style="object-position:${escapeHtml(focalPosition(review.heroImage))}"><h3>${escapeHtml(review.productName||reviewTitle(review))}</h3><span>${escapeHtml(meta||'Gear Review')}</span><strong>${escapeHtml(score(review))}</strong></a>`}).join('');
     document.querySelector('.reviews .placeholder-note')?.remove();
-  }).catch(error=>{console.error('Gear content connection failed:',error);const note=document.querySelector('.reviews .placeholder-note');if(note)note.textContent=`STAGING CONNECTION ERROR — ${error.message}`});
+  }).catch(error=>{console.error('Gear content connection failed:',error);const note=document.querySelector('.reviews .placeholder-note');if(note)note.textContent=`STAGING CONNECTION ERROR — ${error.message}`})
+    .finally(()=>{
+      window.MITMCmsPage?.ready();
+    });
 })();

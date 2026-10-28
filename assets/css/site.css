@@ -795,3 +795,8 @@ body:after{content:"";position:fixed;inset:0;background:#273b21;z-index:9990;poi
   font-weight: 800 !important;
   opacity: 1;
 }
+
+/* CMS-driven pages: avoid painting incomplete async content on initial load */
+html[data-cms-parts]:not(.cms-ready) body{
+  visibility:hidden;
+}

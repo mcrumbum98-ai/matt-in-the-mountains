@@ -800,3 +800,6 @@ body:after{content:"";position:fixed;inset:0;background:#273b21;z-index:9990;poi
 html[data-cms-parts]:not(.cms-ready) body{
   visibility:hidden;
 }
+
+/* Keep the Photography exhibition pinned while preventing horizontal overflow. */
+body.photo-page{overflow-x:clip}

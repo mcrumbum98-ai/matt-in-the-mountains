@@ -8,6 +8,8 @@ import {contentBlock} from './sanity/schemas/contentBlock.js'
 import {brand} from './sanity/schemas/brand.js'
 import {tag} from './sanity/schemas/tag.js'
 import {journalLanding} from './sanity/schemas/journalLanding.js'
+import {photograph} from './sanity/schemas/photograph.js'
+import {photoCollection} from './sanity/schemas/photoCollection.js'
 
 const structure = (S) => S.list()
   .title('Basecamp')
@@ -33,6 +35,9 @@ const structure = (S) => S.list()
           .title('Journal Landing')
       ),
     S.divider(),
+    S.listItem().title('Photographs').schemaType('photograph').child(S.documentTypeList('photograph').title('Photographs')),
+    S.listItem().title('Photo Collections').schemaType('photoCollection').child(S.documentTypeList('photoCollection').title('Photo Collections')),
+    S.divider(),
     S.listItem().title('Brands').schemaType('brand').child(S.documentTypeList('brand').title('Brands')),
     S.listItem().title('Tags').schemaType('tag').child(S.documentTypeList('tag').title('Tags')),
   ])
@@ -44,5 +49,5 @@ export default defineConfig({
   dataset:'production',
   basePath:'/admin',
   plugins:[structureTool({structure}), visionTool()],
-  schema:{types:[gearReview,gearLanding,journalPost,journalLanding,brand,tag,contentBlock]},
+  schema:{types:[gearReview,gearLanding,journalPost,journalLanding,photograph,photoCollection,brand,tag,contentBlock]},
 })

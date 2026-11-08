@@ -803,3 +803,73 @@ html[data-cms-parts]:not(.cms-ready) body{
 
 /* Keep the Photography exhibition pinned while preventing horizontal overflow. */
 body.photo-page{overflow-x:clip}
+
+/* Photography — Basecamp collections */
+.photo-collections {
+  background: #eee7da;
+  color: #171814;
+  padding: clamp(76px, 10vw, 150px) 0;
+}
+
+.photo-collections h2 {
+  font-size: clamp(42px, 6vw, 88px);
+  line-height: 1;
+  margin: 12px 0 20px;
+}
+
+.photo-collections__intro {
+  max-width: 560px;
+  margin-bottom: 54px;
+  line-height: 1.65;
+}
+
+.photo-collections__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 42px 24px;
+}
+
+.photo-collection-card {
+  min-width: 0;
+}
+
+.photo-collection-card__cover {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #273b21;
+}
+
+.photo-collection-card__cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s ease;
+}
+
+.photo-collection-card:hover img {
+  transform: scale(1.035);
+}
+
+.photo-collection-card__title {
+  font-size: clamp(21px, 2.3vw, 30px);
+  margin: 20px 0 8px;
+}
+
+.photo-collection-card__description {
+  line-height: 1.6;
+  opacity: .75;
+  margin: 0;
+}
+
+@media (max-width: 800px) {
+  .photo-collections__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .photo-collections__grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -24,7 +24,8 @@
       }
 
       for (const collection of collections) {
-        const card = make('article', 'photo-collection-card');
+        const card = make('a', 'photo-collection-card');
+        card.href = `photo-collection.html?collection=${encodeURIComponent(collection.slug)}`;
         const cover = make('div', 'photo-collection-card__cover');
 
         if (collection.coverPhoto?.image?.url) {

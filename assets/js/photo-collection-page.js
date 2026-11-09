@@ -118,6 +118,22 @@
   const previousButton = lightbox?.querySelector('.photo-lightbox__previous');
   const nextButton = lightbox?.querySelector('.photo-lightbox__next');
 
+  // Minimal is the default; Basecamp can enable the original desk.
+  const setViewerStyle = style => {
+    if (!lightbox) return;
+    lightbox.classList.toggle('viewer-minimal', style !== 'desk');
+  };
+
+  setViewerStyle('minimal');
+
+  if (typeof api.getLanding === 'function') {
+    api.getLanding()
+      .then(settings => setViewerStyle(settings?.galleryViewerStyle))
+      .catch(error => {
+        console.warn('Using default minimal gallery viewer:', error);
+      });
+  }
+
   let activePhotos = [];
   let activeIndex = 0;
   let previousFocus = null;

@@ -78,7 +78,7 @@
       },
       exhibitionStatement,
       outroHeading,
-      outroDescription
+      outroDescription, galleryViewerStyle
     }
   `);
 

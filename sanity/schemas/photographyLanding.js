@@ -81,6 +81,21 @@ export const photographyLanding = defineType({
       initialValue: 'The photographs belong to the stories.',
     }),
     defineField({
+      name: 'galleryViewerStyle',
+      title: 'Gallery Viewer Style',
+      type: 'string',
+      description: 'Choose how photographs open in collection galleries. This does not affect the scrolling exhibition.',
+      options: {
+        list: [
+          {title: 'Minimal Viewer (Default)', value: 'minimal'},
+          {title: "Photographer's Desk", value: 'desk'},
+        ],
+        layout: 'radio',
+        direction: 'vertical',
+      },
+      initialValue: 'minimal',
+    }),
+    defineField({
       name: 'outroDescription',
       title: 'Closing Description',
       type: 'text',

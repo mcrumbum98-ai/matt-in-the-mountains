@@ -1594,3 +1594,70 @@ body.photo-page{overflow-x:clip}
     height: 29px !important;
   }
 }
+
+/* Minimal gallery viewer — optional alternative to photographer's desk */
+.photo-gallery-page .photo-lightbox.viewer-minimal {
+  background: rgba(30, 32, 31, .94);
+  background-image: none;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.photo-gallery-page .viewer-minimal .photo-lightbox__foreground {
+  display: none;
+}
+
+.photo-gallery-page .viewer-minimal .photo-lightbox__print {
+  transform: none;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  filter: none;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.photo-gallery-page .viewer-minimal .photo-lightbox__print .photo-lightbox__image {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  max-width: 100%;
+  max-height: 78vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.photo-gallery-page .viewer-minimal .photo-lightbox__print .photo-lightbox__caption {
+  background: transparent;
+  color: #e6e4df;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: .05em;
+  line-height: 1.5;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.photo-gallery-page .viewer-minimal .photo-lightbox__counter {
+  background: transparent;
+  color: #d1d0cb;
+  padding: 0;
+}
+
+.photo-gallery-page .viewer-minimal .photo-lightbox__previous,
+.photo-gallery-page .viewer-minimal .photo-lightbox__next,
+.photo-gallery-page .viewer-minimal .photo-lightbox__close {
+  text-shadow: none;
+}
+
+@media (max-width: 650px) {
+  .photo-gallery-page .viewer-minimal .photo-lightbox__print .photo-lightbox__image {
+    max-height: 72vh;
+  }
+}

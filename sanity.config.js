@@ -1,3 +1,4 @@
+import {aboutPage} from './sanity/schemas/aboutPage.js'
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
@@ -38,6 +39,16 @@ const structure = (S) => S.list()
     S.listItem().title('Photographs').schemaType('photograph').child(S.documentTypeList('photograph').title('Photographs')),
     S.listItem().title('Photo Collections').schemaType('photoCollection').child(S.documentTypeList('photoCollection').title('Photo Collections')),
     S.divider(),
+    S.listItem()
+      .title('About Page')
+      .schemaType('aboutPage')
+      .child(
+        S.document()
+          .schemaType('aboutPage')
+          .documentId('aboutPage')
+          .title('About Page')
+      ),
+    S.divider(),
     S.listItem().title('Brands').schemaType('brand').child(S.documentTypeList('brand').title('Brands')),
     S.listItem().title('Tags').schemaType('tag').child(S.documentTypeList('tag').title('Tags')),
   ])
@@ -49,5 +60,5 @@ export default defineConfig({
   dataset:'production',
   basePath:'/admin',
   plugins:[structureTool({structure}), visionTool()],
-  schema:{types:[gearReview,gearLanding,journalPost,journalLanding,photograph,photoCollection,brand,tag,contentBlock]},
+  schema:{types:[gearReview,gearLanding,journalPost,journalLanding,photograph,photoCollection,brand,tag,contentBlock,aboutPage]},
 })

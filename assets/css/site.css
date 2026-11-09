@@ -1147,3 +1147,146 @@ body.photo-page{overflow-x:clip}
     right: 18px;
   }
 }
+
+/* EXPERIMENT: Photographer's desk fullscreen viewer */
+.photo-gallery-page .photo-lightbox {
+  background-color: #211810;
+  background-image: url('../images/photography-desk.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.photo-gallery-page .photo-lightbox__image {
+  box-sizing: border-box;
+  border: clamp(7px, 1vw, 13px) solid #f1ebdf;
+  background: #f1ebdf;
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, .3),
+    0 18px 45px rgba(0, 0, 0, .5);
+  max-height: 72vh;
+  max-width: 100%;
+}
+
+.photo-gallery-page .photo-lightbox__caption {
+  background: rgba(25, 19, 14, .8);
+  color: #f1ebdf;
+  padding: 8px 16px;
+  border-radius: 3px;
+}
+
+.photo-gallery-page .photo-lightbox__counter {
+  background: rgba(25, 19, 14, .85);
+  color: #f1ebdf;
+  padding: 9px 15px;
+  border-radius: 3px;
+}
+
+.photo-gallery-page .photo-lightbox__previous,
+.photo-gallery-page .photo-lightbox__next,
+.photo-gallery-page .photo-lightbox__close {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, .8);
+}
+
+@media (max-width: 650px) {
+  .photo-gallery-page .photo-lightbox {
+    background-position: center center;
+  }
+
+  .photo-gallery-page .photo-lightbox__image {
+    max-height: 65vh;
+  }
+}
+
+/* Desk experiment: physical photographic print */
+.photo-gallery-page .photo-lightbox__print {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  transform: rotate(-1.8deg);
+  transform-origin: center center;
+  filter: drop-shadow(2px 3px 2px rgba(0, 0, 0, .32));
+}
+
+.photo-gallery-page .photo-lightbox__print .photo-lightbox__image {
+  display: block;
+  box-sizing: border-box;
+  border: clamp(7px, .8vw, 11px) solid #f0e7d7;
+  background: #f0e7d7;
+  box-shadow: none;
+  max-height: 65vh;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+
+@media (max-width: 650px) {
+  .photo-gallery-page .photo-lightbox__print {
+    transform: rotate(-1deg);
+  }
+
+  .photo-gallery-page .photo-lightbox__print .photo-lightbox__image {
+    max-height: 58vh;
+  }
+}
+
+/* Desk experiment: handwritten photographic print */
+.photo-gallery-page .photo-lightbox__print {
+  box-sizing: border-box;
+  padding: clamp(12px, 1.4vw, 20px);
+  background: #f0e7d7;
+  box-shadow: 2px 3px 4px rgba(0, 0, 0, .22);
+  filter: none;
+  max-width: 100%;
+}
+
+.photo-gallery-page .photo-lightbox__print .photo-lightbox__image {
+  border: 0;
+  background: transparent;
+  max-height: 58vh;
+  max-width: 100%;
+}
+
+.photo-gallery-page .photo-lightbox__print .photo-lightbox__caption {
+  display: block;
+  background: transparent;
+  color: #403c35;
+  border-radius: 0;
+  padding: 7px 0 0;
+  margin: 0;
+  text-align: left;
+  font-family: 'Caveat', 'Bradley Hand', 'Comic Sans MS', cursive;
+  font-size: clamp(19px, 2vw, 25px);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.1;
+}
+
+
+/* DESK EXPERIMENT: Three-layer photographic viewer */
+.photo-gallery-page .photo-lightbox {
+  background-image: url('../images/photography-desk-clean.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.photo-gallery-page .photo-lightbox__figure {
+  position: relative;
+  isolation: isolate;
+}
+
+.photo-gallery-page .photo-lightbox__print {
+  position: relative;
+  z-index: 1;
+}
+
+.photo-gallery-page .photo-lightbox__foreground {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  pointer-events: none;
+  z-index: 2;
+}

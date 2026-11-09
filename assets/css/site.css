@@ -1740,3 +1740,40 @@ body.photo-page{overflow-x:clip}
     margin: 0 0 clamp(24px, 4vw, 58px) !important;
   }
 }
+
+/* Tetons: foreground coverage in narrower desktop windows */
+@media (min-width: 801px) and (max-aspect-ratio: 16/10) {
+  .hero-parallax__front {
+    width: max(106%, 115vh);
+    height: auto;
+    max-width: none;
+  }
+}
+
+/* Tetons: improved coverage for intermediate desktop window sizes */
+@media (min-width: 801px) and (max-width: 1200px) {
+  .hero-parallax__front {
+    width: max(106%, 180vh);
+    height: auto;
+    max-width: none;
+  }
+
+  .hero-parallax__back {
+    width: 110%;
+    height: 110%;
+  }
+}
+
+/* Tetons: extend foreground coverage into wider desktop windows */
+@media (min-width: 1201px) and (max-width: 1400px) {
+  .hero-parallax__front {
+    width: max(106%, 180vh);
+    height: auto;
+    max-width: none;
+  }
+
+  .hero-parallax__back {
+    width: 110%;
+    height: 110%;
+  }
+}

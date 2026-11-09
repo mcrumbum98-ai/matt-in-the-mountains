@@ -1,8 +1,27 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Photography — Matt in the Mountains</title><link rel="stylesheet" href="assets/css/site.css"></head><body class="photo-page">
-<nav class="site-header photo-nav"><div class="wrap navrow"><a class="brand" href="index.html"><span class="mm" aria-hidden="true"><svg viewBox="0 0 96 72"><circle class="mm-ring" cx="48" cy="36" r="30"/><path class="mm-ridge-a" d="M20 53 L35 25 L47 43 L57 27 L76 54"/><path class="mm-ridge-b" d="M30 54 L45 29 L56 46 L65 33 L78 53"/></svg></span><span>MATT IN THE MOUNTAINS</span></a><div class="navlinks"><a class="nav-basecamp" href="index.html">← Return to Basecamp</a><a href="gear.html">Gear</a><a href="journal.html">Journal</a><a class="active" href="photography.html">Photography</a><a href="about.html">About</a><a href="contact.html">Contact</a></div></div></nav>
+<nav class="site-header photo-nav"><div class="wrap navrow"><a class="brand" href="index.html"><span class="mm" aria-hidden="true"><svg viewBox="0 0 96 72"><circle class="mm-ring" cx="48" cy="36" r="30"/><path class="mm-ridge-a" d="M20 53 L35 25 L47 43 L57 27 L76 54"/><path class="mm-ridge-b" d="M30 54 L45 29 L56 46 L65 33 L78 53"/></svg></span><span>MATT IN THE MOUNTAINS</span></a><div class="navlinks"><a class="nav-basecamp" href="index.html">← Return to Basecamp</a><a href="gear.html">Gear</a><a href="journal.html">Journal</a><div class="photo-nav-menu">
+  <a class="active" href="photography.html">Photography</a>
+  <button class="photo-nav-toggle" type="button"
+    aria-label="Show Photography collections"
+    aria-expanded="false"
+    aria-controls="photo-nav-dropdown">⌄</button>
+  <div id="photo-nav-dropdown" class="photo-nav-dropdown">
+    <a href="photography.html">Photography Home</a>
+    <a href="photo-collection.html?collection=all-photos">All Photos</a>
+    <div id="photo-nav-collection-links"></div>
+  </div>
+</div><a href="about.html">About</a><a href="contact.html">Contact</a></div></div></nav>
+<div class="photo-experience">
+<a class="photo-jump-link" href="#photography-collections">
+  <span>JUMP TO COLLECTIONS</span>
+  <span aria-hidden="true">↓</span>
+</a>
 <header class="exhibit-intro"><div class="wrap"><p class="kicker">PHOTOGRAPHY / OUT THERE</p><h1>Not a gallery.<br><em>A way through.</em></h1><p>Scroll slowly. The photographs keep their original compositions; the page moves around them.</p><span class="exhibit-cue">SCROLL TO ENTER ↓</span></div></header>
 <main>
-<section class="photo-camera" aria-label="Immersive photography exhibition"><div class="photo-camera__pin"><div class="photo-camera__stage">
+
+<section class="photo-camera" aria-label="Immersive photography exhibition">
+
+<div class="photo-camera__pin"><div class="photo-camera__stage">
  <figure class="exhibit-frame ex-a"><img src="assets/images/dog-mountain.jpeg" alt="Dog high in the mountains"><figcaption>HIGH COUNTRY / 01</figcaption></figure>
  <figure class="exhibit-frame ex-b"><img src="assets/images/whitewater.jpeg" alt="Whitewater paddling"><figcaption>WHITEWATER / 02</figcaption></figure>
  <figure class="exhibit-frame ex-c"><img src="assets/images/steep-snow.jpeg" alt="Steep snow climb"><figcaption>SNOW / 03</figcaption></figure>
@@ -10,7 +29,8 @@
  <figure class="exhibit-frame ex-e"><img src="assets/images/tetons-hike.jpeg" alt="Mountain landscape"><figcaption>WEST / 05</figcaption></figure>
  <div class="exhibit-words"><span>GO FAR ENOUGH</span><span>TO BRING SOMETHING</span><span>BACK WITH YOU.</span></div><div class="exhibit-progress"><i></i></div>
 </div></div></section>
-<section class="photo-collections" aria-labelledby="collections-title">
+</div>
+<section id="photography-collections" class="photo-collections" aria-labelledby="collections-title">
   <div class="wrap">
     <p class="kicker">THE ARCHIVE</p>
     <h2 id="collections-title">Collections</h2>
@@ -25,4 +45,4 @@
 </main><footer class="site-footer"><div class="wrap footer-grid"><a class="brand" href="index.html"><span class="mm" aria-hidden="true"><svg viewBox="0 0 96 72"><circle class="mm-ring" cx="48" cy="36" r="30"/><path class="mm-ridge-a" d="M20 53 L35 25 L47 43 L57 27 L76 54"/><path class="mm-ridge-b" d="M30 54 L45 29 L56 46 L65 33 L78 53"/></svg></span><span>MATT IN THE MOUNTAINS</span></a><div class="footer-links"><a href="gear.html">Gear</a><a href="journal.html">Journal</a><a href="photography.html">Photography</a><a href="about.html">About</a><a href="contact.html">Contact</a></div></div></footer><script src="assets/js/site.js"></script>
 <script src="assets/js/cms/sanity.js"></script>
 <script src="assets/js/cms/photography.js"></script>
-<script src="assets/js/photography-page.js"></script></body></html>
+<script src="assets/js/photography-page.js"></script><script src="assets/js/photography-nav.js"></script></body></html>

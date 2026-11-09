@@ -17,32 +17,52 @@
 
   const slug = new URLSearchParams(window.location.search).get('collection');
 
-  const load = async () => {
-    if (!slug) {
-      title.textContent = 'Collection not found';
-      description.textContent = 'No collection was specified.';
-      reveal();
-      return;
-    }
+  const uniquePhotos = photos => {
+    const seen = new Set();
+    return photos.filter(photo => {
+      if (!photo?.image?.url) return false;
+      const key = photo.id || photo.image.url;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  };
 
+  const load = async () => {
     try {
       const collections = await api.getCollections();
-      const collection = collections.find(item => item.slug === slug);
+      let photographs = [];
 
-      if (!collection) {
-        title.textContent = 'Collection not found';
-        description.textContent = 'This collection may have been moved or unpublished.';
-        reveal();
-        return;
+      if (slug === 'all-photos') {
+        title.textContent = 'All Photos';
+        description.textContent = 'Every photograph from my published collections.';
+        photographs = uniquePhotos(
+          collections.flatMap(collection => [
+            collection.coverPhoto,
+            ...collection.photographs
+          ])
+        );
+      } else {
+        const collection = collections.find(item => item.slug === slug);
+
+        if (!collection) {
+          title.textContent = 'Collection not found';
+          description.textContent = 'This collection may have been moved or unpublished.';
+          reveal();
+          return;
+        }
+
+        title.textContent = collection.title;
+        description.textContent = collection.description || '';
+        photographs = uniquePhotos([
+          collection.coverPhoto,
+          ...collection.photographs
+        ]);
       }
 
-      document.title = `${collection.title} — Matt in the Mountains`;
-      title.textContent = collection.title;
-      description.textContent = collection.description || '';
+      document.title = `${title.textContent} — Matt in the Mountains`;
       reveal();
       grid.replaceChildren();
-
-      const photographs = collection.photographs.filter(photo => photo.image?.url);
 
       if (!photographs.length) {
         const message = document.createElement('p');
@@ -64,6 +84,21 @@
         caption.textContent = photo.title || '';
 
         figure.append(img, caption);
+        figure.tabIndex = 0;
+        figure.setAttribute('role', 'button');
+        figure.setAttribute('aria-label',
+          `View ${photo.title || 'photograph'} fullscreen`);
+
+        figure.addEventListener('click',
+          () => openLightbox(photographs, index));
+
+        figure.addEventListener('keydown', event => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            openLightbox(photographs, index);
+          }
+        });
+
         grid.appendChild(figure);
       });
     } catch (error) {
@@ -73,7 +108,6 @@
       reveal();
     }
   };
-
 
   // Fullscreen photograph viewer
   const lightbox = document.getElementById('photo-lightbox');
@@ -141,33 +175,6 @@
     if (event.key === 'ArrowRight') navigateLightbox(1);
   });
 
-  // Connect gallery photographs to the viewer
-  const originalLoad = load;
-  const loadWithViewer = async () => {
-    await originalLoad();
+  load();
 
-    const collections = await api.getCollections();
-    const collection = collections.find(item => item.slug === slug);
-    if (!collection) return;
-
-    const photos = collection.photographs.filter(photo => photo.image?.url);
-    const figures = grid.querySelectorAll('.collection-gallery__photo');
-
-    figures.forEach((figure, index) => {
-      figure.tabIndex = 0;
-      figure.setAttribute('role', 'button');
-      figure.setAttribute('aria-label', `View ${photos[index].title || 'photograph'} fullscreen`);
-
-      figure.addEventListener('click', () => openLightbox(photos, index));
-      figure.addEventListener('keydown', event => {
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault();
-          openLightbox(photos, index);
-        }
-      });
-    });
-  };
-
-  loadWithViewer();
 })();
-

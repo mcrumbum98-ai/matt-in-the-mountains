@@ -1529,7 +1529,7 @@ body.photo-page{overflow-x:clip}
   line-height: 1;
 }
 
-.photo-nav .photo-nav-dropdown {
+.site-header .photo-nav-dropdown {
   top: 100%;
   margin-top: 0;
   padding-top: 16px;
@@ -1558,4 +1558,39 @@ body.photo-page{overflow-x:clip}
   align-items: center;
   justify-content: center;
   line-height: 1;
+}
+
+
+/* Permanent mountain branding — prevent old logo flash */
+.mm {
+  width: 64px !important;
+  height: 24px !important;
+  display: inline-block !important;
+  flex: 0 0 auto !important;
+  background: currentColor !important;
+  -webkit-mask: url("../images/mountain-matt-logo.svg") center / contain no-repeat !important;
+  mask: url("../images/mountain-matt-logo.svg") center / contain no-repeat !important;
+}
+
+.mm svg,
+.mm b {
+  display: none !important;
+}
+
+.closing .mm {
+  width: 118px !important;
+  height: 34px !important;
+  margin: 0 auto 18px !important;
+}
+
+@media (max-width: 800px) {
+  .mm {
+    width: 54px !important;
+    height: 21px !important;
+  }
+
+  .closing .mm {
+    width: 96px !important;
+    height: 29px !important;
+  }
 }

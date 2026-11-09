@@ -4,9 +4,7 @@
  const favicon=document.createElement('link');
  favicon.rel='icon'; favicon.type='image/svg+xml'; favicon.href='assets/images/mountain-matt-favicon.svg';
  document.head.appendChild(favicon);
- const brandStyle=document.createElement('style');
- brandStyle.textContent=`.mm{width:64px!important;height:24px!important;display:inline-block!important;flex:0 0 auto!important;background:currentColor!important;-webkit-mask:url("${logoUrl}") center/contain no-repeat!important;mask:url("${logoUrl}") center/contain no-repeat!important}.mm svg,.mm b{display:none!important}.closing .mm{width:118px!important;height:34px!important;margin:0 auto 18px!important}@media(max-width:800px){.mm{width:54px!important;height:21px!important}.closing .mm{width:96px!important;height:29px!important}}`;
- document.head.appendChild(brandStyle);
+
 })();
 
 (()=>{

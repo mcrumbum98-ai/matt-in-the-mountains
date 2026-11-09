@@ -66,6 +66,8 @@
 
     } catch (error) {
       console.error('Could not load Photography Landing:', error);
+    } finally {
+      document.body.classList.add('photography-content-ready');
     }
   };
 

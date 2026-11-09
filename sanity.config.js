@@ -1,3 +1,4 @@
+import {photographyLanding} from './sanity/schemas/photographyLanding.js'
 import {aboutPage} from './sanity/schemas/aboutPage.js'
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
@@ -37,6 +38,7 @@ const structure = (S) => S.list()
       ),
     S.divider(),
     S.listItem().title('Photographs').schemaType('photograph').child(S.documentTypeList('photograph').title('Photographs')),
+    S.listItem().title('Photography Landing').schemaType('photographyLanding').child(S.document().schemaType('photographyLanding').documentId('photographyLanding').title('Photography Landing')),
     S.listItem().title('Photo Collections').schemaType('photoCollection').child(S.documentTypeList('photoCollection').title('Photo Collections')),
     S.divider(),
     S.listItem()
@@ -60,5 +62,5 @@ export default defineConfig({
   dataset:'production',
   basePath:'/admin',
   plugins:[structureTool({structure}), visionTool()],
-  schema:{types:[gearReview,gearLanding,journalPost,journalLanding,photograph,photoCollection,brand,tag,contentBlock,aboutPage]},
+  schema:{types:[gearReview,gearLanding,journalPost,journalLanding,photograph,photoCollection,brand,tag,contentBlock,aboutPage,photographyLanding]},
 })

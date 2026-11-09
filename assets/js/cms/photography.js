@@ -59,9 +59,33 @@
     return (raw || []).map(normalizePhoto);
   };
 
+  const getLanding = async () => sanity.query(`
+    *[_type == "photographyLanding" && _id == "photographyLanding"][0] {
+      introHeading,
+      introEmphasis,
+      introDescription,
+      featuredPhotographs[] {
+        caption,
+        photograph-> {
+          _id,
+          title,
+          image {
+            alt,
+            hotspot,
+            "url": asset->url
+          }
+        }
+      },
+      exhibitionStatement,
+      outroHeading,
+      outroDescription
+    }
+  `);
+
   window.MITMContent = window.MITMContent || {};
   window.MITMContent.photography = {
     getCollections,
-    getPhotographs
+    getPhotographs,
+    getLanding
   };
 })();

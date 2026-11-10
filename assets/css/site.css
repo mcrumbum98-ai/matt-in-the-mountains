@@ -1777,3 +1777,25 @@ body.photo-page{overflow-x:clip}
     height: 110%;
   }
 }
+
+
+/* About biography — unified forest-green panel */
+.about-v20 .about-biography {
+  margin-top: 36px;
+  padding: clamp(28px, 4vw, 48px);
+  background: var(--forest, #273b21);
+  color: #f5f0e6;
+  border-radius: 16px;
+  box-shadow: 0 14px 36px rgba(23,24,20,.12);
+}
+.about-v20 .about-biography p {
+  color: inherit;
+}
+.about-v20 .about-biography p:last-child {
+  margin-bottom: 0;
+}
+
+/* About biography: remove extra space above the opening text */
+.about-v20 .about-biography > :first-child {
+  margin-top: 0;
+}

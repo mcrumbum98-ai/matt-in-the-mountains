@@ -79,28 +79,45 @@
 
       if (copy) {
         const button = copy.querySelector('.button-link');
-        const paragraphs = [...copy.querySelectorAll('p')];
+
+        // Basecamp is the source of truth for both text sections.
+        // Remove any old static content while preserving optional buttons.
+        [...copy.children].forEach(child => {
+          if (child !== button) child.remove();
+        });
+
+        const introduction = document.createElement('div');
+        introduction.className = 'about-introduction';
 
         if (page.richIntroduction?.length) {
-          const intro = paragraphs[0];
-          if (intro) intro.replaceWith(renderBlocks(page.richIntroduction));
-        } else if (page.introduction?.trim() && paragraphs[0]) {
-          paragraphs[0].textContent = page.introduction.trim();
+          introduction.appendChild(renderBlocks(page.richIntroduction));
+        } else if (page.introduction?.trim()) {
+          const p = document.createElement('p');
+          p.className = 'about-lede';
+          p.textContent = page.introduction.trim();
+          introduction.appendChild(p);
         }
 
-        if (page.richIntroduction?.length || page.richBiography?.length || page.biography?.trim()) {
-          paragraphs.slice(1).forEach(p => p.remove());
+        if (introduction.hasChildNodes()) {
+          copy.insertBefore(introduction, button || null);
+        }
 
-          if (page.richBiography?.length) {
-            copy.insertBefore(renderBlocks(page.richBiography), button || null);
-          } else if (!page.richIntroduction?.length && page.biography?.trim()) {
-            page.biography.trim().split(/\n\s*\n/).filter(Boolean)
-              .forEach(text => {
-                const p = document.createElement('p');
-                p.textContent = text.trim();
-                copy.insertBefore(p, button || null);
-              });
-          }
+        const biography = document.createElement('div');
+        biography.className = 'about-biography';
+
+        if (page.richBiography?.length) {
+          biography.appendChild(renderBlocks(page.richBiography));
+        } else if (page.biography?.trim()) {
+          page.biography.trim().split(/\n\s*\n/).filter(Boolean)
+            .forEach(text => {
+              const p = document.createElement('p');
+              p.textContent = text.trim();
+              biography.appendChild(p);
+            });
+        }
+
+        if (biography.hasChildNodes()) {
+          copy.insertBefore(biography, button || null);
         }
       }
     } catch (error) {

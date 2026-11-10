@@ -3,7 +3,15 @@
   if (!nav) return;
 
   const photographyLink = [...nav.querySelectorAll('a')]
-    .find(link => link.getAttribute('href') === 'photography.html');
+    .find(link => {
+      const href = link.getAttribute('href');
+      if (!href) return false;
+      try {
+        return new URL(href, document.baseURI).pathname.endsWith('/photography.html');
+      } catch {
+        return false;
+      }
+    });
 
   if (!photographyLink) return;
 

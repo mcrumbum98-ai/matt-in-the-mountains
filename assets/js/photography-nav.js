@@ -1,4 +1,14 @@
 (() => {
+  const scriptUrl = [...document.scripts]
+    .map(script => script.src)
+    .find(src => src.includes('/assets/js/photography-nav.js'));
+
+  const siteRoot = scriptUrl
+    ? new URL('../../', scriptUrl)
+    : new URL('/', location.origin);
+
+  const siteUrl = path => new URL(path, siteRoot).href;
+
   const nav = document.querySelector('.site-header .navlinks');
   if (!nav) return;
 
@@ -55,8 +65,8 @@
     parent.append(link);
   };
 
-  addLink('Photography Home', 'photography.html');
-  addLink('All Photos', 'photo-collection.html?collection=all-photos');
+  addLink('Photography Home', siteUrl('photography.html'));
+  addLink('All Photos', siteUrl('photo-collection.html?collection=all-photos'));
 
   const collectionLinks = document.createElement('div');
   dropdown.append(collectionLinks);
@@ -95,9 +105,9 @@
     try {
       if (!window.MITMContent?.photography) {
         if (!window.MITMContent?.sanity) {
-          await loadScript('assets/js/cms/sanity.js');
+          await loadScript(siteUrl('assets/js/cms/sanity.js'));
         }
-        await loadScript('assets/js/cms/photography.js');
+        await loadScript(siteUrl('assets/js/cms/photography.js'));
       }
 
       const service = window.MITMContent?.photography;
@@ -112,7 +122,7 @@
 
         addLink(
           collection.title,
-          `photo-collection.html?collection=${encodeURIComponent(collection.slug)}`,
+          siteUrl(`photo-collection.html?collection=${encodeURIComponent(collection.slug)}`),
           collectionLinks
         );
       }

@@ -1799,3 +1799,38 @@ body.photo-page{overflow-x:clip}
 .about-v20 .about-biography > :first-child {
   margin-top: 0;
 }
+
+/* Shared back button for generated Journal articles */
+.journal-head .collection-gallery__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: inherit;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  opacity: 1;
+  margin-bottom: clamp(32px, 4vw, 48px);
+}
+
+.journal-head .collection-gallery__back::before {
+  content: '←';
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  border-radius: 50%;
+  background: #273b21;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 400;
+  transition: transform .25s ease, background .25s ease;
+}
+
+.journal-head .collection-gallery__back:hover::before {
+  transform: translateX(-4px);
+  background: #171814;
+}

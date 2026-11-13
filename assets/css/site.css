@@ -1989,3 +1989,12 @@ body:has(.journal-head) .site-header.dark {
   color: var(--muted, #706b63);
   margin: -8px 0 18px;
 }
+
+/* Homepage: keep navigation visible above all scrolling sections */
+body:has(> .site-header) > .site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}

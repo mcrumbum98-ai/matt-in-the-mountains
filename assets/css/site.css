@@ -1834,3 +1834,150 @@ body.photo-page{overflow-x:clip}
   transform: translateX(-4px);
   background: #171814;
 }
+
+/* Journal back-button desktop alignment */
+@media (min-width: 851px) {
+  .journal-head .collection-gallery__back {
+    position: relative;
+    top: -35px;
+    margin-bottom: calc(clamp(32px, 4vw, 48px) - 35px);
+  }
+}
+
+/* Generated Journal articles: use the subtle navbar divider */
+body:has(.journal-head) .site-header.dark {
+  border-bottom: 0;
+}
+
+/* Shared fixed navigation — Photography collection reference */
+.site-header,
+.site-header.dark,
+.site-header.journal-nav,
+.site-header.photo-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 86px;
+  border-bottom: 0;
+  background: linear-gradient(180deg, rgba(17,21,16,.72), transparent);
+  color: var(--cream);
+}
+
+.site-header.dark::after,
+.site-header.journal-nav::after {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.38), transparent);
+}
+
+/* Fixed navbar: keep Journal back button below navigation */
+@media (min-width: 851px) {
+  .journal-head .collection-gallery__back {
+    top: 0;
+    margin-bottom: clamp(32px, 4vw, 48px);
+  }
+}
+
+/* Match Return to Camp separator to Photography navbar */
+.site-header.dark .nav-basecamp {
+  border-right-color: rgba(255,255,255,.25);
+}
+
+/* Shared mobile navigation — matches the original homepage layout */
+@media (max-width: 800px) {
+  .site-header,
+  .site-header.dark,
+  .site-header.journal-nav,
+  .site-header.photo-nav {
+    height: auto;
+    min-height: 76px;
+    padding: 12px 0;
+    color: var(--cream);
+  }
+
+  .site-header .navrow {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .site-header .brand {
+    font-size: .62rem;
+    letter-spacing: .12em;
+    gap: 8px;
+    white-space: nowrap;
+  }
+
+  .site-header .mm {
+    width: 38px;
+    height: 27px;
+    flex-basis: 38px;
+  }
+
+  .site-header .mm svg {
+    width: 38px;
+    height: 27px;
+  }
+
+  .site-header .navlinks {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    overflow-x: visible;
+    padding: 7px 0 3px;
+    white-space: nowrap;
+    font-size: .64rem;
+    letter-spacing: .10em;
+  }
+
+  .site-header .navlinks a {
+    flex: 0 0 auto;
+    opacity: .9;
+  }
+
+  .site-header .nav-basecamp,
+  .site-header .menu-btn {
+    display: none;
+  }
+
+  .site-header .photo-nav-menu {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .site-header .photo-nav-dropdown {
+    z-index: 200;
+  }
+}
+
+@media (max-width: 430px) {
+  .site-header .brand span:last-child {
+    font-size: .58rem;
+    letter-spacing: .09em;
+  }
+
+  .site-header .navlinks {
+    gap: 17px;
+    font-size: .61rem;
+  }
+}
+
+/* Mobile clearance for fixed two-row navigation */
+@media (max-width: 800px) {
+  .about-v20 {
+    padding-top: 105px;
+  }
+
+  .review-top {
+    padding-top: 160px;
+  }
+}
+
+/* Mobile clearance for Photography collection navigation */
+@media (max-width: 800px) {
+  .photo-gallery-page .collection-gallery {
+    padding-top: 100px;
+  }
+}

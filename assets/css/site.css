@@ -1981,3 +1981,11 @@ body:has(.journal-head) .site-header.dark {
     padding-top: 100px;
   }
 }
+
+/* Secondary headline on featured Gear review cards */
+.review-card__subtitle {
+  font-size: .9rem;
+  line-height: 1.45;
+  color: var(--muted, #706b63);
+  margin: -8px 0 18px;
+}

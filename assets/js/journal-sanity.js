@@ -204,7 +204,9 @@
 
     feed.innerHTML =
       leadCard(featuredDeck, featuredIndex) +
-      renderFeedCards(posts);
+      renderFeedCards(
+        posts.filter(post => !featuredDeck.some(featured => featured.slug === post.slug))
+      );
 
     initDynamicMotion();
     bindFeaturedDeck();

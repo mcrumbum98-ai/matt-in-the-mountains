@@ -190,7 +190,7 @@
     deck.addEventListener('focusout', startFeaturedTimer);
   };
 
-  const render = posts => {
+  const render = (posts, showFeatured = true) => {
     stopFeaturedTimer();
     currentPosts = posts;
 
@@ -203,9 +203,11 @@
     if (featuredIndex >= featuredDeck.length) featuredIndex = 0;
 
     feed.innerHTML =
-      leadCard(featuredDeck, featuredIndex) +
+      (showFeatured ? leadCard(featuredDeck, featuredIndex) : '') +
       renderFeedCards(
-        posts.filter(post => !featuredDeck.some(featured => featured.slug === post.slug))
+        posts.filter((post, index, all) =>
+          all.findIndex(item => item.slug === post.slug) === index
+        )
       );
 
     initDynamicMotion();
@@ -306,7 +308,7 @@
           const filtered = result.filter(post => matchesFilter(post, label));
 
           if (filtered.length) {
-            render(filtered);
+            render(filtered, label === 'All');
           } else {
             feed.innerHTML = `<div class="journal-empty"><p>No ${esc(label)} stories yet.</p></div>`;
           }

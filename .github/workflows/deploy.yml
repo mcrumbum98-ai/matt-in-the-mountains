@@ -2,6 +2,9 @@ name: Deploy Matt in the Mountains
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - cms-staging
 
 jobs:
   deploy:

@@ -7,6 +7,7 @@ const dist = join(root, 'dist');
 
 const pages = [
   'index.html',
+  '404.html',
   'about.html',
   'gear.html',
   'journal.html',

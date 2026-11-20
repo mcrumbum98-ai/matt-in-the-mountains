@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>404 | Matt in the Mountains</title>
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+
+    .not-found {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 20px;
+      background: #1c2a18;
+      color: #f7f2e8;
+      text-align: center;
+    }
+
+    .error-code {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: clamp(5rem, 15vw, 9rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -.055em;
+      color: #fff;
+      margin: 0 0 30px;
+    }
+
+
+    .trail-sign {
+      position: relative;
+      isolation: isolate;
+      width: min(92vw, 750px);
+      padding: 25px 55px;
+      background:
+        repeating-linear-gradient(
+          177deg,
+          transparent 0px,
+          rgba(255,255,255,.025) 2px,
+          transparent 4px,
+          rgba(0,0,0,.045) 7px,
+          transparent 11px
+        ),
+        linear-gradient(180deg, #674537, #55382e 48%, #432b23 52%, #583a30);
+      border: 5px solid #39241c;
+      border-radius: 15px;
+      clip-path: polygon(
+        5% 0, 95% 0, 100% 12%,
+        100% 88%, 95% 100%, 5% 100%,
+        0 88%, 0 12%
+      );
+      box-shadow: inset 0 5px 7px rgba(255,255,255,.12),
+                  inset 0 -8px 12px rgba(0,0,0,.3);
+    }
+
+    .trail-sign::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: #302019;
+      box-shadow: 0 3px 2px rgba(255,255,255,.10),
+                  0 -2px 2px rgba(0,0,0,.2);
+    }
+
+    .trail-sign__content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 95px minmax(0, 1fr) 95px;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .trail-sign__tree {
+      width: 100%;
+      height: auto;
+      fill: #e9b91e;
+      filter: drop-shadow(1px 2px 0 #2a1a13)
+              drop-shadow(-1px -1px 0 rgba(255,235,140,.25));
+    }
+
+    .trail-sign__words {
+      display: flex;
+      flex-direction: column;
+      font-family: Impact, "Arial Narrow", Arial, sans-serif;
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 900;
+      line-height: 1.12;
+      letter-spacing: .04em;
+      color: #e9b91e;
+      text-shadow:
+        1px 2px 0 #2a1a13,
+        -1px -1px 0 rgba(255,235,140,.35),
+        2px 3px 2px rgba(0,0,0,.35);
+    }
+
+    .not-found__message {
+      max-width: 650px;
+      margin-top: 42px;
+    }
+
+    .not-found__message p {
+      font-family: Georgia, serif;
+      font-size: clamp(1.05rem, 2vw, 1.4rem);
+      line-height: 1.65;
+      margin: 0 0 28px;
+    }
+
+    .not-found__message a {
+      display: inline-block;
+      color: #f7f2e8;
+      text-decoration: none;
+      border: 1px solid #f7f2e8;
+      border-radius: 4px;
+      padding: 14px 22px;
+      font-family: Georgia, serif;
+      transition: background .2s, color .2s;
+    }
+
+    .not-found__message a:hover,
+    .not-found__message a:focus-visible {
+      background: #f7f2e8;
+      color: #1c2a18;
+    }
+
+
+    @media (max-width: 650px) {
+      .trail-sign { padding: 20px 28px; }
+      .trail-sign__content {
+        grid-template-columns: 45px minmax(0, 1fr) 45px;
+        gap: 6px;
+      }
+      .trail-sign__words {
+        font-size: clamp(1.7rem, 8vw, 3rem);
+        letter-spacing: 0;
+      }
+      .not-found__message { margin-top: 32px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="not-found">
+    <h1 class="error-code">404</h1>
+
+    <div class="trail-sign" role="img" aria-label="Trail Closed wooden sign">
+      <div class="trail-sign__content">
+        <svg class="trail-sign__tree" viewBox="0 0 100 130" aria-hidden="true">
+          <path d="M50 3 L27 38 H38 L15 70 H29 L5 105 H43 V125 H57 V105 H95 L71 70 H85 L62 38 H73 Z"/>
+        </svg>
+
+        <div class="trail-sign__words"><span>TRAIL</span><span>CLOSED</span></div>
+
+        <svg class="trail-sign__tree" viewBox="0 0 100 130" aria-hidden="true">
+          <path d="M50 3 L27 38 H38 L15 70 H29 L5 105 H43 V125 H57 V105 H95 L71 70 H85 L62 38 H73 Z"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="not-found__message">
+      <p>Looks like this trail leads nowhere. The page may have moved, been unpublished, or never existed.</p>
+      <a href="/">Return to Matt in the Mountains</a>
+    </div>
+  </main>
+</body>
+</html>

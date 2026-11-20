@@ -1,0 +1,59 @@
+import {defineField, defineType} from 'sanity'
+import {FramedImageInput} from '../components/FramedImageInput.jsx'
+
+const activities = ['Hike & Camp','Trail Running','Climbing','Ski & Tour','Paddling','Everyday / Travel','Dog Adventures']
+const gearTypes = ['Footwear','Apparel','Pack / Carry','Shelter / Sleep','Cook / Camp','Climbing Equipment','Ski Equipment','Paddle / Boat','Safety','Electronics / Gadgets','Tools & Essentials','Dog Gear','Other']
+
+export const gearReview = defineType({
+  name: 'gearReview', title: 'Gear Review', type: 'document',
+  groups: [
+    {name: 'basics', title: '1. Basics', default: true},
+    {name: 'review', title: '2. Review'},
+    {name: 'testing', title: '3. Testing & Ratings'},
+    {name: 'links', title: '4. Links & Disclosure'},
+    {name: 'organize', title: '5. Organize & Relate'},
+  ],
+  fields: [
+    defineField({name:'productName', title:'Product Name', type:'string', group:'basics', validation:r=>r.required()}),
+    defineField({name:'brand', title:'Brand', type:'reference', to:[{type:'brand'}], group:'basics', description:'Choose an existing brand or create one once and reuse it.', validation:r=>r.required()}),
+    defineField({name:'title', title:'Review Headline', type:'string', group:'basics', description:'The editorial headline visitors will see.', validation:r=>r.required()}),
+    defineField({name:'subtitle', title:'Short Deck', type:'text', rows:2, group:'basics'}),
+    defineField({name:'slug', title:'Page URL', type:'slug', group:'basics', options:{source:'productName', maxLength:80}, validation:r=>r.required()}),
+    defineField({name:'heroImage', title:'Featured / Hero Photo', type:'image', group:'basics', description:'Upload the original photo, then use the Basecamp frame below it to choose exactly how the subject sits inside the website hero. The original photo is never modified.', options:{hotspot:true,basecampFrame:{ratio:'16 / 9',label:'Gear Review Hero · 16:9'}}, components:{input:FramedImageInput}, fields:[{name:'alt',title:'Alt Text',type:'string'}], validation:r=>r.required()}),
+    defineField({
+      name:'cardImage',
+      title:'Card / Product Photo',
+      type:'image',
+      group:'basics',
+      description:'Optional clean identifying photo of the product for Journal gear cards and other compact gear features. A store-style product photo works well here. The original image is never modified.',
+      options:{hotspot:true,basecampFrame:{ratio:'1 / 1',label:'Gear Card · Square'}},
+      components:{input:FramedImageInput},
+      fields:[{name:'alt',title:'Alt Text',type:'string'}],
+    }),
+    defineField({name:'productGallery', title:'Product Gallery', type:'array', group:'basics', description:'Optional additional product/detail/action photos. Every gallery slide keeps the same 16:9 height. Choose Fill Frame for cinematic cropping or Show Full Image when the entire product needs to remain visible.', of:[{type:'image', options:{hotspot:true,basecampFrame:{ratio:'16 / 9',label:'Product Gallery · 16:9',displayModeField:'displayMode'}}, components:{input:FramedImageInput}, fields:[{name:'alt',title:'Alt Text',type:'string'},{name:'displayMode',title:'Gallery Display',type:'string',initialValue:'fill',options:{layout:'radio',list:[{title:'Fill Frame — crop to fill 16:9',value:'fill'},{title:'Show Full Image — keep entire photo visible',value:'contain'}]}}]}]}),
+    defineField({name:'overallRating', title:'Overall Rating', description:'0–10. One decimal is allowed.', type:'number', group:'basics', validation:r=>r.required().min(0).max(10).precision(1)}),
+    defineField({name:'verdict', title:'Verdict / TL;DR', type:'text', rows:4, group:'review', validation:r=>r.required()}),
+    defineField({name:'pros', title:'Pros', type:'array', group:'review', of:[{type:'string'}]}),
+    defineField({name:'cons', title:'Cons', type:'array', group:'review', of:[{type:'string'}]}),
+    defineField({name:'body', title:'Full Review', type:'contentBlock', group:'review', validation:r=>r.required()}),
+    defineField({name:'ownedTested', title:'Owned / Tested Since', type:'string', group:'testing'}),
+    defineField({name:'use', title:'Primary Use', type:'string', group:'testing'}),
+    defineField({name:'conditions', title:'Where / Conditions Tested', type:'text', rows:2, group:'testing'}),
+    defineField({name:'ratingBreakdown', title:'Rating Breakdown', description:'Use whatever categories make sense for this kind of gear.', type:'array', group:'testing', of:[{type:'object', fields:[{name:'label',title:'Rating Category',type:'string',validation:r=>r.required()},{name:'score',title:'Score',type:'number',validation:r=>r.required().min(0).max(10).precision(1)}], preview:{select:{title:'label',score:'score'},prepare:({title,score})=>({title,subtitle:score==null?'No score':`${score}/10`})}}]}),
+    defineField({name:'purchaseLinks', title:'Where to Buy', type:'array', group:'links', of:[{type:'object', fields:[{name:'store',title:'Store / Seller',type:'string',validation:r=>r.required()},{name:'url',title:'Purchase URL',type:'url',validation:r=>r.required()},{name:'affiliate',title:'Affiliate Link?',type:'boolean',initialValue:false}], preview:{select:{title:'store',affiliate:'affiliate'},prepare:({title,affiliate})=>({title,subtitle:affiliate?'Affiliate link':'Standard link'})}}]}),
+    defineField({name:'howObtained', title:'How I Got It', type:'string', group:'links', options:{layout:'radio',list:['Purchased with my own money','Manufacturer sample','Loaner','Sponsored / paid']}, validation:r=>r.required()}),
+    defineField({name:'disclosureNote', title:'Additional Disclosure', type:'text', rows:2, group:'links'}),
+    defineField({name:'activities', title:'Activities', type:'array', group:'organize', description:'Choose every activity where this item belongs. Example: a hard-shell jacket might be both Ski & Tour and Hike & Camp.', of:[{type:'string'}], options:{list:activities,layout:'grid'}, validation:r=>r.required().min(1)}),
+    defineField({name:'activity', title:'Legacy Activity', type:'string', group:'organize', options:{list:activities}, hidden:true, readOnly:true, description:'Temporary compatibility field for reviews created before multi-activity support.'}),
+    defineField({name:'gearType', title:'Gear Type', type:'string', group:'organize', description:'What the item is. Keep this to one primary classification; use Activities for the different ways you use it.', options:{list:gearTypes}, validation:r=>r.required()}),
+    defineField({name:'subtype', title:'Subtype', description:'More specific, e.g. Hard Shell Jacket, Trail Shoe, Touring Ski, PFD, Headlamp.', type:'string', group:'organize', validation:r=>r.required()}),
+    defineField({name:'tags', title:'Tags', type:'array', group:'organize', of:[{type:'reference',to:[{type:'tag'}]}]}),
+    defineField({name:'relatedGear', title:'Related Gear — Manual Picks', description:'Optional. If left empty, the site can fall back to matching subtype/type/activities/tags.', type:'array', group:'organize', validation:r=>r.max(4), of:[{type:'reference',to:[{type:'gearReview'}]}]}),
+    defineField({name:'relatedJournal', title:'Related Journal Stories', type:'array', group:'organize', of:[{type:'reference',to:[{type:'journalPost'}]}]}),
+    defineField({name:'featured', title:'Eligible for Featured Areas', description:'Allows this review to appear in curated/featured slots. It does not change the number of cards on a page.', type:'boolean', group:'organize', initialValue:false}),
+    defineField({name:'publishedAt', title:'Original Publish Date', type:'datetime', group:'organize'}),
+    defineField({name:'updatedAt', title:'Last Meaningful Update', type:'datetime', group:'organize'}),
+  ],
+  orderings:[{title:'Newest First',name:'publishedDesc',by:[{field:'publishedAt',direction:'desc'}]},{title:'Highest Rated',name:'ratingDesc',by:[{field:'overallRating',direction:'desc'}]}],
+  preview:{select:{title:'productName',brand:'brand.name',rating:'overallRating',media:'heroImage'},prepare:({title,brand,rating,media})=>({title,subtitle:[brand,rating!=null?`${rating}/10`:null].filter(Boolean).join(' · '),media})},
+})

@@ -1,0 +1,30 @@
+/* Shared editorial layout fixes for generated Journal and Gear pages. */
+/* Keep intentionally expanded story images cinematic without allowing them to run beneath the metadata sidebar. */
+@media (min-width: 851px) {
+  .article-copy .story-photo--wide {
+    width: calc(100% + 80px) !important;
+    margin-left: -40px !important;
+    transform: none !important;
+  }
+
+  .article-copy .story-photo--full {
+    width: calc(100% + 130px) !important;
+    margin-left: -65px !important;
+    transform: none !important;
+  }
+
+  .article-copy .story-photo--wide figcaption,
+  .article-copy .story-photo--full figcaption {
+    width: 100%;
+    padding: 0 2px;
+  }
+}
+
+@media (max-width: 850px) {
+  .article-copy .story-photo--wide,
+  .article-copy .story-photo--full {
+    width: 100% !important;
+    margin-left: 0 !important;
+    transform: none !important;
+  }
+}
